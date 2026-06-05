@@ -426,21 +426,46 @@ def estimate_temp(lat: float, month: int) -> float:
     return estimate_temp_by_doy(lat, doy)
 
 
-def calc_sun_hours_by_doy(lat: float, orientation: str, doy: float) -> float:
-    abs_lat = abs(lat)
-    d = (doy + 182) % 365 if lat < 0 else doy
-    daylight = 12 + math.sin(((d - 80) / 365) * 2 * math.pi) * (abs_lat / 90 * 8)
-    factors = (
+_COMPASS_NEIGHBORS = {
+    "N":  ("NW", "NE"), "NE": ("N",  "E"),  "E":  ("NE", "SE"),
+    "SE": ("E",  "S"),  "S":  ("SE", "SW"), "SW": ("S",  "W"),
+    "W":  ("SW", "NW"), "NW": ("W",  "N"),
+}
+
+
+def _orientation_factor(lat: float, orientation: str) -> dict:
+    return (
         {"S": 0.10, "SE": 0.25, "SW": 0.25, "E": 0.40, "W": 0.40, "NE": 0.55, "NW": 0.55, "N": 0.70}
         if lat < 0 else
         {"S": 0.70, "SE": 0.55, "SW": 0.55, "E": 0.40, "W": 0.40, "NE": 0.25, "NW": 0.25, "N": 0.10}
     )
+
+
+def calc_sun_hours_by_doy(lat: float, orientation: str, doy: float,
+                          context: str = "windowsill") -> float:
+    abs_lat = abs(lat)
+    d = (doy + 182) % 365 if lat < 0 else doy
+    daylight = 12 + math.sin(((d - 80) / 365) * 2 * math.pi) * (abs_lat / 90 * 8)
+    factors = _orientation_factor(lat, orientation)
+
+    if context == "garden":
+        # Open sky — orientation irrelevant, ~85% of full daylight (terrain/tree margin)
+        return round(daylight * 0.85, 1)
+
+    if context == "balcony":
+        # Primary face 60%, each neighbor side 20% — open on 3 sides
+        n1, n2 = _COMPASS_NEIGHBORS[orientation]
+        combined = factors[orientation] * 0.60 + factors[n1] * 0.20 + factors[n2] * 0.20
+        return round(daylight * combined, 1)
+
+    # windowsill — direct face only
     return round(daylight * factors[orientation], 1)
 
 
-def calc_sun_hours(lat: float, orientation: str, month: int) -> float:
+def calc_sun_hours(lat: float, orientation: str, month: int,
+                   context: str = "windowsill") -> float:
     doy = (month - 1) * 30.4 + 15
-    return calc_sun_hours_by_doy(lat, orientation, doy)
+    return calc_sun_hours_by_doy(lat, orientation, doy, context)
 
 
 def build_warnings(lat: float, data_confidence: str) -> list[str]:
@@ -463,7 +488,8 @@ def week_label(week: int, month: int) -> str:
 
 
 async def get_conditions(lat: float, lng: float, orientation: str,
-                         month: int, week: int | None = None) -> dict:
+                         month: int, week: int | None = None,
+                         context: str = "windowsill") -> dict:
     climate_data = await fetch_all_monthly_temps(lat, lng)
     data_source = "Open-Meteo archive 2003–2022"
     data_confidence = "high"
@@ -480,7 +506,7 @@ async def get_conditions(lat: float, lng: float, orientation: str,
             temp = estimate_temp_by_doy(lat, doy)
             data_source = "latitude estimate"
             data_confidence = "low"
-        sun = calc_sun_hours_by_doy(lat, orientation, doy)
+        sun = calc_sun_hours_by_doy(lat, orientation, doy, context)
         abs_lat = abs(lat)
         d_adj = (doy + 182) % 365 if lat < 0 else doy
         daylight = round(12 + math.sin(((d_adj - 80) / 365) * 2 * math.pi) * (abs_lat / 90 * 8), 1)
@@ -495,7 +521,7 @@ async def get_conditions(lat: float, lng: float, orientation: str,
             temp = estimate_temp(lat, month)
             data_source = "latitude estimate"
             data_confidence = "low"
-        sun = calc_sun_hours(lat, orientation, month)
+        sun = calc_sun_hours(lat, orientation, month, context)
         abs_lat = abs(lat)
         m_adj = ((month - 1 + 6) % 12) + 1 if lat < 0 else month
         daylight = round(12 + math.sin(((m_adj - 3) / 12) * 2 * math.pi) * (abs_lat / 90 * 8), 1)
@@ -910,7 +936,7 @@ async def recommend(
         m = month if month > 0 else datetime.now().month
 
     climate_data = await fetch_all_monthly_temps(lat, lng)
-    cond = await get_conditions(lat, lng, orientation, m, week)
+    cond = await get_conditions(lat, lng, orientation, m, week, context)
     plants = load_plants()
     if climate_data and climate_data["months"]:
         winter_min = min(climate_data["months"].values())
@@ -967,7 +993,7 @@ async def calendar(
             temp = round(temp - (elevation / 100) * 0.6, 1)
         m_adj = ((m - 1 + 6) % 12) + 1 if lat < 0 else m
         daylight = round(12 + math.sin(((m_adj - 3) / 12) * 2 * math.pi) * (abs_lat / 90 * 8), 1)
-        sun = calc_sun_hours(lat, orientation, m)
+        sun = calc_sun_hours(lat, orientation, m, context)
         scored = filter_and_score(plants, context, temp, sun, orientation, confidence, mode, species, type,
                                   start_type=start_type, lat=lat, month=m, winter_min_temp=winter_min)
         best = scored["results"][0] if scored["results"] else None
