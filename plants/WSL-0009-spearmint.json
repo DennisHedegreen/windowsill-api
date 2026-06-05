@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0009",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Spearmint",
+  "name_da": "Grønmynte",
+  "name_latin": "Mentha spicata",
+  "family": "Lamiaceae",
+  "genus": "Mentha",
+  "species": "mint",
+  "type": "op",
+  "min_temp": 5,
+  "max_temp": 30,
+  "optimal_temp": 18,
+  "sun_hours": 4,
+  "sun_direct": "partial",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 4,
+  "weeks_from_transplant": 2,
+  "hardiness_temp": -29,
+  "hardiness_zone_min": 5,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "risky",
+    "note": "Spreads aggressively in open ground — container is actually better."
+  },
+  "notes": "Milder and sweeter than peppermint. Classic for mojitos and tea. Very easy to grow indoors."
+}

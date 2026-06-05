@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0017",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Woolly Thyme",
+  "name_da": "Ulden Timian",
+  "name_latin": "Thymus pseudolanuginosus",
+  "family": "Lamiaceae",
+  "genus": "Thymus",
+  "species": "thyme",
+  "type": "op",
+  "min_temp": -15,
+  "max_temp": 28,
+  "optimal_temp": 16,
+  "sun_hours": 5,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 12,
+  "weeks_from_transplant": 6,
+  "hardiness_temp": -29,
+  "hardiness_zone_min": 5,
+  "habit": {
+    "windowsill": "acceptable",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Primarily ornamental — slow to establish and mild flavour on a windowsill."
+  },
+  "notes": "Soft woolly leaves, mild flavour. Primarily ornamental but edible. Very drought-tolerant once established. Handles cold well."
+}

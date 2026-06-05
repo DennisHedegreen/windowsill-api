@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0061",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Lemongrass",
+  "name_da": "Citrongræs",
+  "name_latin": "Cymbopogon citratus",
+  "family": "Poaceae",
+  "genus": "Cymbopogon",
+  "species": "lemongrass",
+  "type": "op",
+  "min_temp": 10,
+  "max_temp": 40,
+  "optimal_temp": 28,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony"
+  ],
+  "grow_time_weeks": 16,
+  "weeks_from_transplant": 8,
+  "hardiness_temp": 5,
+  "hardiness_zone_min": 12,
+  "habit": {
+    "windowsill": "acceptable",
+    "balcony": "good",
+    "garden": "unsuitable",
+    "note": "Gets very large — better moved to a balcony in summer when it grows vigorously."
+  },
+  "notes": "Grow from a fresh supermarket stalk rooted in water. Needs warmth and full sun. Gets large — better on a balcony in summer. Essential in Thai and Vietnamese cooking. Cut stalks at the base."
+}

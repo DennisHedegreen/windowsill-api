@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0041",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Russian Tarragon",
+  "name_da": "Russisk Estragon",
+  "name_latin": "Artemisia dracunculus",
+  "family": "Asteraceae",
+  "genus": "Artemisia",
+  "species": "tarragon",
+  "type": "op",
+  "min_temp": -20,
+  "max_temp": 32,
+  "optimal_temp": 17,
+  "sun_hours": 5,
+  "sun_direct": "full",
+  "context": [
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 10,
+  "weeks_from_transplant": 5,
+  "hardiness_temp": -34,
+  "hardiness_zone_min": 4,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Too vigorous and large for containers — better suited to open ground."
+  },
+  "notes": "Can be grown from seed unlike French tarragon. Much milder and more bitter flavour — considered inferior for cooking. Extremely cold-hardy. More vigorous and larger than French tarragon."
+}

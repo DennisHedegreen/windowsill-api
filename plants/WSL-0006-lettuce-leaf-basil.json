@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0006",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Lettuce Leaf Basil",
+  "name_da": "Salatblad Basilikum",
+  "name_latin": "Ocimum basilicum 'Lettuce Leaf'",
+  "family": "Lamiaceae",
+  "genus": "Ocimum",
+  "species": "basil",
+  "type": "heirloom",
+  "min_temp": 15,
+  "max_temp": 35,
+  "optimal_temp": 23,
+  "sun_hours": 5,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 7,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": -1,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Large leaves can get crowded — give plenty of pot space."
+  },
+  "notes": "Very large crinkled leaves. Mild flavour. Good for windowsills — large leaves mean bigger harvest per plant."
+}

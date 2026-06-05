@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0103",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Beetroot",
+  "name_da": "Rødbede",
+  "name_latin": "Beta vulgaris subsp. vulgaris",
+  "family": "Amaranthaceae",
+  "genus": "Beta",
+  "species": "beetroot",
+  "type": "op",
+  "min_temp": 7,
+  "max_temp": 28,
+  "optimal_temp": 18,
+  "sun_hours": 5,
+  "sun_direct": "full",
+  "context": [
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 10,
+  "weeks_from_transplant": 7,
+  "hardiness_temp": -5,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "acceptable",
+    "garden": "good",
+    "note": "Needs at least 20cm depth — use deep containers on balcony. Both root and leaves are edible."
+  },
+  "notes": "Both root and young leaves are edible. Direct sow in clusters of 2–3 seeds, thin to strongest. Baby beet can be harvested from 6–7 weeks. Roasts, pickles, and raw in salads."
+}

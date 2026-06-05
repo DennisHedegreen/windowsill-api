@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0050",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "English Lavender",
+  "name_da": "Engelsk Lavendel",
+  "name_latin": "Lavandula angustifolia",
+  "family": "Lamiaceae",
+  "genus": "Lavandula",
+  "species": "lavender",
+  "type": "op",
+  "min_temp": -15,
+  "max_temp": 32,
+  "optimal_temp": 19,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 12,
+  "weeks_from_transplant": 5,
+  "hardiness_temp": -23,
+  "hardiness_zone_min": 6,
+  "habit": {
+    "windowsill": "acceptable",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Needs intense full sun and excellent drainage — root rot risk on a dim windowsill."
+  },
+  "notes": "Most cold-hardy lavender. Full sun essential — struggles indoors without a very bright south-facing window. Excellent on a balcony in summer. Culinary, fragrance and medicinal uses. Do not overwater."
+}

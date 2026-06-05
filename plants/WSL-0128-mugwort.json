@@ -1,0 +1,31 @@
+{
+  "id": "WSL-0128",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Mugwort",
+  "name_da": "Gråbynke",
+  "name_latin": "Artemisia vulgaris",
+  "family": "Asteraceae",
+  "genus": "Artemisia",
+  "species": "mugwort",
+  "type": "op",
+  "min_temp": -20,
+  "max_temp": 30,
+  "optimal_temp": 16,
+  "sun_hours": 4,
+  "sun_direct": "partial",
+  "context": [
+    "garden"
+  ],
+  "grow_time_weeks": 14,
+  "weeks_from_transplant": 8,
+  "hardiness_temp": -34,
+  "hardiness_zone_min": 4,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "unsuitable",
+    "garden": "good",
+    "note": "Can become highly invasive — plant in contained area or use root barrier."
+  },
+  "notes": "Extremely hardy native. Used in traditional herb medicine and as a flavouring in beer before hops. Silvery underside to leaves. Spreads aggressively by rhizome — control carefully."
+}

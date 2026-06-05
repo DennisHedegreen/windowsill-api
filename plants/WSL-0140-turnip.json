@@ -1,0 +1,31 @@
+{
+  "id": "WSL-0140",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Turnip",
+  "name_da": "Turnips",
+  "name_latin": "Brassica rapa subsp. rapa",
+  "family": "Brassicaceae",
+  "genus": "Brassica",
+  "species": "turnip",
+  "type": "op",
+  "min_temp": -5,
+  "max_temp": 22,
+  "optimal_temp": 15,
+  "sun_hours": 5,
+  "sun_direct": "full",
+  "context": [
+    "garden"
+  ],
+  "grow_time_weeks": 8,
+  "weeks_from_transplant": 6,
+  "hardiness_temp": -10,
+  "hardiness_zone_min": 9,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "unsuitable",
+    "garden": "good",
+    "note": "Direct sow only — does not transplant well. Thin to 15cm spacing."
+  },
+  "notes": "Fast-growing root vegetable. Both root and young leaves edible. Autumn-sown roots store in ground through winter. Young turnip tops ('turnip greens') are a valuable winter green."
+}

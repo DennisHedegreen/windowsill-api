@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0032",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Coriander",
+  "name_da": "Koriander",
+  "name_latin": "Coriandrum sativum",
+  "family": "Apiaceae",
+  "genus": "Coriandrum",
+  "species": "coriander",
+  "type": "op",
+  "min_temp": 5,
+  "max_temp": 28,
+  "optimal_temp": 17,
+  "sun_hours": 4,
+  "sun_direct": "partial",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 6,
+  "weeks_from_transplant": 3,
+  "hardiness_temp": -7,
+  "hardiness_zone_min": 9,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "acceptable",
+    "garden": "acceptable",
+    "note": "Bolts rapidly in heat — a cool windowsill actually outperforms balcony in summer."
+  },
+  "notes": "Bolts rapidly in heat — cool windowsills are ideal. Sow successively every 3-4 weeks for continuous harvest. Both leaves and seeds are edible. Dislikes root disturbance."
+}

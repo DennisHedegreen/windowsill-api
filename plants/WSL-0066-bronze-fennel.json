@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0066",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Bronze Fennel",
+  "name_da": "Brun Fennikel",
+  "name_latin": "Foeniculum vulgare 'Purpureum'",
+  "family": "Apiaceae",
+  "genus": "Foeniculum",
+  "species": "fennel",
+  "type": "op",
+  "min_temp": -5,
+  "max_temp": 35,
+  "optimal_temp": 20,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 10,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": -12,
+  "hardiness_zone_min": 8,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "acceptable",
+    "garden": "good",
+    "note": "Same as common fennel but decorative bronze foliage — still gets very tall."
+  },
+  "notes": "Bronze-purple feathery foliage. Same flavour as green fennel but visually striking. Popular in ornamental herb gardens. Same allelopathic properties — keep away from dill and coriander."
+}

@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0134",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Mâche",
+  "name_da": "Feldsalat",
+  "name_latin": "Valerianella locusta",
+  "family": "Caprifoliaceae",
+  "genus": "Valerianella",
+  "species": "mache",
+  "type": "op",
+  "min_temp": -5,
+  "max_temp": 18,
+  "optimal_temp": 10,
+  "sun_hours": 3,
+  "sun_direct": "partial",
+  "context": [
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 8,
+  "weeks_from_transplant": 6,
+  "hardiness_temp": -15,
+  "hardiness_zone_min": 8,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Sow August–September for autumn and winter harvest. Bolts immediately in spring heat."
+  },
+  "notes": "Cold-season salad leaf. Mild nutty flavour. Survives hard frosts under cloches. Sow in late summer for winter harvest. One of the few salads that genuinely thrives in cold weather."
+}

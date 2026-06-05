@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0138",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Red Mustard",
+  "name_da": "Rød Sennep",
+  "name_latin": "Brassica juncea 'Red Giant'",
+  "family": "Brassicaceae",
+  "genus": "Brassica",
+  "species": "mustard",
+  "type": "op",
+  "min_temp": -5,
+  "max_temp": 22,
+  "optimal_temp": 15,
+  "sun_hours": 4,
+  "sun_direct": "partial",
+  "context": [
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 6,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": -7,
+  "hardiness_zone_min": 9,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Peppery heat intensifies in cold — mild in summer, spicy in autumn."
+  },
+  "notes": "Striking purple-red leaves. Peppery flavour. Fast-growing salad green. Survives light frosts — best autumn to early winter. Good in mixed salad bowls. Bolts quickly in heat."
+}

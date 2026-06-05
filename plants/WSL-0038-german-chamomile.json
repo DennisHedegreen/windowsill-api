@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0038",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "German Chamomile",
+  "name_da": "Tysk Kamille",
+  "name_latin": "Matricaria chamomilla",
+  "family": "Asteraceae",
+  "genus": "Matricaria",
+  "species": "chamomile",
+  "type": "op",
+  "min_temp": -5,
+  "max_temp": 26,
+  "optimal_temp": 16,
+  "sun_hours": 5,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 8,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": -7,
+  "hardiness_zone_min": 9,
+  "habit": {
+    "windowsill": "acceptable",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Gets tall and floppy indoors — needs good light or will lean toward the window."
+  },
+  "notes": "Classic tea herb. Annual. Prefers cool conditions — bolts and loses flavour in heat. Self-seeds readily in a garden. Harvest flowers when fully open for strongest flavour."
+}

@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0079",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Wood Sorrel",
+  "name_da": "Skovsyre",
+  "name_latin": "Oxalis acetosella",
+  "family": "Oxalidaceae",
+  "genus": "Oxalis",
+  "species": "wood-sorrel",
+  "type": "op",
+  "min_temp": -15,
+  "max_temp": 20,
+  "optimal_temp": 12,
+  "sun_hours": 1,
+  "sun_direct": "shade",
+  "context": [
+    "windowsill",
+    "balcony"
+  ],
+  "grow_time_weeks": 10,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": -23,
+  "hardiness_zone_min": 6,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "risky",
+    "note": "Thrives in deep shade — ideal for the darkest north-facing windowsill."
+  },
+  "notes": "Clover-shaped leaves with intense lemon flavour. Thrives in deep shade — one of very few culinary plants for truly dark windowsills. Used in Nordic fine dining. Delicate — use as garnish rather than cooking ingredient."
+}

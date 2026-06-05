@@ -1,0 +1,31 @@
+{
+  "id": "WSL-0111",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Echinacea",
+  "name_da": "Solhat",
+  "name_latin": "Echinacea purpurea",
+  "family": "Asteraceae",
+  "genus": "Echinacea",
+  "species": "echinacea",
+  "type": "op",
+  "min_temp": -5,
+  "max_temp": 30,
+  "optimal_temp": 18,
+  "sun_hours": 5,
+  "sun_direct": "full",
+  "context": [
+    "garden"
+  ],
+  "grow_time_weeks": 16,
+  "weeks_from_transplant": 10,
+  "hardiness_temp": -29,
+  "hardiness_zone_min": 5,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "unsuitable",
+    "garden": "good",
+    "note": "Needs space to spread — clump-forming perennial, divides well after 3 years."
+  },
+  "notes": "Hardy perennial. Purple coneflower. Immune-support herb. Attracts bees and butterflies. Flowers in second year from seed. Drought-tolerant once established. Roots and flowers both used medicinally."
+}

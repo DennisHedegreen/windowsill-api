@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0127",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "White Horehound",
+  "name_da": "Kransbørste",
+  "name_latin": "Marrubium vulgare",
+  "family": "Lamiaceae",
+  "genus": "Marrubium",
+  "species": "horehound",
+  "type": "op",
+  "min_temp": -15,
+  "max_temp": 32,
+  "optimal_temp": 18,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 12,
+  "weeks_from_transplant": 7,
+  "hardiness_temp": -23,
+  "hardiness_zone_min": 6,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "acceptable",
+    "garden": "good",
+    "note": "Very drought-tolerant — thrives in poor dry soil where others fail."
+  },
+  "notes": "Ancient cough remedy. Bitter flavour used in horehound candy and cough drops. Woolly grey-green leaves. Very hardy and drought-tolerant. Naturalised across Europe. Bees love the flowers."
+}

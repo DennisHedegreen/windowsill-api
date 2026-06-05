@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0033",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Chervil",
+  "name_da": "Kørvel",
+  "name_latin": "Anthriscus cerefolium",
+  "family": "Apiaceae",
+  "genus": "Anthriscus",
+  "species": "chervil",
+  "type": "op",
+  "min_temp": -5,
+  "max_temp": 22,
+  "optimal_temp": 14,
+  "sun_hours": 2,
+  "sun_direct": "shade",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 6,
+  "weeks_from_transplant": 3,
+  "hardiness_temp": -12,
+  "hardiness_zone_min": 8,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "acceptable",
+    "garden": "good",
+    "note": "Bolts in heat or direct sun — thrives on a cool north-facing windowsill."
+  },
+  "notes": "The forgotten fines herbes herb. Prefers cool and shade — one of very few culinary herbs that actively thrives on a north-facing windowsill. Anise-like flavour. Bolts in heat."
+}

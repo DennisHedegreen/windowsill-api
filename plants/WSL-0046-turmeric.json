@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0046",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Turmeric",
+  "name_da": "Gurkemeje",
+  "name_latin": "Curcuma longa",
+  "family": "Zingiberaceae",
+  "genus": "Curcuma",
+  "species": "turmeric",
+  "type": "op",
+  "min_temp": 18,
+  "max_temp": 40,
+  "optimal_temp": 30,
+  "sun_hours": 5,
+  "sun_direct": "partial",
+  "context": [
+    "windowsill",
+    "balcony"
+  ],
+  "grow_time_weeks": 44,
+  "weeks_from_transplant": 30,
+  "hardiness_temp": 5,
+  "hardiness_zone_min": 12,
+  "habit": {
+    "windowsill": "acceptable",
+    "balcony": "acceptable",
+    "garden": "unsuitable",
+    "note": "Needs more heat than ginger — cool windowsills significantly slow growth."
+  },
+  "notes": "Similar to ginger — grow from fresh rhizome. Needs more heat than ginger. Beautiful ornamental plant with large leaves. Harvest after 8-10 months when leaves yellow. Stains everything — handle carefully."
+}

@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0016",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Creeping Thyme",
+  "name_da": "Krybende Timian",
+  "name_latin": "Thymus serpyllum",
+  "family": "Lamiaceae",
+  "genus": "Thymus",
+  "species": "thyme",
+  "type": "op",
+  "min_temp": -20,
+  "max_temp": 28,
+  "optimal_temp": 16,
+  "sun_hours": 5,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 10,
+  "weeks_from_transplant": 5,
+  "hardiness_temp": -34,
+  "hardiness_zone_min": 4,
+  "habit": {
+    "windowsill": "acceptable",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Spreads wide in ground or large containers — compact pot limits its habit."
+  },
+  "notes": "Extremely cold-hardy. Low-growing. Native to northern Europe — tolerates frost, wind and poor soil. Good for north-facing balconies in summer."
+}

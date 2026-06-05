@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0004",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Purple Basil",
+  "name_da": "Lilla Basilikum",
+  "name_latin": "Ocimum basilicum 'Purpurascens'",
+  "family": "Lamiaceae",
+  "genus": "Ocimum",
+  "species": "basil",
+  "type": "op",
+  "min_temp": 15,
+  "max_temp": 34,
+  "optimal_temp": 23,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 7,
+  "weeks_from_transplant": 3,
+  "hardiness_temp": -1,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Needs full sun to maintain leaf colour and flavour."
+  },
+  "notes": "Deep purple leaves. Slightly more bitter than green basil. Decorative. Good for infused vinegar and oils."
+}

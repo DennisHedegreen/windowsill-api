@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0092",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Cucumber",
+  "name_da": "Agurk",
+  "name_latin": "Cucumis sativus",
+  "family": "Cucurbitaceae",
+  "genus": "Cucumis",
+  "species": "cucumber",
+  "type": "op",
+  "min_temp": 12,
+  "max_temp": 35,
+  "optimal_temp": 24,
+  "sun_hours": 7,
+  "sun_direct": "full",
+  "context": [
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 10,
+  "weeks_from_transplant": 6,
+  "hardiness_temp": -1,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "acceptable",
+    "garden": "good",
+    "note": "Needs vertical support on balcony — grow up a trellis to save space."
+  },
+  "notes": "Highly productive in warm summers. Keep soil consistently moist. Harvest frequently to encourage more fruit. Bush varieties work on large balconies."
+}

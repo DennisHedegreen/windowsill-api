@@ -1,0 +1,31 @@
+{
+  "id": "WSL-0119",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "St John's Wort",
+  "name_da": "Perikon",
+  "name_latin": "Hypericum perforatum",
+  "family": "Hypericaceae",
+  "genus": "Hypericum",
+  "species": "st johns wort",
+  "type": "op",
+  "min_temp": -15,
+  "max_temp": 30,
+  "optimal_temp": 18,
+  "sun_hours": 5,
+  "sun_direct": "full",
+  "context": [
+    "garden"
+  ],
+  "grow_time_weeks": 14,
+  "weeks_from_transplant": 8,
+  "hardiness_temp": -29,
+  "hardiness_zone_min": 5,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "unsuitable",
+    "garden": "good",
+    "note": "Can become invasive — deadhead before seeds set to control spread."
+  },
+  "notes": "Bright yellow flowers used medicinally for mild depression and nerve pain. Native to Europe. Hardy perennial. Flowers harvested in midsummer. Can spread aggressively if not controlled."
+}

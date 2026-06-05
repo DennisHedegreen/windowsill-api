@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0042",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Stevia",
+  "name_da": "Stevia",
+  "name_latin": "Stevia rebaudiana",
+  "family": "Asteraceae",
+  "genus": "Stevia",
+  "species": "stevia",
+  "type": "op",
+  "min_temp": 10,
+  "max_temp": 35,
+  "optimal_temp": 23,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony"
+  ],
+  "grow_time_weeks": 10,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": -7,
+  "hardiness_zone_min": 9,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "unsuitable",
+    "note": "Needs full sun and warmth — a south-facing windowsill is its best indoor location."
+  },
+  "notes": "Natural sweetener — leaves are 200-300x sweeter than sugar. Needs warmth and full sun. No frost tolerance. Good for south-facing windowsills. Use fresh leaves in tea or dry for later use."
+}

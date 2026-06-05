@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0001",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Genovese Basil",
+  "name_da": "Genovese Basilikum",
+  "name_latin": "Ocimum basilicum 'Genovese'",
+  "family": "Lamiaceae",
+  "genus": "Ocimum",
+  "species": "basil",
+  "type": "op",
+  "min_temp": 15,
+  "max_temp": 35,
+  "optimal_temp": 24,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 6,
+  "weeks_from_transplant": 3,
+  "hardiness_temp": -1,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Pinch regularly to stay compact — bolts quickly without it."
+  },
+  "notes": "Classic Italian basil. Very sensitive to cold and frost. Pinch flowers to extend harvest."
+}

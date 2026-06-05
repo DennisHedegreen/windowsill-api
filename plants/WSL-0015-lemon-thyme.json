@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0015",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Lemon Thyme",
+  "name_da": "Citron Timian",
+  "name_latin": "Thymus citriodorus",
+  "family": "Lamiaceae",
+  "genus": "Thymus",
+  "species": "thyme",
+  "type": "hybrid",
+  "min_temp": -8,
+  "max_temp": 30,
+  "optimal_temp": 17,
+  "sun_hours": 5,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 9,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": -12,
+  "hardiness_zone_min": 8,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Needs full sun and dry conditions — overwatering causes root rot."
+  },
+  "notes": "Citrus-scented leaves. Milder than common thyme. Good with fish and desserts. Slightly less cold-hardy than Thymus vulgaris."
+}

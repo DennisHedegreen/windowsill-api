@@ -1,0 +1,31 @@
+{
+  "id": "WSL-0143",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Spring Beauty",
+  "name_da": "Forårsskønhed",
+  "name_latin": "Claytonia sibirica",
+  "family": "Montiaceae",
+  "genus": "Claytonia",
+  "species": "spring beauty",
+  "type": "op",
+  "min_temp": -10,
+  "max_temp": 18,
+  "optimal_temp": 10,
+  "sun_hours": 2,
+  "sun_direct": "shade",
+  "context": [
+    "garden"
+  ],
+  "grow_time_weeks": 8,
+  "weeks_from_transplant": 5,
+  "hardiness_temp": -15,
+  "hardiness_zone_min": 8,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "unsuitable",
+    "garden": "good",
+    "note": "Thrives in deep shade under trees — few edibles do. Self-seeds freely."
+  },
+  "notes": "Pink-flowered edible succulent. Grows in deep shade where almost nothing else edible will. Very cold-hardy. Self-seeds to form ground-covering colonies. Mild flavour — good in salads."
+}

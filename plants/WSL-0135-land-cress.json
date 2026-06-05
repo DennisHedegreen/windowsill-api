@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0135",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Land Cress",
+  "name_da": "Vinterkarse",
+  "name_latin": "Barbarea verna",
+  "family": "Brassicaceae",
+  "genus": "Barbarea",
+  "species": "land cress",
+  "type": "op",
+  "min_temp": -5,
+  "max_temp": 20,
+  "optimal_temp": 12,
+  "sun_hours": 3,
+  "sun_direct": "partial",
+  "context": [
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 8,
+  "weeks_from_transplant": 5,
+  "hardiness_temp": -12,
+  "hardiness_zone_min": 8,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Tolerates heavy shade — useful under tall crops. Cut-and-come-again."
+  },
+  "notes": "Peppery watercress substitute that needs no water. Overwinters outdoors in most of northern Europe. Harvest leaves through winter. Bolts in spring — sow again in August for winter."
+}

@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0029",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Flat-Leaf Parsley",
+  "name_da": "Glat Persille",
+  "name_latin": "Petroselinum crispum var. neapolitanum",
+  "family": "Apiaceae",
+  "genus": "Petroselinum",
+  "species": "parsley",
+  "type": "op",
+  "min_temp": -5,
+  "max_temp": 28,
+  "optimal_temp": 16,
+  "sun_hours": 4,
+  "sun_direct": "partial",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 10,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": -15,
+  "hardiness_zone_min": 8,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Slow to germinate — be patient and keep soil consistently moist."
+  },
+  "notes": "Stronger flavour than curly parsley. Tolerates partial shade — one of few culinary herbs that works on an east or west-facing windowsill. Slow to germinate, be patient."
+}

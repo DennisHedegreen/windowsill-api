@@ -1,0 +1,31 @@
+{
+  "id": "WSL-0063",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Long Pepper",
+  "name_da": "Langpeber",
+  "name_latin": "Piper longum",
+  "family": "Piperaceae",
+  "genus": "Piper",
+  "species": "pepper",
+  "type": "op",
+  "min_temp": 15,
+  "max_temp": 38,
+  "optimal_temp": 28,
+  "sun_hours": 4,
+  "sun_direct": "partial",
+  "context": [
+    "windowsill"
+  ],
+  "grow_time_weeks": 52,
+  "weeks_from_transplant": 40,
+  "hardiness_temp": 5,
+  "hardiness_zone_min": 12,
+  "habit": {
+    "windowsill": "acceptable",
+    "balcony": "unsuitable",
+    "garden": "unsuitable",
+    "note": "Tropical vine needing sustained heat and humidity — a warm heated windowsill is essential."
+  },
+  "notes": "Ancient spice predating black pepper in European cuisine. Tropical vine — needs heat and humidity. Grows well on a warm indoor windowsill. Fruit spikes have a complex heat with hints of cinnamon and cardamom."
+}

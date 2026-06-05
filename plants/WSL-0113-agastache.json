@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0113",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Anise Hyssop",
+  "name_da": "Anis Isop",
+  "name_latin": "Agastache foeniculum",
+  "family": "Lamiaceae",
+  "genus": "Agastache",
+  "species": "agastache",
+  "type": "op",
+  "min_temp": -5,
+  "max_temp": 30,
+  "optimal_temp": 20,
+  "sun_hours": 5,
+  "sun_direct": "full",
+  "context": [
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 14,
+  "weeks_from_transplant": 8,
+  "hardiness_temp": -23,
+  "hardiness_zone_min": 6,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "acceptable",
+    "garden": "good",
+    "note": "Short-lived perennial — often grown as annual in colder climates. Self-seeds."
+  },
+  "notes": "Anise-scented leaves and flowers. Both edible. Excellent for bees. Blue flower spikes all summer. Leaves used in tea and salads. More reliably perennial in zone 6+."
+}

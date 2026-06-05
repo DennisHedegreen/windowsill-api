@@ -1,0 +1,31 @@
+{
+  "id": "WSL-0130",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Tansy",
+  "name_da": "Rejnfan",
+  "name_latin": "Tanacetum vulgare",
+  "family": "Asteraceae",
+  "genus": "Tanacetum",
+  "species": "tansy",
+  "type": "op",
+  "min_temp": -20,
+  "max_temp": 28,
+  "optimal_temp": 16,
+  "sun_hours": 5,
+  "sun_direct": "full",
+  "context": [
+    "garden"
+  ],
+  "grow_time_weeks": 14,
+  "weeks_from_transplant": 8,
+  "hardiness_temp": -34,
+  "hardiness_zone_min": 4,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "unsuitable",
+    "garden": "good",
+    "note": "Spreads aggressively — plant in contained area. Toxic in quantity."
+  },
+  "notes": "Bright yellow button flowers. Historically used as an insect repellent and in small amounts as a flavouring. Very invasive — control carefully. Toxic in large quantities — not for culinary use."
+}

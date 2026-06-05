@@ -1,0 +1,31 @@
+{
+  "id": "WSL-0112",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Valerian",
+  "name_da": "Baldrian",
+  "name_latin": "Valeriana officinalis",
+  "family": "Caprifoliaceae",
+  "genus": "Valeriana",
+  "species": "valerian",
+  "type": "op",
+  "min_temp": -5,
+  "max_temp": 28,
+  "optimal_temp": 16,
+  "sun_hours": 4,
+  "sun_direct": "partial",
+  "context": [
+    "garden"
+  ],
+  "grow_time_weeks": 18,
+  "weeks_from_transplant": 12,
+  "hardiness_temp": -29,
+  "hardiness_zone_min": 5,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "unsuitable",
+    "garden": "good",
+    "note": "Gets very tall (1.5m) — plant at back of border. Strongly attractive to cats."
+  },
+  "notes": "Perennial. Root used as a sleep aid and sedative. Tall with pale pink flowers. Cats are strongly attracted to the root. Self-seeds freely. Tolerates partial shade."
+}

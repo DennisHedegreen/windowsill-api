@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0012",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Moroccan Mint",
+  "name_da": "Marokkansk Mynte",
+  "name_latin": "Mentha spicata var. crispa 'Moroccan'",
+  "family": "Lamiaceae",
+  "genus": "Mentha",
+  "species": "mint",
+  "type": "op",
+  "min_temp": 8,
+  "max_temp": 35,
+  "optimal_temp": 22,
+  "sun_hours": 5,
+  "sun_direct": "partial",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 4,
+  "weeks_from_transplant": 2,
+  "hardiness_temp": -7,
+  "hardiness_zone_min": 9,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "risky",
+    "note": "Spreads aggressively in open ground — container is actually better."
+  },
+  "notes": "The classic mint for Moroccan tea. Sweeter and more delicate than spearmint. Tolerates more heat than other mints."
+}

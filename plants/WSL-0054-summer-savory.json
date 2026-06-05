@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0054",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Summer Savory",
+  "name_da": "Sommermerian",
+  "name_latin": "Satureja hortensis",
+  "family": "Lamiaceae",
+  "genus": "Satureja",
+  "species": "savory",
+  "type": "op",
+  "min_temp": 10,
+  "max_temp": 32,
+  "optimal_temp": 21,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 8,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": -1,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Annual — sow fresh each year and needs warmth to thrive indoors."
+  },
+  "notes": "Annual. Milder and more delicate than winter savory. Classic in German and Bulgarian cuisine. Good windowsill herb in summer — needs warmth. Sow fresh each year."
+}

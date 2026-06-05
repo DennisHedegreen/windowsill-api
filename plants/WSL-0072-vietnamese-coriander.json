@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0072",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Vietnamese Coriander",
+  "name_da": "Vietnamesisk Koriander",
+  "name_latin": "Persicaria odorata",
+  "family": "Polygonaceae",
+  "genus": "Persicaria",
+  "species": "vietnamese-coriander",
+  "type": "op",
+  "min_temp": 10,
+  "max_temp": 35,
+  "optimal_temp": 25,
+  "sun_hours": 4,
+  "sun_direct": "partial",
+  "context": [
+    "windowsill",
+    "balcony"
+  ],
+  "grow_time_weeks": 6,
+  "weeks_from_transplant": 3,
+  "hardiness_temp": 5,
+  "hardiness_zone_min": 12,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "unsuitable",
+    "note": "Needs warmth and moisture — keep soil consistently damp, unlike most herbs."
+  },
+  "notes": "Coriander-like flavour without bolting in heat. Used in Vietnamese pho and laksa. Prefers moist warm conditions — opposite of most windowsill herbs. Propagates easily from cuttings. No frost tolerance."
+}

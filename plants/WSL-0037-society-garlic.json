@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0037",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Society Garlic",
+  "name_da": "Tulbaghia",
+  "name_latin": "Tulbaghia violacea",
+  "family": "Amaryllidaceae",
+  "genus": "Tulbaghia",
+  "species": "society-garlic",
+  "type": "op",
+  "min_temp": 2,
+  "max_temp": 35,
+  "optimal_temp": 22,
+  "sun_hours": 5,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony"
+  ],
+  "grow_time_weeks": 10,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": -1,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "unsuitable",
+    "note": "Drought-tolerant but sensitive to frost — keep dry in winter indoors."
+  },
+  "notes": "South African. Garlic-scented leaves and pretty purple flowers. Mild garlic flavour without strong breath effect — hence the name. Drought-tolerant. Good for a sunny windowsill."
+}

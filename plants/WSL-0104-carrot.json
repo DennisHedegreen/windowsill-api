@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0104",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Carrot",
+  "name_da": "Gulerod",
+  "name_latin": "Daucus carota subsp. sativus",
+  "family": "Apiaceae",
+  "genus": "Daucus",
+  "species": "carrot",
+  "type": "op",
+  "min_temp": 7,
+  "max_temp": 27,
+  "optimal_temp": 18,
+  "sun_hours": 5,
+  "sun_direct": "full",
+  "context": [
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 14,
+  "weeks_from_transplant": 12,
+  "hardiness_temp": -5,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "acceptable",
+    "garden": "good",
+    "note": "Needs deep, loose, stone-free soil — short round varieties work best in containers."
+  },
+  "notes": "Direct sow only — does not transplant well. Thin to 5cm spacing. Short varieties ('Chantenay', 'Paris Market') suit containers. Loose soil is essential to avoid forking."
+}

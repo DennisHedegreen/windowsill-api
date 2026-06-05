@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0077",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Lovage",
+  "name_da": "Løvstikke",
+  "name_latin": "Levisticum officinale",
+  "family": "Apiaceae",
+  "genus": "Levisticum",
+  "species": "lovage",
+  "type": "op",
+  "min_temp": -20,
+  "max_temp": 28,
+  "optimal_temp": 16,
+  "sun_hours": 4,
+  "sun_direct": "partial",
+  "context": [
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 12,
+  "weeks_from_transplant": 6,
+  "hardiness_temp": -34,
+  "hardiness_zone_min": 4,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "risky",
+    "garden": "good",
+    "note": "Gets very large — up to 2m. Needs deep soil and space. Garden only."
+  },
+  "notes": "Intense celery-like flavour. Traditional Scandinavian and Eastern European herb. Very cold-hardy perennial. One plant gives enormous yield — a little goes a long way. All parts edible: leaves, seeds, stem, root."
+}

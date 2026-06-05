@@ -1,0 +1,31 @@
+{
+  "id": "WSL-0133",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Savoy Cabbage",
+  "name_da": "Savoykål",
+  "name_latin": "Brassica oleracea var. sabauda",
+  "family": "Brassicaceae",
+  "genus": "Brassica",
+  "species": "cabbage",
+  "type": "op",
+  "min_temp": -10,
+  "max_temp": 22,
+  "optimal_temp": 15,
+  "sun_hours": 5,
+  "sun_direct": "full",
+  "context": [
+    "garden"
+  ],
+  "grow_time_weeks": 20,
+  "weeks_from_transplant": 14,
+  "hardiness_temp": -12,
+  "hardiness_zone_min": 8,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "unsuitable",
+    "garden": "good",
+    "note": "Needs netting against cabbage white butterfly — use fine mesh from planting."
+  },
+  "notes": "Most cold-hardy cabbage. Crinkled leaves. Flavour improves after frost. Harvest autumn through early spring. Slower than summer cabbage but stands in field through hard winter."
+}

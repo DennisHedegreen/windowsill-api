@@ -1,0 +1,31 @@
+{
+  "id": "WSL-0124",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Motherwort",
+  "name_da": "Løvehale",
+  "name_latin": "Leonurus cardiaca",
+  "family": "Lamiaceae",
+  "genus": "Leonurus",
+  "species": "motherwort",
+  "type": "op",
+  "min_temp": -15,
+  "max_temp": 28,
+  "optimal_temp": 16,
+  "sun_hours": 4,
+  "sun_direct": "partial",
+  "context": [
+    "garden"
+  ],
+  "grow_time_weeks": 14,
+  "weeks_from_transplant": 8,
+  "hardiness_temp": -29,
+  "hardiness_zone_min": 5,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "unsuitable",
+    "garden": "good",
+    "note": "Self-seeds prolifically — deadhead to prevent it taking over."
+  },
+  "notes": "Traditional heart and calming herb. Pink flowers in whorls along stem. Very hardy perennial. Tolerates shade and poor soil. Commonly naturalised in European hedgerows. Avoid in pregnancy."
+}

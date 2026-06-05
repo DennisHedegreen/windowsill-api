@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0052",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Hyssop",
+  "name_da": "Isop",
+  "name_latin": "Hyssopus officinalis",
+  "family": "Lamiaceae",
+  "genus": "Hyssopus",
+  "species": "hyssop",
+  "type": "op",
+  "min_temp": -15,
+  "max_temp": 30,
+  "optimal_temp": 18,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 10,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": -23,
+  "hardiness_zone_min": 6,
+  "habit": {
+    "windowsill": "acceptable",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Gets woody without regular trimming — keep compact with frequent cutting."
+  },
+  "notes": "Ancient herb used since biblical times. Bitter-minty flavour. Used in liqueurs like Chartreuse. Hardy and drought-tolerant. Blue flowers attract bees. Underused in modern cooking."
+}

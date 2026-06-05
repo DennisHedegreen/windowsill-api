@@ -1,0 +1,31 @@
+{
+  "id": "WSL-0109",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Sweet Corn",
+  "name_da": "Majs",
+  "name_latin": "Zea mays var. saccharata",
+  "family": "Poaceae",
+  "genus": "Zea",
+  "species": "corn",
+  "type": "hybrid",
+  "min_temp": 10,
+  "max_temp": 35,
+  "optimal_temp": 24,
+  "sun_hours": 7,
+  "sun_direct": "full",
+  "context": [
+    "garden"
+  ],
+  "grow_time_weeks": 14,
+  "weeks_from_transplant": 10,
+  "hardiness_temp": -1,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "unsuitable",
+    "garden": "good",
+    "note": "Wind-pollinated — plant in blocks of at least 4×4, not single rows."
+  },
+  "notes": "Wind-pollinated — plant in blocks for good pollination. Harvest when silk turns brown and kernels are milky. Eat the same day for maximum sweetness. Needs full sun and warm soil."
+}

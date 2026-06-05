@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0094",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "French Bean",
+  "name_da": "Grøn Bønne",
+  "name_latin": "Phaseolus vulgaris",
+  "family": "Fabaceae",
+  "genus": "Phaseolus",
+  "species": "bean",
+  "type": "op",
+  "min_temp": 10,
+  "max_temp": 30,
+  "optimal_temp": 20,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 8,
+  "weeks_from_transplant": 5,
+  "hardiness_temp": -1,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "acceptable",
+    "garden": "good",
+    "note": "Dwarf bush varieties work in large containers — climbing varieties need full garden."
+  },
+  "notes": "Fast-growing annual. Direct sow after last frost. Harvest regularly to keep plant producing. Nitrogen-fixing — improves soil. Bush types need no staking."
+}

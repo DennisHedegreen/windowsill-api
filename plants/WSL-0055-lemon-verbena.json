@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0055",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Lemon Verbena",
+  "name_da": "Citronverbena",
+  "name_latin": "Aloysia citrodora",
+  "family": "Verbenaceae",
+  "genus": "Aloysia",
+  "species": "lemon-verbena",
+  "type": "op",
+  "min_temp": 5,
+  "max_temp": 35,
+  "optimal_temp": 22,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony"
+  ],
+  "grow_time_weeks": 12,
+  "weeks_from_transplant": 5,
+  "hardiness_temp": -1,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "acceptable",
+    "balcony": "good",
+    "garden": "unsuitable",
+    "note": "Drops leaves in cold or low light — do not panic, it will regrow."
+  },
+  "notes": "Intensely lemon-scented — stronger than lemon balm or lemon thyme. No frost tolerance. Drops leaves in cold or low light — do not panic, it regrows. Excellent for tea. Needs good drainage."
+}

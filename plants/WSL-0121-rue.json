@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0121",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Rue",
+  "name_da": "Rude",
+  "name_latin": "Ruta graveolens",
+  "family": "Rutaceae",
+  "genus": "Ruta",
+  "species": "rue",
+  "type": "op",
+  "min_temp": -10,
+  "max_temp": 32,
+  "optimal_temp": 20,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 14,
+  "weeks_from_transplant": 8,
+  "hardiness_temp": -15,
+  "hardiness_zone_min": 8,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "acceptable",
+    "garden": "good",
+    "note": "Sap causes phototoxic burns — wear gloves when handling in sun."
+  },
+  "notes": "Blue-grey aromatic foliage. Ancient herb used in small quantities as a bitter flavouring. Strong insect repellent. Very drought-tolerant. Handle with care — sap is phototoxic."
+}

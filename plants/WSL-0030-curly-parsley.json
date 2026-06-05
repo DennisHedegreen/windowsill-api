@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0030",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Curly Parsley",
+  "name_da": "Kruset Persille",
+  "name_latin": "Petroselinum crispum",
+  "family": "Apiaceae",
+  "genus": "Petroselinum",
+  "species": "parsley",
+  "type": "op",
+  "min_temp": -5,
+  "max_temp": 27,
+  "optimal_temp": 15,
+  "sun_hours": 3,
+  "sun_direct": "partial",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 10,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": -15,
+  "hardiness_zone_min": 8,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Germinates slowly — soak seeds overnight to speed up sprouting."
+  },
+  "notes": "More decorative than flat-leaf. Milder flavour. Very tolerant of low light — good for north-facing windowsills. Biennial but usually grown as annual."
+}

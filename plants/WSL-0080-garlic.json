@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0080",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Garlic",
+  "name_da": "Hvidløg",
+  "name_latin": "Allium sativum",
+  "family": "Amaryllidaceae",
+  "genus": "Allium",
+  "species": "garlic",
+  "type": "op",
+  "min_temp": -10,
+  "max_temp": 30,
+  "optimal_temp": 16,
+  "sun_hours": 5,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 32,
+  "weeks_from_transplant": 28,
+  "hardiness_temp": -29,
+  "hardiness_zone_min": 5,
+  "habit": {
+    "windowsill": "acceptable",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Grow for green shoots on a windowsill — bulb harvest needs deep outdoor soil."
+  },
+  "notes": "On a windowsill, grow for fresh green garlic shoots rather than bulbs. Plant a clove and harvest the greens. Full bulb harvest requires outdoor growing season. Softneck varieties store better; hardneck varieties have more complex flavour."
+}

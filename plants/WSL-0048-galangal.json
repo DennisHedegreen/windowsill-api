@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0048",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Galangal",
+  "name_da": "Galanga",
+  "name_latin": "Alpinia galanga",
+  "family": "Zingiberaceae",
+  "genus": "Alpinia",
+  "species": "galangal",
+  "type": "op",
+  "min_temp": 15,
+  "max_temp": 38,
+  "optimal_temp": 28,
+  "sun_hours": 4,
+  "sun_direct": "partial",
+  "context": [
+    "windowsill",
+    "balcony"
+  ],
+  "grow_time_weeks": 52,
+  "weeks_from_transplant": 38,
+  "hardiness_temp": 5,
+  "hardiness_zone_min": 12,
+  "habit": {
+    "windowsill": "acceptable",
+    "balcony": "acceptable",
+    "garden": "unsuitable",
+    "note": "Needs sustained heat — underperforms in cool or unheated rooms."
+  },
+  "notes": "Essential in Thai cuisine. Grow from fresh rhizome — sometimes found in Asian supermarkets. Similar requirements to ginger but needs more heat. Pine-citrus-pepper flavour, quite different from ginger."
+}

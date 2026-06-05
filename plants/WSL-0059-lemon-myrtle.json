@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0059",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Lemon Myrtle",
+  "name_da": "Citronmyrte",
+  "name_latin": "Backhousia citriodora",
+  "family": "Myrtaceae",
+  "genus": "Backhousia",
+  "species": "lemon-myrtle",
+  "type": "op",
+  "min_temp": 8,
+  "max_temp": 35,
+  "optimal_temp": 24,
+  "sun_hours": 5,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony"
+  ],
+  "grow_time_weeks": 30,
+  "weeks_from_transplant": 18,
+  "hardiness_temp": 5,
+  "hardiness_zone_min": 12,
+  "habit": {
+    "windowsill": "acceptable",
+    "balcony": "good",
+    "garden": "unsuitable",
+    "note": "Slow-growing tree — needs patience and a bright frost-free spot."
+  },
+  "notes": "Australian native. Highest citral content of any plant — more intensely lemon-scented than lemon balm, verbena or lemon thyme combined. No frost tolerance. Slow-growing. Increasingly available as a culinary herb."
+}

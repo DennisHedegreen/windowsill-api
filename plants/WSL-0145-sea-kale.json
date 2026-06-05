@@ -1,0 +1,31 @@
+{
+  "id": "WSL-0145",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Sea Kale",
+  "name_da": "Strandhjelm",
+  "name_latin": "Crambe maritima",
+  "family": "Brassicaceae",
+  "genus": "Crambe",
+  "species": "sea kale",
+  "type": "op",
+  "min_temp": -15,
+  "max_temp": 25,
+  "optimal_temp": 15,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "garden"
+  ],
+  "grow_time_weeks": 52,
+  "weeks_from_transplant": 26,
+  "hardiness_temp": -23,
+  "hardiness_zone_min": 6,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "unsuitable",
+    "garden": "good",
+    "note": "Takes 2–3 years to establish before harvesting. Very long-lived perennial."
+  },
+  "notes": "Perennial vegetable from British coastlines. Tender blanched shoots harvested in spring. Extremely cold-hardy. Long-lived once established. Needs well-drained soil. Worth the wait."
+}

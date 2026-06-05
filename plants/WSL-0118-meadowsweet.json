@@ -1,0 +1,31 @@
+{
+  "id": "WSL-0118",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Meadowsweet",
+  "name_da": "Engmjødurt",
+  "name_latin": "Filipendula ulmaria",
+  "family": "Rosaceae",
+  "genus": "Filipendula",
+  "species": "meadowsweet",
+  "type": "op",
+  "min_temp": -10,
+  "max_temp": 25,
+  "optimal_temp": 15,
+  "sun_hours": 4,
+  "sun_direct": "partial",
+  "context": [
+    "garden"
+  ],
+  "grow_time_weeks": 16,
+  "weeks_from_transplant": 10,
+  "hardiness_temp": -29,
+  "hardiness_zone_min": 5,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "unsuitable",
+    "garden": "good",
+    "note": "Needs moist or wet soil — ideal near ponds. Spreads steadily by rhizome."
+  },
+  "notes": "Native to northern Europe. Creamy fragrant flowers used to flavour mead and wines. Contains salicylates — aspirin was originally derived from this plant. Prefers wet conditions."
+}

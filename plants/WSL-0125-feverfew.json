@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0125",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Feverfew",
+  "name_da": "Matrem",
+  "name_latin": "Tanacetum parthenium",
+  "family": "Asteraceae",
+  "genus": "Tanacetum",
+  "species": "feverfew",
+  "type": "op",
+  "min_temp": -15,
+  "max_temp": 28,
+  "optimal_temp": 16,
+  "sun_hours": 5,
+  "sun_direct": "full",
+  "context": [
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 12,
+  "weeks_from_transplant": 7,
+  "hardiness_temp": -23,
+  "hardiness_zone_min": 6,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "acceptable",
+    "garden": "good",
+    "note": "Short-lived perennial — self-seeds freely to replace itself."
+  },
+  "notes": "Daisy-like flowers. Used for migraine prevention. Strong aromatic foliage deters aphids and other insects. Short-lived perennial that self-seeds readily. Good companion plant."
+}

@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0136",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Winter Purslane",
+  "name_da": "Vinterportulak",
+  "name_latin": "Claytonia perfoliata",
+  "family": "Montiaceae",
+  "genus": "Claytonia",
+  "species": "winter purslane",
+  "type": "op",
+  "min_temp": -5,
+  "max_temp": 18,
+  "optimal_temp": 10,
+  "sun_hours": 3,
+  "sun_direct": "partial",
+  "context": [
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 6,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": -10,
+  "hardiness_zone_min": 9,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Self-seeds prolifically — one sowing can sustain itself for years."
+  },
+  "notes": "Mild succulent salad leaf. Thrives in cold and shade where little else grows. Sow August–September. Self-seeds freely once established. Edible flowers. Also called miner's lettuce."
+}

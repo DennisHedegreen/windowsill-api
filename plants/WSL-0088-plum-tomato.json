@@ -1,0 +1,31 @@
+{
+  "id": "WSL-0088",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Plum Tomato",
+  "name_da": "Blommetomater",
+  "name_latin": "Solanum lycopersicum 'San Marzano'",
+  "family": "Solanaceae",
+  "genus": "Solanum",
+  "species": "tomato",
+  "type": "heirloom",
+  "min_temp": 10,
+  "max_temp": 35,
+  "optimal_temp": 24,
+  "sun_hours": 7,
+  "sun_direct": "full",
+  "context": [
+    "garden"
+  ],
+  "grow_time_weeks": 14,
+  "weeks_from_transplant": 9,
+  "hardiness_temp": -1,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "unsuitable",
+    "garden": "good",
+    "note": "High yield per plant — grow in rows with good soil and consistent watering."
+  },
+  "notes": "Classic Italian sauce tomato. Meaty with few seeds. Best for cooking. Indeterminate — needs staking. Very productive in warm summers."
+}

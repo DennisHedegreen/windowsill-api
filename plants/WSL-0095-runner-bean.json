@@ -1,0 +1,31 @@
+{
+  "id": "WSL-0095",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Runner Bean",
+  "name_da": "Pralbønne",
+  "name_latin": "Phaseolus coccineus",
+  "family": "Fabaceae",
+  "genus": "Phaseolus",
+  "species": "bean",
+  "type": "op",
+  "min_temp": 10,
+  "max_temp": 30,
+  "optimal_temp": 18,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "garden"
+  ],
+  "grow_time_weeks": 10,
+  "weeks_from_transplant": 6,
+  "hardiness_temp": -1,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "unsuitable",
+    "garden": "good",
+    "note": "Climbing to 2–3m — needs a sturdy cane structure. Decorative red flowers."
+  },
+  "notes": "Classic British garden bean. Very productive. More cold-tolerant than French beans. Decorative as well as edible. Sow direct or start indoors 3–4 weeks before last frost."
+}

@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0101",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Swiss Chard",
+  "name_da": "Bladbede",
+  "name_latin": "Beta vulgaris subsp. vulgaris",
+  "family": "Amaranthaceae",
+  "genus": "Beta",
+  "species": "chard",
+  "type": "op",
+  "min_temp": 5,
+  "max_temp": 30,
+  "optimal_temp": 18,
+  "sun_hours": 5,
+  "sun_direct": "partial",
+  "context": [
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 8,
+  "weeks_from_transplant": 5,
+  "hardiness_temp": -10,
+  "hardiness_zone_min": 9,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Colourful stems make it ornamental as well as edible — works well in mixed containers."
+  },
+  "notes": "More heat and cold tolerant than spinach. Harvest outer leaves continuously. Rainbow chard has red, yellow and white stems. Very productive over a long season."
+}

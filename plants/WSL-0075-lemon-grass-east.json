@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0075",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "East Indian Lemongrass",
+  "name_da": "Østindisk Citrongræs",
+  "name_latin": "Cymbopogon flexuosus",
+  "family": "Poaceae",
+  "genus": "Cymbopogon",
+  "species": "lemongrass",
+  "type": "op",
+  "min_temp": 10,
+  "max_temp": 40,
+  "optimal_temp": 27,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony"
+  ],
+  "grow_time_weeks": 16,
+  "weeks_from_transplant": 8,
+  "hardiness_temp": 5,
+  "hardiness_zone_min": 12,
+  "habit": {
+    "windowsill": "acceptable",
+    "balcony": "good",
+    "garden": "unsuitable",
+    "note": "More compact than West Indian lemongrass — better suited to large pots."
+  },
+  "notes": "More lemony and less citrusy than West Indian lemongrass (WSL-0061). Used in Ayurvedic medicine and Indian cooking. Slightly more compact growth habit. Both varieties used interchangeably in Southeast Asian cooking."
+}

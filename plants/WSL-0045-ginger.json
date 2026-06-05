@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0045",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Ginger",
+  "name_da": "Ingefær",
+  "name_latin": "Zingiber officinale",
+  "family": "Zingiberaceae",
+  "genus": "Zingiber",
+  "species": "ginger",
+  "type": "op",
+  "min_temp": 15,
+  "max_temp": 38,
+  "optimal_temp": 28,
+  "sun_hours": 4,
+  "sun_direct": "partial",
+  "context": [
+    "windowsill",
+    "balcony"
+  ],
+  "grow_time_weeks": 40,
+  "weeks_from_transplant": 28,
+  "hardiness_temp": 5,
+  "hardiness_zone_min": 12,
+  "habit": {
+    "windowsill": "acceptable",
+    "balcony": "acceptable",
+    "garden": "unsuitable",
+    "note": "Slow and needs warmth year-round — a heated indoor windowsill is ideal."
+  },
+  "notes": "Grow from a fresh supermarket rhizome. Needs warmth and humidity — a heated indoor windowsill works well. Harvest rhizomes after the leaves die back. Very slow — plan for a full growing season."
+}

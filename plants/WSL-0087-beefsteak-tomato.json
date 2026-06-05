@@ -1,0 +1,31 @@
+{
+  "id": "WSL-0087",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Beefsteak Tomato",
+  "name_da": "Oksehjertetomat",
+  "name_latin": "Solanum lycopersicum 'Brandywine'",
+  "family": "Solanaceae",
+  "genus": "Solanum",
+  "species": "tomato",
+  "type": "heirloom",
+  "min_temp": 10,
+  "max_temp": 35,
+  "optimal_temp": 24,
+  "sun_hours": 8,
+  "sun_direct": "full",
+  "context": [
+    "garden"
+  ],
+  "grow_time_weeks": 16,
+  "weeks_from_transplant": 10,
+  "hardiness_temp": -1,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "unsuitable",
+    "garden": "good",
+    "note": "Gets very large — needs full ground space, strong staking, and plenty of water."
+  },
+  "notes": "Large fruiting heirloom. Rich, complex flavour. Needs long warm season. Not suited for containers. Classic for northern European gardens when given full sun."
+}

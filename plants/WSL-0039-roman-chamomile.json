@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0039",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Roman Chamomile",
+  "name_da": "Romersk Kamille",
+  "name_latin": "Chamaemelum nobile",
+  "family": "Asteraceae",
+  "genus": "Chamaemelum",
+  "species": "chamomile",
+  "type": "op",
+  "min_temp": -15,
+  "max_temp": 26,
+  "optimal_temp": 15,
+  "sun_hours": 5,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 10,
+  "weeks_from_transplant": 5,
+  "hardiness_temp": -23,
+  "hardiness_zone_min": 6,
+  "habit": {
+    "windowsill": "acceptable",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Spreading habit makes it better suited to a balcony box than a windowsill pot."
+  },
+  "notes": "Perennial unlike German chamomile. More bitter flavour. Very cold-hardy. Low-growing. Historically used in herbal medicine. Better for balcony and garden than windowsill due to spreading habit."
+}

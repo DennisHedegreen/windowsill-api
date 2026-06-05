@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0073",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Shiso",
+  "name_da": "Shiso",
+  "name_latin": "Perilla frutescens",
+  "family": "Lamiaceae",
+  "genus": "Perilla",
+  "species": "shiso",
+  "type": "op",
+  "min_temp": 10,
+  "max_temp": 35,
+  "optimal_temp": 23,
+  "sun_hours": 5,
+  "sun_direct": "partial",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 8,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": -1,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "risky",
+    "note": "Self-seeds prolifically outdoors — container keeps it manageable."
+  },
+  "notes": "Japanese herb — red and green varieties. Complex minty-anise-clove flavour. Essential in Japanese cuisine with sashimi. Both leaves and seeds edible. Red shiso used for umeboshi colouring. Annual."
+}

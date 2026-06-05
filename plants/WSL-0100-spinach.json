@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0100",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Spinach",
+  "name_da": "Spinat",
+  "name_latin": "Spinacia oleracea",
+  "family": "Amaranthaceae",
+  "genus": "Spinacia",
+  "species": "spinach",
+  "type": "op",
+  "min_temp": 5,
+  "max_temp": 24,
+  "optimal_temp": 15,
+  "sun_hours": 4,
+  "sun_direct": "partial",
+  "context": [
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 6,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": -9,
+  "hardiness_zone_min": 9,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Bolts rapidly in heat and long days — spring and autumn sowings are most productive."
+  },
+  "notes": "Highly nutritious. Bolts quickly in heat — sow March–April or August–September. Baby leaf varieties are fastest. Good for containers. Harvest outer leaves continuously."
+}

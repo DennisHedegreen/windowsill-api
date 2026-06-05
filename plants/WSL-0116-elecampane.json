@@ -1,0 +1,31 @@
+{
+  "id": "WSL-0116",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Elecampane",
+  "name_da": "Alant",
+  "name_latin": "Inula helenium",
+  "family": "Asteraceae",
+  "genus": "Inula",
+  "species": "elecampane",
+  "type": "op",
+  "min_temp": -10,
+  "max_temp": 28,
+  "optimal_temp": 16,
+  "sun_hours": 5,
+  "sun_direct": "full",
+  "context": [
+    "garden"
+  ],
+  "grow_time_weeks": 20,
+  "weeks_from_transplant": 14,
+  "hardiness_temp": -29,
+  "hardiness_zone_min": 5,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "unsuitable",
+    "garden": "good",
+    "note": "Large plant (1.5–2m) — give it space. Very hardy once established."
+  },
+  "notes": "Ancient medicinal herb. Root used for respiratory conditions. Large yellow daisy-like flowers. Very hardy perennial. Prefers heavier soil. Root harvested in autumn of second year."
+}

@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0049",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Lemon Balm",
+  "name_da": "Citronmelisse",
+  "name_latin": "Melissa officinalis",
+  "family": "Lamiaceae",
+  "genus": "Melissa",
+  "species": "lemon-balm",
+  "type": "op",
+  "min_temp": -20,
+  "max_temp": 30,
+  "optimal_temp": 17,
+  "sun_hours": 3,
+  "sun_direct": "partial",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 8,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": -29,
+  "hardiness_zone_min": 5,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "risky",
+    "note": "Spreads aggressively in open ground — container is actually better."
+  },
+  "notes": "Extremely cold-hardy. Lemon-scented leaves for tea and cooking. Tolerates shade well — good for east or west-facing windowsills. Spreads aggressively outdoors — keep in container."
+}

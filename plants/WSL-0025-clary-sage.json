@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0025",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Clary Sage",
+  "name_da": "Muskat Salvie",
+  "name_latin": "Salvia sclarea",
+  "family": "Lamiaceae",
+  "genus": "Salvia",
+  "species": "sage",
+  "type": "op",
+  "min_temp": -5,
+  "max_temp": 32,
+  "optimal_temp": 19,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 14,
+  "weeks_from_transplant": 6,
+  "hardiness_temp": -12,
+  "hardiness_zone_min": 8,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "acceptable",
+    "garden": "good",
+    "note": "Too large and deep-rooted for containers — best grown in open ground."
+  },
+  "notes": "Biennial. Large fragrant leaves used in herbal medicine and perfumery. Too large for most windowsills — better suited to balcony or garden. Essential oil source."
+}
