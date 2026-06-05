@@ -783,6 +783,7 @@ def version_block() -> dict:
 
 # ── Routes ─────────────────────────────────────────────────────────────────────
 
+@app.get("/health")
 @app.get("/v1/health")
 async def health():
     return {
