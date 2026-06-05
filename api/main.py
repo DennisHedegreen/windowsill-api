@@ -40,7 +40,8 @@ MONTH_NAMES = ["", "January", "February", "March", "April", "May", "June",
 RELIABLE_THRESHOLD = 0.55
 OPTIMISTIC_RANGE = (0.35, 0.68)
 RATE_LIMIT_NO_KEY = int(os.getenv("RATE_LIMIT_NO_KEY", "60"))  # per hour
-CORS_ORIGINS = os.getenv("CORS_ORIGINS", "*").split(",")
+_cors_env = os.getenv("CORS_ORIGINS", "*")
+CORS_ORIGINS = ["*"] if _cors_env.strip() == "*" else _cors_env.split(",")
 
 PLAN_LIMITS = {
     "free": 1_000,
@@ -128,8 +129,9 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=CORS_ORIGINS,
-    allow_methods=["GET"],
+    allow_methods=["GET", "OPTIONS"],
     allow_headers=["*"],
+    allow_credentials=False,
 )
 
 
