@@ -24,13 +24,13 @@ if _USE_PG:
 
 # ── Version ────────────────────────────────────────────────────────────────────
 
-API_VERSION = "0.2.0"
+API_VERSION = "0.3.0"
 LIBRARY_VERSION = "2026-06-05"
-SCORING_VERSION = "0.5.0"
+SCORING_VERSION = "0.6.0"
 
 # ── Config ─────────────────────────────────────────────────────────────────────
 
-PLANTS_DIR = Path(os.getenv("PLANTS_DIR", str(Path(__file__).parent / "plants")))
+PLANTS_DIR = Path(__file__).parent.parent / "plants"
 DB_PATH = Path(__file__).parent / "keys.db"
 
 MONTH_NAMES = ["", "January", "February", "March", "April", "May", "June",
@@ -50,7 +50,12 @@ PLAN_LIMITS = {
 }
 
 TYPE_LABELS = {"op": "open-pollinated", "heirloom": "heirloom", "hybrid": "hybrid"}
-ORIENTATION_QUALITY = {"S": 1.0, "E": 0.75, "W": 0.75, "N": 0.35}
+ORIENTATION_QUALITY = {
+    "S": 1.0, "SE": 0.90, "SW": 0.90,
+    "E": 0.75, "W": 0.75,
+    "NE": 0.50, "NW": 0.50,
+    "N": 0.35,
+}
 
 SAFETY_FLAGS: dict[str, dict] = {
     # Pennyroyal — toxic in high doses
@@ -124,23 +129,7 @@ app.add_middleware(
     allow_origins=CORS_ORIGINS,
     allow_methods=["GET"],
     allow_headers=["*"],
-    expose_headers=["X-RateLimit-Limit", "X-RateLimit-Remaining", "X-RateLimit-Reset", "Retry-After"],
 )
-
-
-@app.middleware("http")
-async def rate_limit_headers(request: Request, call_next):
-    response = await call_next(request)
-    ip = request.client.host if request.client else "unknown"
-    now = time.time()
-    cutoff = now - 3600
-    bucket = [t for t in _ip_buckets.get(ip, []) if t > cutoff]
-    remaining = max(0, RATE_LIMIT_NO_KEY - len(bucket))
-    reset_at = int(min(bucket) + 3600) if bucket else int(now + 3600)
-    response.headers["X-RateLimit-Limit"] = str(RATE_LIMIT_NO_KEY)
-    response.headers["X-RateLimit-Remaining"] = str(remaining)
-    response.headers["X-RateLimit-Reset"] = str(reset_at)
-    return response
 
 
 # ── Error handlers ─────────────────────────────────────────────────────────────
@@ -289,12 +278,12 @@ async def require_access(request: Request) -> dict:
                 "key_expired": "This API key has expired.",
                 "monthly_limit_reached": (
                     "Monthly request limit reached. "
-                    "Send an email to api@windowsill.dk for sponsored access."
+                    "Send an email to windowsill@hedegreenresearch.com for sponsored access."
                 ),
             }
             status = 429 if "limit" in reason else 401
             raise HTTPException(status_code=status, detail=messages.get(reason, reason))
-        return {"auth": "key", "remaining": None}
+        return {"auth": "key"}
 
     # IP rate limiting is in-memory — resets on server restart. Acceptable for MVP.
     ip = request.client.host if request.client else "unknown"
@@ -306,12 +295,7 @@ async def require_access(request: Request) -> dict:
                 "Rate limit reached (60 req/hour without key). "
                 "Free API keys available — or email for sponsored access."
             ),
-            headers={
-                "Retry-After": "3600",
-                "X-RateLimit-Limit": str(RATE_LIMIT_NO_KEY),
-                "X-RateLimit-Remaining": "0",
-                "X-RateLimit-Reset": str(int(time.time()) + 3600),
-            },
+            headers={"Retry-After": "3600"},
         )
     return {"auth": "ip", "remaining": remaining}
 
@@ -337,10 +321,10 @@ def load_plants() -> list[dict]:
 
 # ── Climate ────────────────────────────────────────────────────────────────────
 
-_climate_cache: dict[tuple, dict[int, float]] = {}
+_climate_cache: dict[tuple, dict] = {}  # key → {"months": {1..12: float}, "elevation": float|None}
 
 
-async def fetch_all_monthly_temps(lat: float, lng: float) -> dict[int, float] | None:
+async def fetch_all_monthly_temps(lat: float, lng: float) -> dict | None:
     key = (round(lat, 2), round(lng, 2))
     if key in _climate_cache:
         return _climate_cache[key]
@@ -361,17 +345,27 @@ async def fetch_all_monthly_temps(lat: float, lng: float) -> dict[int, float] | 
         for d, t in zip(times, temps):
             if t is not None:
                 buckets[int(d[5:7])].append(t)
-        result = {m: round(sum(v) / len(v), 1) for m, v in buckets.items() if v}
-        if result:
+        months = {m: round(sum(v) / len(v), 1) for m, v in buckets.items() if v}
+        elevation = data.get("elevation")
+        if elevation is not None:
+            elevation = round(float(elevation), 1)
+        if months:
+            result = {"months": months, "elevation": elevation}
             _climate_cache[key] = result
-        return result or None
+            return result
+        return None
     except Exception:
         return None
 
 
 async def fetch_monthly_temp(lat: float, lng: float, month: int) -> float | None:
-    all_months = await fetch_all_monthly_temps(lat, lng)
-    return all_months.get(month) if all_months else None
+    data = await fetch_all_monthly_temps(lat, lng)
+    return data["months"].get(month) if data else None
+
+
+async def fetch_elevation(lat: float, lng: float) -> float | None:
+    data = await fetch_all_monthly_temps(lat, lng)
+    return data["elevation"] if data else None
 
 
 def estimate_temp(lat: float, month: int) -> float:
@@ -386,8 +380,11 @@ def calc_sun_hours(lat: float, orientation: str, month: int) -> float:
     abs_lat = abs(lat)
     m = ((month - 1 + 6) % 12) + 1 if lat < 0 else month
     daylight = 12 + math.sin(((m - 3) / 12) * 2 * math.pi) * (abs_lat / 90 * 8)
-    factors = ({"S": 0.1, "N": 0.7, "E": 0.4, "W": 0.4} if lat < 0
-               else {"S": 0.7, "N": 0.1, "E": 0.4, "W": 0.4})
+    factors = (
+        {"S": 0.10, "SE": 0.25, "SW": 0.25, "E": 0.40, "W": 0.40, "NE": 0.55, "NW": 0.55, "N": 0.70}
+        if lat < 0 else
+        {"S": 0.70, "SE": 0.55, "SW": 0.55, "E": 0.40, "W": 0.40, "NE": 0.25, "NW": 0.25, "N": 0.10}
+    )
     return round(daylight * factors[orientation], 1)
 
 
@@ -405,13 +402,26 @@ def build_warnings(lat: float, data_confidence: str) -> list[str]:
 
 
 async def get_conditions(lat: float, lng: float, orientation: str, month: int) -> dict:
-    temp = await fetch_monthly_temp(lat, lng, month)
+    climate_data = await fetch_all_monthly_temps(lat, lng)
     data_source = "Open-Meteo archive 2003–2022"
     data_confidence = "high"
+    elevation = None
+
+    if climate_data:
+        temp = climate_data["months"].get(month)
+        elevation = climate_data["elevation"]
+    else:
+        temp = None
+
     if temp is None:
         temp = estimate_temp(lat, month)
         data_source = "latitude estimate"
         data_confidence = "low"
+
+    # Elevation lapse rate: −0.6°C per 100m
+    if elevation and elevation > 0:
+        temp = round(temp - (elevation / 100) * 0.6, 1)
+
     abs_lat = abs(lat)
     m_adj = ((month - 1 + 6) % 12) + 1 if lat < 0 else month
     daylight = round(12 + math.sin(((m_adj - 3) / 12) * 2 * math.pi) * (abs_lat / 90 * 8), 1)
@@ -423,6 +433,7 @@ async def get_conditions(lat: float, lng: float, orientation: str, month: int) -
         "sun_hours_total": daylight,
         "sun_hours_direct": sun,
         "orientation": orientation,
+        "elevation": elevation,
         "data_source": data_source,
         "data_confidence": data_confidence,
         "warnings": build_warnings(lat, data_confidence),
@@ -661,14 +672,14 @@ def filter_and_score(plants: list[dict], context: str, temp: float, sun: float,
                      orientation: str, data_confidence: str, mode: str,
                      species: str | None, variety_type: str | None,
                      start_type: str = "seed", lat: float = 0.0,
-                     month: int = 6) -> dict:
+                     month: int = 6, winter_min_temp: float | None = None) -> dict:
     candidates = [p for p in plants if context in p.get("context", [])]
     if species:
         candidates = [p for p in candidates if p.get("species") == species]
     if variety_type:
         candidates = [p for p in candidates if p.get("type") == variety_type]
 
-    winter_temp = coldest_month_temp(lat)
+    winter_temp = winter_min_temp if winter_min_temp is not None else coldest_month_temp(lat)
     location_zone = usda_zone_from_temp(winter_temp)
 
     def _score_and_enrich(p, optimistic=False):
@@ -787,7 +798,7 @@ async def health():
 async def recommend(
     lat: float = Query(..., ge=-90, le=90),
     lng: float = Query(..., ge=-180, le=180),
-    orientation: str = Query(..., pattern="^[NSEW]$"),
+    orientation: str = Query(..., pattern="^(N|NE|E|SE|S|SW|W|NW)$"),
     context: str = Query(..., pattern="^(windowsill|balcony|garden)$"),
     month: int = Query(default=0, ge=0, le=12),
     mode: str = Query(default="top10", pattern="^(all|top10|optimal|optimistic)$"),
@@ -797,17 +808,24 @@ async def recommend(
     _access: dict = Depends(require_access),
 ):
     m = month if month > 0 else datetime.now().month
+    climate_data = await fetch_all_monthly_temps(lat, lng)
     cond = await get_conditions(lat, lng, orientation, m)
     plants = load_plants()
+    # Real winter minimum from climate data — fall back to latitude estimate
+    if climate_data and climate_data["months"]:
+        winter_min = min(climate_data["months"].values())
+    else:
+        winter_min = coldest_month_temp(lat)
     scored = filter_and_score(plants, context, cond["avg_temp"], cond["sun_hours_direct"],
                               orientation, cond["data_confidence"], mode, species, type,
-                              start_type=start_type, lat=lat, month=m)
-    location_zone = usda_zone_from_temp(coldest_month_temp(lat))
+                              start_type=start_type, lat=lat, month=m, winter_min_temp=winter_min)
+    location_zone = usda_zone_from_temp(winter_min)
+    zone_basis = "Open-Meteo archive" if (climate_data and climate_data["months"]) else "latitude estimate"
     return {
         **version_block(),
         "location": {"lat": lat, "lng": lng},
         "conditions": {**cond, "context": context},
-        "location_zone": {"usda": location_zone, "basis": "latitude estimate"},
+        "location_zone": {"usda": location_zone, "basis": zone_basis},
         "mode": mode,
         "start_type": start_type,
         "mode_note": scored["mode_note"],
@@ -823,7 +841,7 @@ async def recommend(
 async def calendar(
     lat: float = Query(..., ge=-90, le=90),
     lng: float = Query(..., ge=-180, le=180),
-    orientation: str = Query(..., pattern="^[NSEW]$"),
+    orientation: str = Query(..., pattern="^(N|NE|E|SE|S|SW|W|NW)$"),
     context: str = Query(..., pattern="^(windowsill|balcony|garden)$"),
     mode: str = Query(default="optimal", pattern="^(all|top10|optimal|optimistic)$"),
     species: str | None = Query(default=None),
@@ -832,20 +850,25 @@ async def calendar(
     _access: dict = Depends(require_access),
 ):
     plants = load_plants()
-    all_temps = await fetch_all_monthly_temps(lat, lng)
+    climate_data = await fetch_all_monthly_temps(lat, lng)
     abs_lat = abs(lat)
+    elevation = climate_data["elevation"] if climate_data else None
+
+    winter_min = min(climate_data["months"].values()) if climate_data else coldest_month_temp(lat)
 
     months = []
     for m in range(1, 13):
-        temp = all_temps.get(m) if all_temps else None
+        temp = climate_data["months"].get(m) if climate_data else None
         confidence = "high" if temp is not None else "low"
         if temp is None:
             temp = estimate_temp(lat, m)
+        if elevation and elevation > 0:
+            temp = round(temp - (elevation / 100) * 0.6, 1)
         m_adj = ((m - 1 + 6) % 12) + 1 if lat < 0 else m
         daylight = round(12 + math.sin(((m_adj - 3) / 12) * 2 * math.pi) * (abs_lat / 90 * 8), 1)
         sun = calc_sun_hours(lat, orientation, m)
         scored = filter_and_score(plants, context, temp, sun, orientation, confidence, mode, species, type,
-                                  start_type=start_type, lat=lat, month=m)
+                                  start_type=start_type, lat=lat, month=m, winter_min_temp=winter_min)
         best = scored["results"][0] if scored["results"] else None
         months.append({
             "month": m,
@@ -859,7 +882,7 @@ async def calendar(
     overall = "high" if all(m["data_confidence"] == "high" for m in months) else "mixed"
     return {
         **version_block(),
-        "location": {"lat": lat, "lng": lng},
+        "location": {"lat": lat, "lng": lng, "elevation": elevation},
         "orientation": orientation,
         "context": context,
         "mode": mode,
@@ -872,7 +895,7 @@ async def calendar(
 async def conditions(
     lat: float = Query(..., ge=-90, le=90),
     lng: float = Query(..., ge=-180, le=180),
-    orientation: str = Query(..., pattern="^[NSEW]$"),
+    orientation: str = Query(..., pattern="^(N|NE|E|SE|S|SW|W|NW)$"),
     month: int = Query(default=0, ge=0, le=12),
     _access: dict = Depends(require_access),
 ):
@@ -937,39 +960,28 @@ async def library(
 
 
 @app.get("/")
-async def root(request: Request):
-    base = os.getenv("PUBLIC_URL", str(request.base_url).rstrip("/")).rstrip("/")
+async def root():
     return {
         **version_block(),
         "name": "Windowsill API",
-        "purpose": "Geo-climate edible plant growing recommendation API — get the best plants to grow for any location and month.",
-        "project": "Hedegreen Research / Windowsill",
-        "contact": "api@windowsill.dk",
         "status": "ok",
-        "docs": f"{base}/docs",
-        "openapi": f"{base}/openapi.json",
-        "health": f"{base}/v1/health",
-        "endpoints": {
-            "recommend":  f"{base}/v1/recommend",
-            "calendar":   f"{base}/v1/calendar",
-            "conditions": f"{base}/v1/conditions",
-            "library":    f"{base}/v1/library",
-            "varieties":  f"{base}/v1/varieties",
-            "health":     f"{base}/v1/health",
-            "status":     f"{base}/v1/status",
-        },
-        "example": f"{base}/v1/recommend?lat=55.67&lng=12.57&orientation=S&context=garden&month=6",
+        "docs": "/docs",
+        "health": "/v1/health",
+        "endpoints": [
+            "GET /v1/health",
+            "GET /v1/status",
+            "GET /v1/recommend",
+            "GET /v1/calendar",
+            "GET /v1/conditions",
+            "GET /v1/library",
+            "GET /v1/varieties",
+            "GET /v1/varieties/{id}",
+        ],
         "access": {
-            "no_key": f"{RATE_LIMIT_NO_KEY} requests/hour per IP — no registration required",
-            "free_key": "1,000 requests/month — email api@windowsill.dk",
-            "builder_key": "10,000 requests/month — email api@windowsill.dk",
-            "sponsored": "Unlimited — email api@windowsill.dk",
-            "auth": "Pass key as header: X-API-Key: <your-key>  or query param: ?api_key=<your-key>",
-        },
-        "rate_limit_headers": {
-            "X-RateLimit-Limit": "requests allowed per hour",
-            "X-RateLimit-Remaining": "requests remaining this hour",
-            "X-RateLimit-Reset": "unix timestamp when limit resets",
+            "no_key": f"{RATE_LIMIT_NO_KEY} requests/hour per IP",
+            "free_key": "1,000 requests/month",
+            "builder_key": "10,000 requests/month",
+            "sponsored": "Email windowsill@hedegreenresearch.com",
         },
     }
 
