@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0035",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Garlic Chive",
+  "name_da": "Hvidløgspurløg",
+  "name_latin": "Allium tuberosum",
+  "family": "Amaryllidaceae",
+  "genus": "Allium",
+  "species": "chive",
+  "type": "op",
+  "min_temp": -10,
+  "max_temp": 32,
+  "optimal_temp": 18,
+  "sun_hours": 4,
+  "sun_direct": "partial",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 8,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": -18,
+  "hardiness_zone_min": 7,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Self-seeds freely in open ground — deadhead to control spread."
+  },
+  "notes": "Flat leaves with mild garlic flavour. Common in Asian cuisine. More heat-tolerant than common chive. White flowers are edible. Grows well on a windowsill year-round."
+}

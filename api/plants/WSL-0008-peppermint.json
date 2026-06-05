@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0008",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Peppermint",
+  "name_da": "Pebermynte",
+  "name_latin": "Mentha × piperita",
+  "family": "Lamiaceae",
+  "genus": "Mentha",
+  "species": "mint",
+  "type": "hybrid",
+  "min_temp": 5,
+  "max_temp": 30,
+  "optimal_temp": 18,
+  "sun_hours": 4,
+  "sun_direct": "partial",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 4,
+  "weeks_from_transplant": 2,
+  "hardiness_temp": -29,
+  "hardiness_zone_min": 5,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "risky",
+    "note": "Spreads aggressively in open ground — container is actually better."
+  },
+  "notes": "Strong menthol flavour. Spreads aggressively — keep in container. Tolerates cooler windowsills well."
+}

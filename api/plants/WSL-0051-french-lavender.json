@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0051",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "French Lavender",
+  "name_da": "Fransk Lavendel",
+  "name_latin": "Lavandula stoechas",
+  "family": "Lamiaceae",
+  "genus": "Lavandula",
+  "species": "lavender",
+  "type": "op",
+  "min_temp": -5,
+  "max_temp": 35,
+  "optimal_temp": 22,
+  "sun_hours": 7,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 12,
+  "weeks_from_transplant": 5,
+  "hardiness_temp": -7,
+  "hardiness_zone_min": 9,
+  "habit": {
+    "windowsill": "risky",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Needs very high sun hours and heat — most windowsills cannot provide enough light."
+  },
+  "notes": "Distinctive pineapple-top flowers. More heat-tolerant than English lavender but less cold-hardy. Stronger fragrance. Better suited to Mediterranean climates and south-facing balconies."
+}

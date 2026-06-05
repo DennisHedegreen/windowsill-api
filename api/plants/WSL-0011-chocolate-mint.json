@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0011",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Chocolate Mint",
+  "name_da": "Chokolademynte",
+  "name_latin": "Mentha × piperita 'Chocolate'",
+  "family": "Lamiaceae",
+  "genus": "Mentha",
+  "species": "mint",
+  "type": "hybrid",
+  "min_temp": 5,
+  "max_temp": 30,
+  "optimal_temp": 18,
+  "sun_hours": 4,
+  "sun_direct": "partial",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 4,
+  "weeks_from_transplant": 2,
+  "hardiness_temp": -23,
+  "hardiness_zone_min": 6,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "risky",
+    "note": "Spreads aggressively in open ground — container is actually better."
+  },
+  "notes": "Peppermint variety with faint chocolate-cocoa scent. Dark stems. Popular for desserts and hot drinks."
+}

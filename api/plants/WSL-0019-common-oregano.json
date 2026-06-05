@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0019",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Common Oregano",
+  "name_da": "Almindelig Oregano",
+  "name_latin": "Origanum vulgare",
+  "family": "Lamiaceae",
+  "genus": "Origanum",
+  "species": "oregano",
+  "type": "op",
+  "min_temp": -10,
+  "max_temp": 32,
+  "optimal_temp": 20,
+  "sun_hours": 5,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 8,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": -18,
+  "hardiness_zone_min": 7,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Trim regularly to prevent woody stems from taking over."
+  },
+  "notes": "Milder than Greek oregano. Very easy to grow. Tolerates partial shade better than most Mediterranean herbs. Good starter herb for north-facing windowsills."
+}

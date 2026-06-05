@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0099",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Loose-leaf Lettuce",
+  "name_da": "Plukkelat",
+  "name_latin": "Lactuca sativa var. crispa",
+  "family": "Asteraceae",
+  "genus": "Lactuca",
+  "species": "lettuce",
+  "type": "op",
+  "min_temp": 5,
+  "max_temp": 24,
+  "optimal_temp": 16,
+  "sun_hours": 4,
+  "sun_direct": "partial",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 5,
+  "weeks_from_transplant": 3,
+  "hardiness_temp": -5,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "acceptable",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Bolts quickly on a hot south-facing windowsill — better in cooler spots or east/west."
+  },
+  "notes": "Cut-and-come-again — harvest outer leaves and plant keeps producing. Prefers cool conditions. Sow successionally for continuous harvest. Tolerates partial shade."
+}

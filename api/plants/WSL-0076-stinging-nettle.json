@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0076",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Stinging Nettle",
+  "name_da": "Brændenælder",
+  "name_latin": "Urtica dioica",
+  "family": "Urticaceae",
+  "genus": "Urtica",
+  "species": "nettle",
+  "type": "op",
+  "min_temp": -20,
+  "max_temp": 30,
+  "optimal_temp": 15,
+  "sun_hours": 3,
+  "sun_direct": "partial",
+  "context": [
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 8,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": -34,
+  "hardiness_zone_min": 4,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "acceptable",
+    "garden": "risky",
+    "note": "Spreads aggressively by underground runners — container is essential outdoors."
+  },
+  "notes": "Young shoots edible — rich in iron and vitamins. Sting disappears when cooked or dried. Classic in Scandinavian and British cuisine. Spreads aggressively — container only outdoors. Harvest before flowering for best flavour."
+}

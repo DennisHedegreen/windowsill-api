@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0070",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Mexican Oregano",
+  "name_da": "Mexicansk Oregano",
+  "name_latin": "Lippia graveolens",
+  "family": "Verbenaceae",
+  "genus": "Lippia",
+  "species": "mexican-oregano",
+  "type": "op",
+  "min_temp": 10,
+  "max_temp": 40,
+  "optimal_temp": 26,
+  "sun_hours": 7,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony"
+  ],
+  "grow_time_weeks": 12,
+  "weeks_from_transplant": 6,
+  "hardiness_temp": -1,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "acceptable",
+    "balcony": "good",
+    "garden": "unsuitable",
+    "note": "Needs intense heat and full sun — south-facing windowsill only."
+  },
+  "notes": "Not related to Mediterranean oregano. Stronger, more complex flavour with citrus and anise notes. Essential in Mexican and Tex-Mex cuisine. More heat-tolerant than common oregano. Increasingly available in Europe."
+}

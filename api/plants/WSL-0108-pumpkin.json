@@ -1,0 +1,31 @@
+{
+  "id": "WSL-0108",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Pumpkin",
+  "name_da": "Græskar",
+  "name_latin": "Cucurbita maxima",
+  "family": "Cucurbitaceae",
+  "genus": "Cucurbita",
+  "species": "pumpkin",
+  "type": "op",
+  "min_temp": 12,
+  "max_temp": 35,
+  "optimal_temp": 24,
+  "sun_hours": 7,
+  "sun_direct": "full",
+  "context": [
+    "garden"
+  ],
+  "grow_time_weeks": 20,
+  "weeks_from_transplant": 14,
+  "hardiness_temp": -1,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "unsuitable",
+    "garden": "good",
+    "note": "Needs 3–4m² per plant — trailing vines are very large. Not for small gardens."
+  },
+  "notes": "Needs a long warm season and plenty of space. Start indoors in April. Harvest when skin is hard and stem is corky. Stores for months in a cool dry place."
+}

@@ -1,0 +1,31 @@
+{
+  "id": "WSL-0064",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Betel Leaf",
+  "name_da": "Betelbladplante",
+  "name_latin": "Piper betle",
+  "family": "Piperaceae",
+  "genus": "Piper",
+  "species": "pepper",
+  "type": "op",
+  "min_temp": 15,
+  "max_temp": 38,
+  "optimal_temp": 27,
+  "sun_hours": 3,
+  "sun_direct": "partial",
+  "context": [
+    "windowsill"
+  ],
+  "grow_time_weeks": 16,
+  "weeks_from_transplant": 8,
+  "hardiness_temp": 5,
+  "hardiness_zone_min": 12,
+  "habit": {
+    "windowsill": "acceptable",
+    "balcony": "unsuitable",
+    "garden": "unsuitable",
+    "note": "Tropical vine needing warmth and humidity — will die back quickly in cold or dry air."
+  },
+  "notes": "Climbing vine from Southeast Asia. Leaves used fresh in cooking — peppery and aromatic. Prefers warmth and humidity with indirect light. Distinct from betel nut (Areca catechu). Common in Vietnamese and Thai cuisine."
+}

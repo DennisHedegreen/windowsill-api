@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0093",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Aubergine",
+  "name_da": "Aubergine",
+  "name_latin": "Solanum melongena",
+  "family": "Solanaceae",
+  "genus": "Solanum",
+  "species": "aubergine",
+  "type": "op",
+  "min_temp": 15,
+  "max_temp": 35,
+  "optimal_temp": 26,
+  "sun_hours": 8,
+  "sun_direct": "full",
+  "context": [
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 16,
+  "weeks_from_transplant": 10,
+  "hardiness_temp": -1,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "acceptable",
+    "garden": "good",
+    "note": "Needs heat — performs best in warm sheltered spots or polytunnel in northern Europe."
+  },
+  "notes": "Needs a long hot season. Start early indoors (February in northern Europe). Best results in warmer summers. Asian varieties tend to be more productive than large Italian types in cool climates."
+}

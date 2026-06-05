@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0021",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Syrian Oregano",
+  "name_da": "Syrisk Oregano",
+  "name_latin": "Origanum syriacum",
+  "family": "Lamiaceae",
+  "genus": "Origanum",
+  "species": "oregano",
+  "type": "op",
+  "min_temp": 5,
+  "max_temp": 40,
+  "optimal_temp": 26,
+  "sun_hours": 7,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 9,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": -7,
+  "hardiness_zone_min": 9,
+  "habit": {
+    "windowsill": "acceptable",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Needs intense heat and full sun — struggles indoors in northern European winters."
+  },
+  "notes": "The za'atar herb. Intense flavour, very aromatic. Needs heat and full sun — ideal for south-facing windowsills in warm climates. Struggles in northern Europe in winter."
+}

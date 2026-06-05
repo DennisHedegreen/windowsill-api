@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0023",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Purple Sage",
+  "name_da": "Lilla Salvie",
+  "name_latin": "Salvia officinalis 'Purpurascens'",
+  "family": "Lamiaceae",
+  "genus": "Salvia",
+  "species": "sage",
+  "type": "op",
+  "min_temp": -8,
+  "max_temp": 32,
+  "optimal_temp": 20,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 10,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": -12,
+  "hardiness_zone_min": 8,
+  "habit": {
+    "windowsill": "acceptable",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Gets woody without regular trimming — keep compact on a windowsill."
+  },
+  "notes": "Purple-flushed leaves, same culinary use as common sage. Decorative on a windowsill. Slightly less cold-hardy than the green form."
+}

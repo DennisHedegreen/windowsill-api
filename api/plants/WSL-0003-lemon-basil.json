@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0003",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Lemon Basil",
+  "name_da": "Citron Basilikum",
+  "name_latin": "Ocimum × citriodorum",
+  "family": "Lamiaceae",
+  "genus": "Ocimum",
+  "species": "basil",
+  "type": "hybrid",
+  "min_temp": 15,
+  "max_temp": 33,
+  "optimal_temp": 22,
+  "sun_hours": 5,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 6,
+  "weeks_from_transplant": 3,
+  "hardiness_temp": -1,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Bolts faster than other basils — pinch flowers immediately."
+  },
+  "notes": "Strong citrus scent. Natural hybrid between O. basilicum and O. americanum. Good for fish and desserts."
+}

@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0086",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Cherry Tomato",
+  "name_da": "Cherrytomater",
+  "name_latin": "Solanum lycopersicum var. cerasiforme",
+  "family": "Solanaceae",
+  "genus": "Solanum",
+  "species": "tomato",
+  "type": "op",
+  "min_temp": 10,
+  "max_temp": 35,
+  "optimal_temp": 24,
+  "sun_hours": 8,
+  "sun_direct": "full",
+  "context": [
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 12,
+  "weeks_from_transplant": 8,
+  "hardiness_temp": -1,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Needs deep container (min 30cm) on balcony — compact varieties preferred."
+  },
+  "notes": "Most productive tomato for balconies and gardens. Fruits prolifically over a long season. Needs staking. Pick regularly to encourage more fruit."
+}

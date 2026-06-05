@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0014",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Common Thyme",
+  "name_da": "Almindelig Timian",
+  "name_latin": "Thymus vulgaris",
+  "family": "Lamiaceae",
+  "genus": "Thymus",
+  "species": "thyme",
+  "type": "op",
+  "min_temp": -10,
+  "max_temp": 30,
+  "optimal_temp": 18,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 8,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": -18,
+  "hardiness_zone_min": 7,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Overwatering is the main killer — needs excellent drainage in containers."
+  },
+  "notes": "Hardy and drought-tolerant. One of the easiest herbs for a south-facing windowsill. Prefers dry soil — overwatering is the main killer."
+}

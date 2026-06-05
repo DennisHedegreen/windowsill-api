@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0129",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Wormwood",
+  "name_da": "Malurt",
+  "name_latin": "Artemisia absinthium",
+  "family": "Asteraceae",
+  "genus": "Artemisia",
+  "species": "wormwood",
+  "type": "op",
+  "min_temp": -20,
+  "max_temp": 32,
+  "optimal_temp": 18,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 12,
+  "weeks_from_transplant": 7,
+  "hardiness_temp": -29,
+  "hardiness_zone_min": 5,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "acceptable",
+    "garden": "good",
+    "note": "Allelopathic — inhibits growth of neighbouring plants. Keep away from vegetables."
+  },
+  "notes": "The key ingredient in absinthe. Intensely bitter silver-grey foliage. Very drought-tolerant. Hardy perennial. Insect repellent. Keep away from vegetable beds — root exudates inhibit nearby plants."
+}

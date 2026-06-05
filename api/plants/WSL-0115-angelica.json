@@ -1,0 +1,31 @@
+{
+  "id": "WSL-0115",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Angelica",
+  "name_da": "Angelik",
+  "name_latin": "Angelica archangelica",
+  "family": "Apiaceae",
+  "genus": "Angelica",
+  "species": "angelica",
+  "type": "op",
+  "min_temp": -10,
+  "max_temp": 25,
+  "optimal_temp": 15,
+  "sun_hours": 4,
+  "sun_direct": "partial",
+  "context": [
+    "garden"
+  ],
+  "grow_time_weeks": 20,
+  "weeks_from_transplant": 14,
+  "hardiness_temp": -23,
+  "hardiness_zone_min": 6,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "unsuitable",
+    "garden": "good",
+    "note": "Biennial or short-lived perennial — dies after flowering. Needs moist rich soil."
+  },
+  "notes": "Giant architectural plant (2m+). Stems candied in confectionery. Seeds, leaves and roots used in liqueurs including Chartreuse. Prefers cool moist conditions. Biennial — flowers then dies."
+}

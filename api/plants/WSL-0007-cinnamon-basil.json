@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0007",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Cinnamon Basil",
+  "name_da": "Kanel Basilikum",
+  "name_latin": "Ocimum basilicum 'Cinnamon'",
+  "family": "Lamiaceae",
+  "genus": "Ocimum",
+  "species": "basil",
+  "type": "op",
+  "min_temp": 16,
+  "max_temp": 35,
+  "optimal_temp": 24,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 7,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": -1,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Bolts readily — keep pinching to extend the harvest season."
+  },
+  "notes": "Warm spicy cinnamon-clove scent. Pink flowers. Originally from Mexico. Good in desserts and teas."
+}

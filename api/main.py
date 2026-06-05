@@ -30,7 +30,7 @@ SCORING_VERSION = "0.5.0"
 
 # ── Config ─────────────────────────────────────────────────────────────────────
 
-PLANTS_DIR = Path(os.getenv("PLANTS_DIR", str(Path(__file__).parent.parent / "plants")))
+PLANTS_DIR = Path(os.getenv("PLANTS_DIR", str(Path(__file__).parent / "plants")))
 DB_PATH = Path(__file__).parent / "keys.db"
 
 MONTH_NAMES = ["", "January", "February", "March", "April", "May", "June",

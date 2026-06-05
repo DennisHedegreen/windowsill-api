@@ -1,0 +1,31 @@
+{
+  "id": "WSL-0141",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Parsnip",
+  "name_da": "Pastinak",
+  "name_latin": "Pastinaca sativa",
+  "family": "Apiaceae",
+  "genus": "Pastinaca",
+  "species": "parsnip",
+  "type": "op",
+  "min_temp": -5,
+  "max_temp": 22,
+  "optimal_temp": 15,
+  "sun_hours": 5,
+  "sun_direct": "full",
+  "context": [
+    "garden"
+  ],
+  "grow_time_weeks": 20,
+  "weeks_from_transplant": 18,
+  "hardiness_temp": -15,
+  "hardiness_zone_min": 8,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "unsuitable",
+    "garden": "good",
+    "note": "Slow to germinate — keep moist for 3+ weeks. Frost improves flavour."
+  },
+  "notes": "Long season root vegetable. Sow February–April. Leave in ground through winter — frost converts starch to sugar. One of the sweetest winter vegetables. Direct sow only."
+}

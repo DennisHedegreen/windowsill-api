@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0081",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Cayenne Pepper",
+  "name_da": "Cayennepeber",
+  "name_latin": "Capsicum annuum 'Cayenne'",
+  "family": "Solanaceae",
+  "genus": "Capsicum",
+  "species": "chili",
+  "type": "op",
+  "min_temp": 15,
+  "max_temp": 38,
+  "optimal_temp": 25,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 16,
+  "weeks_from_transplant": 8,
+  "hardiness_temp": -1,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Compact and productive on a south-facing windowsill — one of the best chilies for indoor growing."
+  },
+  "notes": "Classic hot chili. Compact plant that fruits reliably indoors. Needs warmth and full sun. Can be overwintered indoors and kept for several years. Scoville 30,000–50,000."
+}

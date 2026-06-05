@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0085",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Pequin Chili",
+  "name_da": "Pequin Chili",
+  "name_latin": "Capsicum annuum var. glabriusculum",
+  "family": "Solanaceae",
+  "genus": "Capsicum",
+  "species": "chili",
+  "type": "op",
+  "min_temp": 15,
+  "max_temp": 40,
+  "optimal_temp": 27,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony"
+  ],
+  "grow_time_weeks": 18,
+  "weeks_from_transplant": 10,
+  "hardiness_temp": -1,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "unsuitable",
+    "note": "Wild species — very compact and ornamental, ideal for containers."
+  },
+  "notes": "Tiny wild chili from Mexico. Very compact plant with masses of small oval fruits. Among the best for windowsill growing — ornamental and productive. Scoville 40,000–60,000. Can live for years as a perennial indoors."
+}

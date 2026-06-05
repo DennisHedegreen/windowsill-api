@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0034",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Common Chive",
+  "name_da": "Purløg",
+  "name_latin": "Allium schoenoprasum",
+  "family": "Amaryllidaceae",
+  "genus": "Allium",
+  "species": "chive",
+  "type": "op",
+  "min_temp": -20,
+  "max_temp": 28,
+  "optimal_temp": 15,
+  "sun_hours": 4,
+  "sun_direct": "partial",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 6,
+  "weeks_from_transplant": 3,
+  "hardiness_temp": -34,
+  "hardiness_zone_min": 4,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Cut to 2 cm to regrow repeatedly — one of the most reliable windowsill herbs."
+  },
+  "notes": "Extremely cold-hardy. One of the most reliable windowsill herbs. Tolerates partial shade. Cut to 2cm to regrow repeatedly. Dies back in winter outdoors but returns in spring."
+}

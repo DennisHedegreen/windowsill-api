@@ -1,0 +1,31 @@
+{
+  "id": "WSL-0096",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Garden Pea",
+  "name_da": "Ærter",
+  "name_latin": "Pisum sativum",
+  "family": "Fabaceae",
+  "genus": "Pisum",
+  "species": "pea",
+  "type": "op",
+  "min_temp": 5,
+  "max_temp": 25,
+  "optimal_temp": 16,
+  "sun_hours": 5,
+  "sun_direct": "full",
+  "context": [
+    "garden"
+  ],
+  "grow_time_weeks": 10,
+  "weeks_from_transplant": 7,
+  "hardiness_temp": -10,
+  "hardiness_zone_min": 9,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "unsuitable",
+    "garden": "good",
+    "note": "Climbs to 1–1.5m — needs netting or twiggy sticks. Prefers cool weather."
+  },
+  "notes": "Prefers cool growing conditions — sow early (March–April) or late (August for autumn crop). Hates summer heat. Harvest daily when pods are plump. Nitrogen-fixing."
+}

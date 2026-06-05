@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0031",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Common Dill",
+  "name_da": "Dild",
+  "name_latin": "Anethum graveolens",
+  "family": "Apiaceae",
+  "genus": "Anethum",
+  "species": "dill",
+  "type": "op",
+  "min_temp": 5,
+  "max_temp": 30,
+  "optimal_temp": 18,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 8,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": -7,
+  "hardiness_zone_min": 9,
+  "habit": {
+    "windowsill": "risky",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Gets very tall and leggy indoors without strong direct light."
+  },
+  "notes": "Tall and feathery — gets leggy indoors without strong light. Sow directly, does not transplant well. Essential in Scandinavian cooking. Bolts quickly in heat."
+}

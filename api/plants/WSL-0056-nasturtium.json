@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0056",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Nasturtium",
+  "name_da": "Blomsterkarse",
+  "name_latin": "Tropaeolum majus",
+  "family": "Tropaeolaceae",
+  "genus": "Tropaeolum",
+  "species": "nasturtium",
+  "type": "op",
+  "min_temp": 5,
+  "max_temp": 30,
+  "optimal_temp": 18,
+  "sun_hours": 5,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 6,
+  "weeks_from_transplant": 3,
+  "hardiness_temp": -1,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "acceptable",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Trailing varieties get very large — choose a compact type for a windowsill."
+  },
+  "notes": "Entire plant is edible — leaves, flowers and seeds. Peppery flavour. Thrives in poor soil — too much fertiliser produces leaves at the expense of flowers. One of the easiest edible flowers to grow."
+}

@@ -1,0 +1,31 @@
+{
+  "id": "WSL-0122",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Betony",
+  "name_da": "Læge-Galtetand",
+  "name_latin": "Betonica officinalis",
+  "family": "Lamiaceae",
+  "genus": "Betonica",
+  "species": "betony",
+  "type": "op",
+  "min_temp": -15,
+  "max_temp": 28,
+  "optimal_temp": 16,
+  "sun_hours": 4,
+  "sun_direct": "partial",
+  "context": [
+    "garden"
+  ],
+  "grow_time_weeks": 14,
+  "weeks_from_transplant": 8,
+  "hardiness_temp": -29,
+  "hardiness_zone_min": 5,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "unsuitable",
+    "garden": "good",
+    "note": "Tolerates dry shade — good under trees. Slow to establish but very long-lived."
+  },
+  "notes": "Native European medicinal herb. Bright pink-purple flower spikes. Used historically for headaches and nerve conditions. Very hardy. Good for wildlife gardens. Tolerates poor dry soil."
+}

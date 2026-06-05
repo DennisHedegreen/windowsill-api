@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0110",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Sunflower",
+  "name_da": "Solsikke",
+  "name_latin": "Helianthus annuus",
+  "family": "Asteraceae",
+  "genus": "Helianthus",
+  "species": "sunflower",
+  "type": "op",
+  "min_temp": 7,
+  "max_temp": 35,
+  "optimal_temp": 24,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 12,
+  "weeks_from_transplant": 8,
+  "hardiness_temp": -1,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "acceptable",
+    "garden": "good",
+    "note": "Dwarf varieties (under 60cm) suit large balcony containers — standard varieties need full garden."
+  },
+  "notes": "Edible seeds and petals. Dwarf varieties good for containers and balconies. Tall varieties need staking. Attracts pollinators. Heads follow the sun when young."
+}

@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0026",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Common Rosemary",
+  "name_da": "Rosmarin",
+  "name_latin": "Salvia rosmarinus",
+  "family": "Lamiaceae",
+  "genus": "Salvia",
+  "species": "rosemary",
+  "type": "op",
+  "min_temp": -5,
+  "max_temp": 35,
+  "optimal_temp": 21,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 12,
+  "weeks_from_transplant": 6,
+  "hardiness_temp": -7,
+  "hardiness_zone_min": 9,
+  "habit": {
+    "windowsill": "acceptable",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Needs excellent drainage — root rot is the main risk indoors."
+  },
+  "notes": "Classic Mediterranean herb. Needs full sun and good drainage — root rot is the main risk indoors. Slow-growing but very long-lived. Reclassified from Rosmarinus to Salvia in 2017."
+}

@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0013",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Pennyroyal",
+  "name_da": "Polejmynte",
+  "name_latin": "Mentha pulegium",
+  "family": "Lamiaceae",
+  "genus": "Mentha",
+  "species": "mint",
+  "type": "op",
+  "min_temp": 5,
+  "max_temp": 28,
+  "optimal_temp": 16,
+  "sun_hours": 4,
+  "sun_direct": "partial",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 6,
+  "weeks_from_transplant": 3,
+  "hardiness_temp": -23,
+  "hardiness_zone_min": 6,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "risky",
+    "note": "Spreads aggressively in open ground — container limits spread effectively."
+  },
+  "notes": "Historic European herb. Very strong sharp scent. Traditional insect repellent. Not for culinary use in large quantities — toxic in high doses."
+}

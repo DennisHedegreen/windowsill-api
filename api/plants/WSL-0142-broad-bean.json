@@ -1,0 +1,31 @@
+{
+  "id": "WSL-0142",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Broad Bean",
+  "name_da": "Hestebønne",
+  "name_latin": "Vicia faba",
+  "family": "Fabaceae",
+  "genus": "Vicia",
+  "species": "broad bean",
+  "type": "op",
+  "min_temp": -5,
+  "max_temp": 22,
+  "optimal_temp": 15,
+  "sun_hours": 5,
+  "sun_direct": "full",
+  "context": [
+    "garden"
+  ],
+  "grow_time_weeks": 20,
+  "weeks_from_transplant": 16,
+  "hardiness_temp": -10,
+  "hardiness_zone_min": 9,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "unsuitable",
+    "garden": "good",
+    "note": "Sow October–November for overwintered crop. Autumn-sown plants stronger than spring."
+  },
+  "notes": "Hardy legume. Can be sown in autumn to overwinter and crop in early spring. Nitrogen-fixing. Watch for blackfly on shoot tips — pinch out to discourage. Pods, seeds and young shoots all edible."
+}

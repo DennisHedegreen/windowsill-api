@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0060",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Bay Laurel",
+  "name_da": "Laurbær",
+  "name_latin": "Laurus nobilis",
+  "family": "Lauraceae",
+  "genus": "Laurus",
+  "species": "bay",
+  "type": "op",
+  "min_temp": -5,
+  "max_temp": 35,
+  "optimal_temp": 20,
+  "sun_hours": 5,
+  "sun_direct": "partial",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 52,
+  "weeks_from_transplant": 36,
+  "hardiness_temp": -7,
+  "hardiness_zone_min": 9,
+  "habit": {
+    "windowsill": "acceptable",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Slow-growing tree — tolerates clipping well but gets large without it."
+  },
+  "notes": "Slow-growing but extremely long-lived. Tolerates clipping into shapes — good for a container. Harvest leaves fresh or dried year-round. Ancient symbol of victory. One leaf flavours an entire pot of soup."
+}

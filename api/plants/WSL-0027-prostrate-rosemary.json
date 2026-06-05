@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0027",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Prostrate Rosemary",
+  "name_da": "Krybende Rosmarin",
+  "name_latin": "Salvia rosmarinus 'Prostratus'",
+  "family": "Lamiaceae",
+  "genus": "Salvia",
+  "species": "rosemary",
+  "type": "op",
+  "min_temp": 0,
+  "max_temp": 35,
+  "optimal_temp": 22,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony"
+  ],
+  "grow_time_weeks": 12,
+  "weeks_from_transplant": 6,
+  "hardiness_temp": -1,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "unsuitable",
+    "note": "Needs excellent drainage — root rot risk if overwatered indoors."
+  },
+  "notes": "Low-spreading growth habit. Ideal for windowsills and balcony containers — stays compact where upright rosemary would get too tall. Same flavour as common rosemary. Less cold-hardy."
+}

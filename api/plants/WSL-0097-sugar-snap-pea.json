@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0097",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Sugar Snap Pea",
+  "name_da": "Sukkerært",
+  "name_latin": "Pisum sativum var. macrocarpon",
+  "family": "Fabaceae",
+  "genus": "Pisum",
+  "species": "pea",
+  "type": "op",
+  "min_temp": 5,
+  "max_temp": 25,
+  "optimal_temp": 16,
+  "sun_hours": 5,
+  "sun_direct": "full",
+  "context": [
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 10,
+  "weeks_from_transplant": 7,
+  "hardiness_temp": -7,
+  "hardiness_zone_min": 9,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "acceptable",
+    "garden": "good",
+    "note": "Compact varieties suitable for deep containers on balcony."
+  },
+  "notes": "Entire pod is edible — sweet and crunchy raw or lightly cooked. Easier to grow than shelling peas. Very popular with children. Harvest before pods become stringy."
+}

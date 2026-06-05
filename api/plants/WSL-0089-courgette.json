@@ -1,0 +1,31 @@
+{
+  "id": "WSL-0089",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Courgette",
+  "name_da": "Courgette",
+  "name_latin": "Cucurbita pepo",
+  "family": "Cucurbitaceae",
+  "genus": "Cucurbita",
+  "species": "courgette",
+  "type": "op",
+  "min_temp": 10,
+  "max_temp": 35,
+  "optimal_temp": 22,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "garden"
+  ],
+  "grow_time_weeks": 8,
+  "weeks_from_transplant": 5,
+  "hardiness_temp": -1,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "unsuitable",
+    "garden": "good",
+    "note": "Takes up a lot of space — give it at least 1m² per plant."
+  },
+  "notes": "One of the most productive summer vegetables. Harvest frequently at 15–20cm for best flavour. Both flowers and fruit are edible. Easy to grow from seed."
+}

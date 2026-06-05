@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0010",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Apple Mint",
+  "name_da": "Æblemynte",
+  "name_latin": "Mentha suaveolens",
+  "family": "Lamiaceae",
+  "genus": "Mentha",
+  "species": "mint",
+  "type": "op",
+  "min_temp": 5,
+  "max_temp": 28,
+  "optimal_temp": 17,
+  "sun_hours": 3,
+  "sun_direct": "partial",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 5,
+  "weeks_from_transplant": 2,
+  "hardiness_temp": -23,
+  "hardiness_zone_min": 6,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "risky",
+    "note": "Spreads aggressively in open ground — container is actually better."
+  },
+  "notes": "Soft fuzzy leaves. Fruity mild flavour. Very tolerant of shade — one of the best mints for north-facing windowsills."
+}

@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0068",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "French Marigold",
+  "name_da": "Fransk Fløjlsblomst",
+  "name_latin": "Tagetes patula",
+  "family": "Asteraceae",
+  "genus": "Tagetes",
+  "species": "marigold",
+  "type": "op",
+  "min_temp": 5,
+  "max_temp": 35,
+  "optimal_temp": 20,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 8,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": -1,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Compact variety ideal for containers. Repels pests — useful companion plant."
+  },
+  "notes": "Edible petals with a citrus-spicy flavour. Natural pest repellent. Compact enough for windowsills. Petals used in salads, rice dishes, and as saffron substitute. Continuous flowering."
+}

@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0139",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Mizuna",
+  "name_da": "Mizuna",
+  "name_latin": "Brassica rapa var. nipposinica",
+  "family": "Brassicaceae",
+  "genus": "Brassica",
+  "species": "mizuna",
+  "type": "op",
+  "min_temp": -5,
+  "max_temp": 22,
+  "optimal_temp": 15,
+  "sun_hours": 4,
+  "sun_direct": "partial",
+  "context": [
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 5,
+  "weeks_from_transplant": 3,
+  "hardiness_temp": -7,
+  "hardiness_zone_min": 9,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Very fast-growing cut-and-come-again. Multiple sowings possible per season."
+  },
+  "notes": "Japanese salad green. Feathery leaves with mild peppery flavour. Very fast — ready in 3–4 weeks from sowing. Tolerates light frost. Sow successionally spring and autumn."
+}

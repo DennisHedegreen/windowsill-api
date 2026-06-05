@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0036",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Welsh Onion",
+  "name_da": "Bunkeløg",
+  "name_latin": "Allium fistulosum",
+  "family": "Amaryllidaceae",
+  "genus": "Allium",
+  "species": "spring-onion",
+  "type": "op",
+  "min_temp": -20,
+  "max_temp": 30,
+  "optimal_temp": 16,
+  "sun_hours": 4,
+  "sun_direct": "partial",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 8,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": -34,
+  "hardiness_zone_min": 4,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Perennial — cut regularly to encourage fresh growth year-round."
+  },
+  "notes": "Perennial spring onion — regrows after cutting. Extremely hardy. Used across East Asia and Scandinavia. Good substitute for regular spring onions on a windowsill. Never forms a bulb."
+}

@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0065",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Common Fennel",
+  "name_da": "Fennikel",
+  "name_latin": "Foeniculum vulgare",
+  "family": "Apiaceae",
+  "genus": "Foeniculum",
+  "species": "fennel",
+  "type": "op",
+  "min_temp": -5,
+  "max_temp": 35,
+  "optimal_temp": 20,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 10,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": -12,
+  "hardiness_zone_min": 8,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "acceptable",
+    "garden": "good",
+    "note": "Gets very tall — difficult to contain indoors. Better in a large balcony pot or garden."
+  },
+  "notes": "Anise-flavoured leaves and seeds. Gets tall and needs space. Inhibits growth of nearby plants — do not grow near dill or coriander. Leaves, seeds and pollen all edible."
+}

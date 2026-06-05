@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0107",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Pak Choi",
+  "name_da": "Pak Choi",
+  "name_latin": "Brassica rapa subsp. chinensis",
+  "family": "Brassicaceae",
+  "genus": "Brassica",
+  "species": "pak choi",
+  "type": "op",
+  "min_temp": 5,
+  "max_temp": 25,
+  "optimal_temp": 16,
+  "sun_hours": 4,
+  "sun_direct": "partial",
+  "context": [
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 6,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": -5,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Fast-growing — good catch crop between slower vegetables."
+  },
+  "notes": "Ready in 5–6 weeks from sowing. Harvest whole or as baby leaves. Bolts in heat and long days — best sown in late summer for autumn crop. Very popular in Asian cuisine."
+}

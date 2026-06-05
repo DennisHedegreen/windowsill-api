@@ -1,0 +1,31 @@
+{
+  "id": "WSL-0091",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Butternut Squash",
+  "name_da": "Butternut Squash",
+  "name_latin": "Cucurbita moschata 'Butternut'",
+  "family": "Cucurbitaceae",
+  "genus": "Cucurbita",
+  "species": "squash",
+  "type": "op",
+  "min_temp": 12,
+  "max_temp": 35,
+  "optimal_temp": 24,
+  "sun_hours": 7,
+  "sun_direct": "full",
+  "context": [
+    "garden"
+  ],
+  "grow_time_weeks": 18,
+  "weeks_from_transplant": 12,
+  "hardiness_temp": -1,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "unsuitable",
+    "garden": "good",
+    "note": "Trailing vine — needs 2–3m² space. Train along edges of the bed."
+  },
+  "notes": "Stores well through winter. Needs a long warm season — start indoors in April in northern Europe. Harvest when skin is fully tan and stem is dry."
+}

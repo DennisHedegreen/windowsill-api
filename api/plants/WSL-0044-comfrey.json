@@ -1,0 +1,31 @@
+{
+  "id": "WSL-0044",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Comfrey",
+  "name_da": "Kulsukker",
+  "name_latin": "Symphytum officinale",
+  "family": "Boraginaceae",
+  "genus": "Symphytum",
+  "species": "comfrey",
+  "type": "op",
+  "min_temp": -20,
+  "max_temp": 28,
+  "optimal_temp": 15,
+  "sun_hours": 3,
+  "sun_direct": "partial",
+  "context": [
+    "garden"
+  ],
+  "grow_time_weeks": 16,
+  "weeks_from_transplant": 10,
+  "hardiness_temp": -34,
+  "hardiness_zone_min": 4,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "unsuitable",
+    "garden": "good",
+    "note": "Too deep-rooted and large for any container — garden only."
+  },
+  "notes": "Deep-rooted perennial. Primarily used as a medicinal herb and garden fertiliser (comfrey tea). Too large and invasive for windowsill or balcony. Extremely cold-hardy. Internal use now restricted in many countries."
+}

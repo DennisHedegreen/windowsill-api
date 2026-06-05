@@ -1,0 +1,31 @@
+{
+  "id": "WSL-0117",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Marshmallow",
+  "name_da": "Lægestokrose",
+  "name_latin": "Althaea officinalis",
+  "family": "Malvaceae",
+  "genus": "Althaea",
+  "species": "marshmallow",
+  "type": "op",
+  "min_temp": -10,
+  "max_temp": 28,
+  "optimal_temp": 18,
+  "sun_hours": 5,
+  "sun_direct": "full",
+  "context": [
+    "garden"
+  ],
+  "grow_time_weeks": 18,
+  "weeks_from_transplant": 12,
+  "hardiness_temp": -23,
+  "hardiness_zone_min": 6,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "unsuitable",
+    "garden": "good",
+    "note": "Tall (1.5m), needs staking in exposed positions. Deep taproot — dislikes transplanting."
+  },
+  "notes": "Root, leaves and flowers all edible and medicinal. Mucilaginous root used in throat remedies — the original source of marshmallow candy. Pale pink flowers. Hardy perennial."
+}

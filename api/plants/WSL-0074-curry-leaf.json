@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0074",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Curry Leaf",
+  "name_da": "Karryblad",
+  "name_latin": "Murraya koenigii",
+  "family": "Rutaceae",
+  "genus": "Murraya",
+  "species": "curry-leaf",
+  "type": "op",
+  "min_temp": 12,
+  "max_temp": 38,
+  "optimal_temp": 28,
+  "sun_hours": 5,
+  "sun_direct": "partial",
+  "context": [
+    "windowsill",
+    "balcony"
+  ],
+  "grow_time_weeks": 52,
+  "weeks_from_transplant": 36,
+  "hardiness_temp": 5,
+  "hardiness_zone_min": 12,
+  "habit": {
+    "windowsill": "acceptable",
+    "balcony": "good",
+    "garden": "unsuitable",
+    "note": "Slow-growing tropical tree — patience required, but very rewarding once established."
+  },
+  "notes": "Real curry leaves — not curry powder. Essential in South Indian cuisine. Small tree that grows well in containers if kept warm. Fresh leaves are incomparable to dried. No frost tolerance. Drops leaves if chilled."
+}

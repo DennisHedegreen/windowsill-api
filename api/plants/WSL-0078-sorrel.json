@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0078",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Common Sorrel",
+  "name_da": "Almindelig Syre",
+  "name_latin": "Rumex acetosa",
+  "family": "Polygonaceae",
+  "genus": "Rumex",
+  "species": "sorrel",
+  "type": "op",
+  "min_temp": -20,
+  "max_temp": 25,
+  "optimal_temp": 15,
+  "sun_hours": 3,
+  "sun_direct": "partial",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 8,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": -34,
+  "hardiness_zone_min": 4,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Very easy and reliable — one of the best cold-tolerant windowsill herbs."
+  },
+  "notes": "Sharp lemony flavour from oxalic acid. One of the earliest spring herbs. Classic in French sorrel soup. Cut-and-come-again. Avoid in large quantities if prone to kidney stones. Very cold-hardy."
+}

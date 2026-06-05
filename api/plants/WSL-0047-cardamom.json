@@ -1,0 +1,31 @@
+{
+  "id": "WSL-0047",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Cardamom",
+  "name_da": "Kardemomme",
+  "name_latin": "Elettaria cardamomum",
+  "family": "Zingiberaceae",
+  "genus": "Elettaria",
+  "species": "cardamom",
+  "type": "op",
+  "min_temp": 18,
+  "max_temp": 35,
+  "optimal_temp": 27,
+  "sun_hours": 3,
+  "sun_direct": "shade",
+  "context": [
+    "windowsill"
+  ],
+  "grow_time_weeks": 156,
+  "weeks_from_transplant": 140,
+  "hardiness_temp": 5,
+  "hardiness_zone_min": 12,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "unsuitable",
+    "garden": "unsuitable",
+    "note": "Takes 3 years to fruit — grow for the fragrant leaves and long-term reward."
+  },
+  "notes": "Tropical rainforest understorey plant — prefers shade and high humidity. One of very few culinary herbs that thrives on a north-facing windowsill in a warm room. Takes 3 years to flower and fruit. Grow for the leaves and fragrance."
+}

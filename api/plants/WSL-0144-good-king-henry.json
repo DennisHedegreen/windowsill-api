@@ -1,0 +1,31 @@
+{
+  "id": "WSL-0144",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Good King Henry",
+  "name_da": "Stolt Henrik",
+  "name_latin": "Blitum bonus-henricus",
+  "family": "Amaranthaceae",
+  "genus": "Blitum",
+  "species": "good king henry",
+  "type": "op",
+  "min_temp": -10,
+  "max_temp": 25,
+  "optimal_temp": 15,
+  "sun_hours": 3,
+  "sun_direct": "partial",
+  "context": [
+    "garden"
+  ],
+  "grow_time_weeks": 12,
+  "weeks_from_transplant": 8,
+  "hardiness_temp": -23,
+  "hardiness_zone_min": 6,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "unsuitable",
+    "garden": "good",
+    "note": "Slow to establish — patient with it in year one. Long-lived once settled."
+  },
+  "notes": "Ancient perennial vegetable. Young shoots eaten like asparagus in spring. Leaves used like spinach. Very hardy and productive once established. Largely forgotten but worth growing."
+}

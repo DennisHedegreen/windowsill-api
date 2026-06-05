@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0071",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Epazote",
+  "name_da": "Epazote",
+  "name_latin": "Dysphania ambrosioides",
+  "family": "Amaranthaceae",
+  "genus": "Dysphania",
+  "species": "epazote",
+  "type": "op",
+  "min_temp": 5,
+  "max_temp": 38,
+  "optimal_temp": 24,
+  "sun_hours": 5,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 8,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": -1,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "risky",
+    "note": "Self-seeds aggressively outdoors — container keeps it controlled."
+  },
+  "notes": "Essential in Mexican black bean dishes. Strong pungent smell — love it or hate it. Used to reduce flatulence from beans. Self-seeds prolifically. Traditional antiparasitic herb. Use sparingly — strong flavour."
+}

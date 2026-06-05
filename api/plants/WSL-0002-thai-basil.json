@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0002",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Thai Basil",
+  "name_da": "Thai Basilikum",
+  "name_latin": "Ocimum basilicum var. thyrsiflora",
+  "family": "Lamiaceae",
+  "genus": "Ocimum",
+  "species": "basil",
+  "type": "op",
+  "min_temp": 18,
+  "max_temp": 38,
+  "optimal_temp": 27,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 7,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": -1,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Needs warmth — struggles on cold windowsills in winter."
+  },
+  "notes": "Anise-like flavour. More heat-tolerant than Genovese. Purple stems and flowers. Common in Southeast Asian cuisine."
+}

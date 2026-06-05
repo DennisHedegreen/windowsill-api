@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0098",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Radish",
+  "name_da": "Radise",
+  "name_latin": "Raphanus sativus",
+  "family": "Brassicaceae",
+  "genus": "Raphanus",
+  "species": "radish",
+  "type": "op",
+  "min_temp": 5,
+  "max_temp": 25,
+  "optimal_temp": 16,
+  "sun_hours": 4,
+  "sun_direct": "partial",
+  "context": [
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 4,
+  "weeks_from_transplant": 3,
+  "hardiness_temp": -7,
+  "hardiness_zone_min": 9,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Shallow roots — grows well in window boxes and shallow containers."
+  },
+  "notes": "Fastest vegetable to grow — ready in 3–4 weeks from direct sow. Sow successionally every 2–3 weeks for continuous harvest. Bolts in heat — best in spring and autumn."
+}

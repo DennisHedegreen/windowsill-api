@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0053",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Winter Savory",
+  "name_da": "Vintermerian",
+  "name_latin": "Satureja montana",
+  "family": "Lamiaceae",
+  "genus": "Satureja",
+  "species": "savory",
+  "type": "op",
+  "min_temp": -15,
+  "max_temp": 30,
+  "optimal_temp": 18,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 10,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": -18,
+  "hardiness_zone_min": 7,
+  "habit": {
+    "windowsill": "acceptable",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Gets woody without regular trimming — prune hard after flowering."
+  },
+  "notes": "Perennial. Peppery thyme-like flavour. Traditional with beans and lentils. More cold-hardy than summer savory. Stays semi-evergreen in mild winters — one of few herbs available fresh year-round outdoors."
+}

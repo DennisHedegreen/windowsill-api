@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0126",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Catnip",
+  "name_da": "Kattemynte",
+  "name_latin": "Nepeta cataria",
+  "family": "Lamiaceae",
+  "genus": "Nepeta",
+  "species": "catnip",
+  "type": "op",
+  "min_temp": -10,
+  "max_temp": 30,
+  "optimal_temp": 18,
+  "sun_hours": 5,
+  "sun_direct": "full",
+  "context": [
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 10,
+  "weeks_from_transplant": 6,
+  "hardiness_temp": -23,
+  "hardiness_zone_min": 6,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "acceptable",
+    "garden": "good",
+    "note": "Cats will roll on and destroy plants — protect young plants with wire cage."
+  },
+  "notes": "Strongly attractive to cats. Used in herbal tea for relaxation. Hardy perennial. Grey-green aromatic leaves. White flowers attract bees. Cut back after flowering for second flush."
+}

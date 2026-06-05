@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0020",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Sweet Marjoram",
+  "name_da": "Merian",
+  "name_latin": "Origanum majorana",
+  "family": "Lamiaceae",
+  "genus": "Origanum",
+  "species": "marjoram",
+  "type": "op",
+  "min_temp": 5,
+  "max_temp": 32,
+  "optimal_temp": 21,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 8,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": -7,
+  "hardiness_zone_min": 9,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "good",
+    "note": "No frost tolerance — treat as annual outdoors in cold climates."
+  },
+  "notes": "Sweeter and more delicate than oregano. No frost tolerance — treat as annual in cold climates. Classic in German and Scandinavian cooking."
+}

@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0082",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Thai Chili",
+  "name_da": "Thai Chili",
+  "name_latin": "Capsicum annuum 'Thai Hot'",
+  "family": "Solanaceae",
+  "genus": "Capsicum",
+  "species": "chili",
+  "type": "op",
+  "min_temp": 15,
+  "max_temp": 40,
+  "optimal_temp": 27,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 16,
+  "weeks_from_transplant": 8,
+  "hardiness_temp": -1,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Very compact — ideal windowsill chili with masses of small upright fruits."
+  },
+  "notes": "Small upright fruits, very hot. Extremely productive for its size. One of the best chilies for windowsill growing — stays compact and fruits heavily. Scoville 50,000–100,000."
+}

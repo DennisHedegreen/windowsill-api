@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0069",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Pot Marigold",
+  "name_da": "Calendula",
+  "name_latin": "Calendula officinalis",
+  "family": "Asteraceae",
+  "genus": "Calendula",
+  "species": "calendula",
+  "type": "heirloom",
+  "min_temp": -5,
+  "max_temp": 28,
+  "optimal_temp": 16,
+  "sun_hours": 5,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 8,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": -12,
+  "hardiness_zone_min": 8,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Prefers cool conditions — flowers best in spring and autumn, not midsummer heat."
+  },
+  "notes": "Edible petals used as saffron substitute and in salads. Medicinal skin uses. Prefers cool conditions — blooms from early spring. Hardy annual that self-seeds freely. Long history of culinary and medicinal use."
+}

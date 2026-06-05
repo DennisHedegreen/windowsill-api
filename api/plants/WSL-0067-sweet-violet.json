@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0067",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Sweet Violet",
+  "name_da": "Skovviol",
+  "name_latin": "Viola odorata",
+  "family": "Violaceae",
+  "genus": "Viola",
+  "species": "violet",
+  "type": "op",
+  "min_temp": -15,
+  "max_temp": 22,
+  "optimal_temp": 12,
+  "sun_hours": 2,
+  "sun_direct": "shade",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 16,
+  "weeks_from_transplant": 8,
+  "hardiness_temp": -29,
+  "hardiness_zone_min": 5,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Prefers cool conditions — struggles in summer heat, ideal for spring windowsills."
+  },
+  "notes": "Edible perfumed flowers. Prefers cool and shade — excellent for north-facing windowsills in spring. Flowers used in salads, candied, or as garnish. Spreads by runners."
+}

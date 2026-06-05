@@ -1,0 +1,31 @@
+{
+  "id": "WSL-0132",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Purple Sprouting Broccoli",
+  "name_da": "Vinterbroccoli",
+  "name_latin": "Brassica oleracea var. italica",
+  "family": "Brassicaceae",
+  "genus": "Brassica",
+  "species": "broccoli",
+  "type": "op",
+  "min_temp": -10,
+  "max_temp": 22,
+  "optimal_temp": 15,
+  "sun_hours": 5,
+  "sun_direct": "full",
+  "context": [
+    "garden"
+  ],
+  "grow_time_weeks": 36,
+  "weeks_from_transplant": 28,
+  "hardiness_temp": -12,
+  "hardiness_zone_min": 8,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "unsuitable",
+    "garden": "good",
+    "note": "Large plant (1m+) — needs space. Sow May–June for winter/spring harvest."
+  },
+  "notes": "Sow in late spring, harvest purple shoots February–April — the hungry gap. Very hardy. One of the most valuable winter vegetables in northern European gardens. Overwinters outdoors."
+}

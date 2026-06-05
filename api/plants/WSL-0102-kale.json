@@ -1,0 +1,31 @@
+{
+  "id": "WSL-0102",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Kale",
+  "name_da": "Grønkål",
+  "name_latin": "Brassica oleracea var. sabellica",
+  "family": "Brassicaceae",
+  "genus": "Brassica",
+  "species": "kale",
+  "type": "op",
+  "min_temp": -5,
+  "max_temp": 25,
+  "optimal_temp": 15,
+  "sun_hours": 5,
+  "sun_direct": "full",
+  "context": [
+    "garden"
+  ],
+  "grow_time_weeks": 12,
+  "weeks_from_transplant": 7,
+  "hardiness_temp": -15,
+  "hardiness_zone_min": 8,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "unsuitable",
+    "garden": "good",
+    "note": "Gets very large — grows 60–90cm tall. Baby kale can be grown in large containers."
+  },
+  "notes": "Extremely cold-hardy — flavour improves after frost. Harvest from outside in. Cavolo nero (black kale) is the most flavourful. Year-round harvest in mild climates."
+}

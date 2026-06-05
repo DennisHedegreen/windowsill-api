@@ -1,0 +1,31 @@
+{
+  "id": "WSL-0114",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Bergamot",
+  "name_da": "Biehoved",
+  "name_latin": "Monarda didyma",
+  "family": "Lamiaceae",
+  "genus": "Monarda",
+  "species": "bergamot",
+  "type": "op",
+  "min_temp": -5,
+  "max_temp": 28,
+  "optimal_temp": 18,
+  "sun_hours": 5,
+  "sun_direct": "partial",
+  "context": [
+    "garden"
+  ],
+  "grow_time_weeks": 16,
+  "weeks_from_transplant": 10,
+  "hardiness_temp": -29,
+  "hardiness_zone_min": 5,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "unsuitable",
+    "garden": "good",
+    "note": "Prone to powdery mildew — ensure good air circulation and avoid overhead watering."
+  },
+  "notes": "Striking red flowers beloved by bees and hummingbirds. Leaves used like oregano and in Earl Grey-style tea. Hardy perennial. Spreads by rhizome. Mildew-resistant varieties available."
+}

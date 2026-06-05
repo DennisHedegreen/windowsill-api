@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0062",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Makrut Lime",
+  "name_da": "Kaffirlime",
+  "name_latin": "Citrus hystrix",
+  "family": "Rutaceae",
+  "genus": "Citrus",
+  "species": "makrut-lime",
+  "type": "op",
+  "min_temp": 10,
+  "max_temp": 38,
+  "optimal_temp": 26,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony"
+  ],
+  "grow_time_weeks": 52,
+  "weeks_from_transplant": 36,
+  "hardiness_temp": 5,
+  "hardiness_zone_min": 12,
+  "habit": {
+    "windowsill": "acceptable",
+    "balcony": "good",
+    "garden": "unsuitable",
+    "note": "Slow-growing container tree — needs full sun and frost-free conditions year-round."
+  },
+  "notes": "Leaves are the culinary part — distinctive double-lobed shape. Essential in Thai curry pastes. Grow as a container tree on a sunny windowsill. Slow-growing. Move outside in summer in northern Europe."
+}

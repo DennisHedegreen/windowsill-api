@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0137",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Perpetual Spinach",
+  "name_da": "Evighedsspinach",
+  "name_latin": "Beta vulgaris subsp. vulgaris",
+  "family": "Amaranthaceae",
+  "genus": "Beta",
+  "species": "spinach",
+  "type": "op",
+  "min_temp": -5,
+  "max_temp": 25,
+  "optimal_temp": 15,
+  "sun_hours": 4,
+  "sun_direct": "partial",
+  "context": [
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 8,
+  "weeks_from_transplant": 5,
+  "hardiness_temp": -10,
+  "hardiness_zone_min": 9,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Much more cold-hardy than true spinach — harvest through mild winters."
+  },
+  "notes": "Actually a chard, not a spinach. Much more bolt- and cold-resistant than true spinach. Harvest outer leaves continuously over many months. Can overwinter in most UK and Danish climates."
+}

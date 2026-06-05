@@ -1,0 +1,31 @@
+{
+  "id": "WSL-0120",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Yarrow",
+  "name_da": "Røllike",
+  "name_latin": "Achillea millefolium",
+  "family": "Asteraceae",
+  "genus": "Achillea",
+  "species": "yarrow",
+  "type": "op",
+  "min_temp": -20,
+  "max_temp": 30,
+  "optimal_temp": 18,
+  "sun_hours": 5,
+  "sun_direct": "full",
+  "context": [
+    "garden"
+  ],
+  "grow_time_weeks": 14,
+  "weeks_from_transplant": 8,
+  "hardiness_temp": -34,
+  "hardiness_zone_min": 4,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "unsuitable",
+    "garden": "good",
+    "note": "Spreads aggressively by rhizome — use root barrier or divide regularly."
+  },
+  "notes": "Extremely hardy native. Feathery aromatic leaves and flat flower heads in white, pink or red. Used as a wound herb for millennia. Attracts beneficial insects. Drought-tolerant."
+}

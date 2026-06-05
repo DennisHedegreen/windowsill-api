@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0083",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Seeded from common horticultural knowledge. Needs primary source verification.",
+  "name_en": "Habanero",
+  "name_da": "Habanero",
+  "name_latin": "Capsicum chinense 'Habanero'",
+  "family": "Solanaceae",
+  "genus": "Capsicum",
+  "species": "chili",
+  "type": "op",
+  "min_temp": 18,
+  "max_temp": 40,
+  "optimal_temp": 28,
+  "sun_hours": 7,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 20,
+  "weeks_from_transplant": 12,
+  "hardiness_temp": -1,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "acceptable",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Needs more heat than most chilies — south-facing windowsill only. Slow to fruit indoors."
+  },
+  "notes": "Fruity, intense heat. Capsicum chinense species needs more warmth than annuum varieties. Slower to fruit indoors. Can be overwintered and becomes a small perennial tree over years. Scoville 100,000–350,000."
+}
