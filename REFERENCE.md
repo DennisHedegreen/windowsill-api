@@ -1,6 +1,6 @@
 # Windowsill API — Technical Reference
 
-Version: API v0.2.0 · Library 2026-06-05 · Scoring v0.5.0  
+Version: API v0.4.0 · Library 2026-06-05 · Scoring v0.6.0  
 Base URL: https://api.windowsill.dk  
 Documentation: https://windowsill.dk/docs.html  
 Source: https://github.com/DennisHedegreen/windowsill-api
@@ -49,8 +49,6 @@ Keys via email: api@windowsill.dk
 
 ### Rate limit headers
 
-Every response includes:
-
 | Header | Description |
 |---|---|
 | `X-RateLimit-Limit` | Requests allowed per hour |
@@ -64,7 +62,7 @@ Every response includes:
 
 ### GET /v1/recommend
 
-Ranked plant recommendations for a location and month.
+Ranked plant recommendations for a location and time.
 
 **Parameters**
 
@@ -72,9 +70,10 @@ Ranked plant recommendations for a location and month.
 |---|---|---|---|
 | `lat` | yes | float | Latitude −90 to 90 |
 | `lng` | yes | float | Longitude −180 to 180 |
-| `orientation` | yes | enum | `N` `S` `E` `W` — surface facing direction. Use closest cardinal direction. Diagonal orientations not currently supported. |
+| `orientation` | yes | enum | `N` `NE` `E` `SE` `S` `SW` `W` `NW` — surface facing direction |
 | `context` | yes | enum | `windowsill` `balcony` `garden` |
-| `month` | no | integer | 1–12. Defaults to current month. |
+| `week` | no | integer | ISO week 1–53. Takes priority over `month`. Uses weekly temperature averages and day-of-year sun calculation for higher precision. |
+| `month` | no | integer | 1–12. Defaults to current month. Used when `week` is not supplied. |
 | `mode` | no | enum | See mode table below. Default: `top10`. |
 | `start_type` | no | enum | `seed` (default) `plant` — affects timing and weeks to harvest |
 | `species` | no | string | Filter by species slug, e.g. `basil`, `tomato`, `kale` |
@@ -86,13 +85,17 @@ Ranked plant recommendations for a location and month.
 |---|---|
 | `top10` | Up to 10 reliable matches (score ≥ 0.55). Default. |
 | `optimal` | Single best reliable match only. |
-| `optimistic` | Single stretch pick — uses relaxed temperature thresholds (±3°C). May include plants slightly outside their comfort zone. |
-| `all` | Full ranked list including weak matches. For research and debugging. |
+| `optimistic` | Single stretch pick — relaxed temperature thresholds (±3°C). |
+| `all` | Full ranked list including weak matches. |
 
-**Example**
+**Examples**
 
 ```bash
+# By month
 curl "https://api.windowsill.dk/v1/recommend?lat=55.67&lng=12.57&orientation=S&context=garden&month=6&start_type=seed"
+
+# By ISO week — more precise
+curl "https://api.windowsill.dk/v1/recommend?lat=55.67&lng=12.57&orientation=SE&context=balcony&week=22"
 ```
 
 **Response fields**
@@ -102,10 +105,16 @@ curl "https://api.windowsill.dk/v1/recommend?lat=55.67&lng=12.57&orientation=S&c
 | `api_version` | API version string |
 | `library_version` | Plant library date |
 | `scoring_version` | Scoring algorithm version |
-| `location_zone.usda` | Estimated USDA hardiness zone for the location |
-| `conditions` | Climate data used: avg temp, sun hours, orientation, data source |
+| `location_zone.usda` | USDA hardiness zone — from Open-Meteo winter data when available |
+| `location_zone.basis` | `Open-Meteo archive` or `latitude estimate` |
+| `conditions` | Climate data used for scoring |
+| `conditions.week` | ISO week number (when `week` parameter was used) |
+| `conditions.week_label` | Human label, e.g. `Week 22 (mid May)` |
+| `conditions.elevation` | Elevation in metres from Open-Meteo |
+| `conditions.avg_temp` | Average temperature (°C), elevation-corrected |
+| `conditions.sun_hours_direct` | Direct sun hours for the given orientation |
 | `count` | Number of results returned |
-| `hidden_weak` | Number of matches below reliability threshold (not shown in top10/optimal) |
+| `hidden_weak` | Matches below reliability threshold (hidden in top10/optimal) |
 | `recommendations[]` | Ranked plant array |
 
 **Per-plant fields**
@@ -114,12 +123,11 @@ curl "https://api.windowsill.dk/v1/recommend?lat=55.67&lng=12.57&orientation=S&c
 |---|---|
 | `match_score` | 0.0–1.0. Combined score for temperature, sun, habit, and safety. |
 | `timing.status` | `ok` `tight` `too_late` `year_round` |
-| `timing.note` | Human-readable timing with weeks to harvest and weeks to frost |
+| `timing.note` | Timing detail with weeks to harvest and weeks to frost |
 | `overwinter.status` | `yes` `marginal` `no` — balcony/garden only |
 | `overwinter.plant_zone` | USDA zone required for the plant to overwinter |
 | `weeks_to_harvest` | Weeks until first harvest from current start_type |
-| `start_type` | The start_type used for this result |
-| `score_breakdown` | Detailed scores per factor: temperature, sun, habit |
+| `score_breakdown` | Scores per factor: temperature, sun, habit |
 | `safety` | Present if plant has culinary safety flags |
 
 ---
@@ -128,25 +136,34 @@ curl "https://api.windowsill.dk/v1/recommend?lat=55.67&lng=12.57&orientation=S&c
 
 Best plant per month, full year view.
 
-Same parameters as `/v1/recommend` except `month` is not accepted — returns all 12 months.
+Same parameters as `/v1/recommend` except `month` and `week` — returns all 12 months. Elevation correction applied to all months.
 
 ```bash
 curl "https://api.windowsill.dk/v1/calendar?lat=55.67&lng=12.57&orientation=S&context=garden&mode=optimal"
 ```
 
-Returns a `calendar` array with one entry per month. Each entry includes the best plant recommendation, avg temperature, and sun hours for that month.
-
 ---
 
 ### GET /v1/conditions
 
-Climate data for a location and month, without plant recommendations.
+Climate data for a location and time, without plant recommendations.
 
-| Field | Description |
+| Parameter | Description |
 |---|---|
-| `avg_temp` | Average temperature for month (°C) |
+| `lat`, `lng` | Required |
+| `orientation` | Required — `N` `NE` `E` `SE` `S` `SW` `W` `NW` |
+| `week` | Optional ISO week. More precise than month. |
+| `month` | Optional. Used when week not supplied. |
+
+| Response field | Description |
+|---|---|
+| `avg_temp` | Average temperature (°C), elevation-corrected |
 | `sun_hours_direct` | Direct sun hours per day for the given orientation |
-| `data_confidence` | `high` (Open-Meteo data) or `low` (latitude estimate) |
+| `sun_hours_total` | Total daylight hours |
+| `elevation` | Metres above sea level from Open-Meteo |
+| `week` | ISO week (when supplied) |
+| `week_label` | Human label, e.g. `Week 22 (mid May)` |
+| `data_confidence` | `high` (Open-Meteo) or `low` (latitude estimate) |
 | `data_source` | Source description |
 
 ---
@@ -183,38 +200,11 @@ Plant count and climate cache size.
 
 | Status | Error code | Description |
 |---|---|---|
-| 400 | `invalid_parameters` | One or more query parameters are invalid |
+| 422 | `invalid_parameters` | Validation error — includes per-field details |
 | 401 | — | Invalid or expired API key |
 | 404 | `not_found` | Endpoint or resource not found |
-| 422 | `invalid_parameters` | Validation error — includes per-field details |
 | 429 | — | Rate limit exceeded |
 | 500 | `server_error` | Internal error |
-
-**Validation error (422)**
-
-```json
-{
-  "error": "invalid_parameters",
-  "message": "One or more query parameters are invalid.",
-  "details": [
-    { "field": "lat", "error": "Input should be less than or equal to 90" }
-  ]
-}
-```
-
-**Rate limit (429)**
-
-```json
-{ "detail": "Rate limit reached (60 req/hour without key). Free API keys available." }
-```
-
-Headers: `Retry-After: 3600`
-
-**Invalid key (401)**
-
-```json
-{ "detail": "Invalid API key." }
-```
 
 ---
 
@@ -222,17 +212,16 @@ Headers: `Retry-After: 3600`
 
 ### Windowsill
 
-Indoors — outdoor temperature is irrelevant.
+Indoors — outdoor temperature not used.
 
 | Factor | Weight |
 |---|---|
 | Sun match | 0.60 |
 | Habit (windowsill rating) | 0.40 |
-| Temperature | not used |
 
 ### Balcony
 
-Outdoor containers. Frost penalty applied when frost is less than 4 weeks away (max −0.30 to temperature score).
+Outdoor containers. Frost penalty when frost < 4 weeks away (max −0.30).
 
 | Factor | Weight |
 |---|---|
@@ -242,7 +231,7 @@ Outdoor containers. Frost penalty applied when frost is less than 4 weeks away (
 
 ### Garden
 
-Full outdoor exposure. Frost penalty applied when frost is less than 6 weeks away (max −0.40 to temperature score).
+Full outdoor. Frost penalty when frost < 6 weeks away (max −0.40).
 
 | Factor | Weight |
 |---|---|
@@ -250,26 +239,36 @@ Full outdoor exposure. Frost penalty applied when frost is less than 6 weeks awa
 | Sun match | 0.30 |
 | Habit (garden rating) | 0.20 |
 
-### Temperature curve
+### Orientation quality factors
 
-Quadratic penalty from optimal temperature. Score drops to 0 below `min_temp` or above `max_temp`.
+| Orientation | Quality |
+|---|---|
+| S | 1.00 |
+| SE / SW | 0.90 |
+| E / W | 0.75 |
+| NE / NW | 0.50 |
+| N | 0.35 |
 
 ### Timing
 
-Frost-hardy plants (`hardiness_temp ≤ −2°C`) are not blocked by frost — assessed on whether they can establish before frost arrives.
+Week-precise when `week` parameter is used. Frost-hardy plants (`hardiness_temp ≤ −2°C`) assessed on establishment time, not harvest-before-frost.
 
 | Status | Meaning |
 |---|---|
-| `ok` | Enough time before frost to reach harvest |
+| `ok` | Enough time before frost |
 | `tight` | Possible — start immediately |
 | `too_late` | Not enough time before frost |
-| `year_round` | No frost expected at this latitude |
+| `year_round` | No frost expected |
+
+### Elevation correction
+
+Temperature is corrected for elevation using the standard lapse rate: **−0.6°C per 100 metres**. Elevation is taken from the Open-Meteo archive response for the coordinate.
 
 ---
 
 ## Plant schema
 
-Each plant is one JSON file in `api/plants/`. IDs: `WSL-0001` format.
+Each plant is one JSON file in `plants/`. IDs: `WSL-0001` format.
 
 | Field | Type | Description |
 |---|---|---|
@@ -279,54 +278,39 @@ Each plant is one JSON file in `api/plants/`. IDs: `WSL-0001` format.
 | `name_latin` | string | Latin/botanical name including cultivar |
 | `family` | string | Botanical family |
 | `genus` | string | Botanical genus |
-| `species` | string | Common species slug, e.g. `basil` |
+| `species` | string | Species slug, e.g. `basil` |
 | `type` | enum | `op` `heirloom` `hybrid` |
 | `min_temp` | float °C | Lowest temperature for active growth |
 | `max_temp` | float °C | Highest temperature tolerated |
 | `optimal_temp` | float °C | Optimal growing temperature |
-| `hardiness_temp` | float °C | Coldest survival temperature (overwinter tolerance — distinct from min_temp) |
+| `hardiness_temp` | float °C | Coldest survival temperature |
 | `hardiness_zone_min` | integer | USDA zone derived from hardiness_temp |
 | `sun_hours` | float | Minimum direct sun hours per day |
 | `sun_direct` | enum | `full` `partial` `shade` |
-| `context` | array | Suitable growing contexts |
+| `context` | array | Suitable contexts: `windowsill` `balcony` `garden` |
 | `grow_time_weeks` | integer | Weeks from seed to first harvest |
 | `weeks_from_transplant` | integer | Weeks from transplant to first harvest |
 | `habit` | object | Per-context suitability: `good` `acceptable` `risky` `unsuitable` |
-| `notes` | string | Growing notes, culinary use, special requirements |
+| `notes` | string | Growing notes and special requirements |
 
 ### min_temp vs hardiness_temp
 
-`min_temp` is the temperature at which the plant stops growing.  
-`hardiness_temp` is the temperature it can survive.
+`min_temp` — temperature at which growth stops.  
+`hardiness_temp` — lowest temperature the plant survives.
 
-Example: Peppermint has `min_temp: 5°C` (stops growing in cold) but `hardiness_temp: −29°C` (survives winter as a dormant rhizome — USDA zone 5).
-
-### USDA zone from hardiness_temp
-
-| hardiness_temp | Zone |
-|---|---|
-| ≤ −34°C | 4 |
-| −34 to −29°C | 5 |
-| −29 to −23°C | 6 |
-| −23 to −18°C | 7 |
-| −18 to −12°C | 8 |
-| −12 to −7°C | 9 |
-| −7 to −1°C | 10 |
-| −1 to +4°C | 11 |
-| +4 to +10°C | 12 |
-| > +10°C | 13 |
+Example: Peppermint `min_temp: 5°C`, `hardiness_temp: −29°C` — stops growing in cold but survives winter as a dormant rhizome.
 
 ---
 
 ## Data sources
 
-**Climate data:** Open-Meteo Archive API — global historical data 2003–2022. When unavailable, temperature is estimated from latitude (`data_confidence: low`).
+| Source | Used for |
+|---|---|
+| Open-Meteo Archive API | Monthly and weekly temperature averages 2003–2022. Elevation. Winter minimum for USDA zone. |
+| Astronomical calculation | Sun hours from latitude, orientation, and day of year. No external API. |
+| Plant library | Maintained in this repository. Community contributions via pull request. |
 
-**Sun calculation:** Astronomical calculation from latitude, orientation, and month. No external API.
-
-**Plant library:** Maintained in this repository. Community contributions via pull request.
-
-**USDA zones:** Estimated from latitude. Will be replaced with Open-Meteo winter data in a future version.
+When Open-Meteo is unavailable, temperature is estimated from latitude (`data_confidence: low`).
 
 ---
 
