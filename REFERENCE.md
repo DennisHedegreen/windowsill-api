@@ -38,7 +38,7 @@ curl -H "X-API-Key: your-key" "https://windowsill-api-production.up.railway.app/
 curl "https://windowsill-api-production.up.railway.app/v1/recommend?api_key=your-key&..."
 ```
 
-Keys via email: windowsill@hedegreenresearch.com
+Keys via email: api@windowsill.dk
 
 | Plan | Limit | Key required |
 |---|---|---|
@@ -336,4 +336,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for how to add a plant variety.
 
 ---
 
-*Windowsill — Hedegreen Research — windowsill@hedegreenresearch.com*
+*Windowsill — Hedegreen Research — api@windowsill.dk*

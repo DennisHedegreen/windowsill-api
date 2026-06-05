@@ -289,7 +289,7 @@ async def require_access(request: Request) -> dict:
                 "key_expired": "This API key has expired.",
                 "monthly_limit_reached": (
                     "Monthly request limit reached. "
-                    "Send an email to windowsill@hedegreenresearch.com for sponsored access."
+                    "Send an email to api@windowsill.dk for sponsored access."
                 ),
             }
             status = 429 if "limit" in reason else 401
@@ -944,7 +944,7 @@ async def root(request: Request):
         "name": "Windowsill API",
         "purpose": "Geo-climate edible plant growing recommendation API — get the best plants to grow for any location and month.",
         "project": "Hedegreen Research / Windowsill",
-        "contact": "windowsill@hedegreenresearch.com",
+        "contact": "api@windowsill.dk",
         "status": "ok",
         "docs": f"{base}/docs",
         "openapi": f"{base}/openapi.json",
@@ -961,9 +961,9 @@ async def root(request: Request):
         "example": f"{base}/v1/recommend?lat=55.67&lng=12.57&orientation=S&context=garden&month=6",
         "access": {
             "no_key": f"{RATE_LIMIT_NO_KEY} requests/hour per IP — no registration required",
-            "free_key": "1,000 requests/month — email windowsill@hedegreenresearch.com",
-            "builder_key": "10,000 requests/month — email windowsill@hedegreenresearch.com",
-            "sponsored": "Unlimited — email windowsill@hedegreenresearch.com",
+            "free_key": "1,000 requests/month — email api@windowsill.dk",
+            "builder_key": "10,000 requests/month — email api@windowsill.dk",
+            "sponsored": "Unlimited — email api@windowsill.dk",
             "auth": "Pass key as header: X-API-Key: <your-key>  or query param: ?api_key=<your-key>",
         },
         "rate_limit_headers": {

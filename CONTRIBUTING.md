@@ -76,4 +76,4 @@ The API scans these phrases automatically and applies a score penalty.
 
 ## Questions
 
-Open an issue or email windowsill@hedegreenresearch.com
+Open an issue or email api@windowsill.dk

@@ -91,7 +91,7 @@ curl -H "X-API-Key: your-key" "https://windowsill-api-production.up.railway.app/
 curl "https://windowsill-api-production.up.railway.app/v1/recommend?api_key=your-key&..."
 ```
 
-Keys via email: windowsill@hedegreenresearch.com
+Keys via email: api@windowsill.dk
 
 | Plan | Limit |
 |---|---|
@@ -143,4 +143,4 @@ This API and its documentation site use no cookies and no analytics. Requests ar
 | Library 2026-06-05 | 145 varieties |
 | Scoring v0.5.0 | Quadratic temp curve, frost-hardy timing, USDA zones |
 
-A Hedegreen Research project — windowsill@hedegreenresearch.com
+A Hedegreen Research project — api@windowsill.dk
