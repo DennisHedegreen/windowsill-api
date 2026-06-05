@@ -30,7 +30,8 @@ SCORING_VERSION = "0.6.0"
 
 # ── Config ─────────────────────────────────────────────────────────────────────
 
-PLANTS_DIR = Path(__file__).parent.parent / "plants"
+_HERE = Path(__file__).parent
+PLANTS_DIR = (_HERE.parent / "plants") if (_HERE.parent / "plants").exists() else (_HERE / "plants")
 DB_PATH = Path(__file__).parent / "keys.db"
 
 MONTH_NAMES = ["", "January", "February", "March", "April", "May", "June",
