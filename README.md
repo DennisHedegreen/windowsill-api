@@ -2,10 +2,11 @@
 
 Geo-climate edible plant growing recommendation API.
 
-Send a GPS coordinate, a growing context, and a month or ISO week — get back the best plants to grow for that exact location, based on historical climate data and astronomical sun calculations.
+Send a GPS coordinate, a growing context, and a week number — get back the best plants to grow for that exact location, based on historical climate data and astronomical sun calculations.
 
 **Live API:** https://api.windowsill.dk  
 **Documentation:** https://windowsill.dk/docs.html  
+**Plant library:** https://windowsill.dk/library.html  
 **Contribute a plant:** https://windowsill.dk/contribute.html
 
 ---
@@ -15,19 +16,25 @@ Send a GPS coordinate, a growing context, and a month or ISO week — get back t
 No key required. 60 requests per hour per IP.
 
 ```bash
-# By month
-curl "https://api.windowsill.dk/v1/recommend?lat=55.67&lng=12.57&orientation=S&context=garden&month=6"
+# What to plant this week
+curl "https://api.windowsill.dk/v1/now?lat=55.67&lng=12.57&orientation=S&context=garden"
 
-# By ISO week — more precise timing
-curl "https://api.windowsill.dk/v1/recommend?lat=55.67&lng=12.57&orientation=SE&context=garden&week=22"
+# Full recommendations by ISO week
+curl "https://api.windowsill.dk/v1/recommend?lat=55.67&lng=12.57&orientation=S&context=garden&week=22"
+
+# With shuffle — different top picks each call
+curl "https://api.windowsill.dk/v1/recommend?lat=55.67&lng=12.57&orientation=SE&context=balcony&week=22&shuffle=true"
+
+# Exclude plants you already have
+curl "https://api.windowsill.dk/v1/recommend?lat=55.67&lng=12.57&orientation=S&context=garden&week=22&exclude=WSL-0001,WSL-0038"
 ```
 
 Response:
 
 ```json
 {
-  "api_version": "0.4.0",
-  "scoring_version": "0.7.0",
+  "api_version": "0.6.0",
+  "scoring_version": "0.8.0",
   "location": { "lat": 55.67, "lng": 12.57 },
   "conditions": {
     "week": 22,
@@ -35,10 +42,11 @@ Response:
     "avg_temp": 14.1,
     "sun_hours_direct": 11.7,
     "elevation": 12.0,
-    "orientation": "SE"
+    "orientation": "S"
   },
   "location_zone": { "usda": 8, "basis": "Open-Meteo archive" },
   "count": 10,
+  "total_qualified": 38,
   "recommendations": [
     {
       "id": "WSL-0038",
@@ -60,8 +68,9 @@ Response:
 
 | Endpoint | Description |
 |---|---|
+| `GET /v1/now` | What to plant this week — auto-detects current week |
 | `GET /v1/recommend` | Ranked plant recommendations for a location and time |
-| `GET /v1/calendar` | Best plant per month, full year view |
+| `GET /v1/calendar` | Top plants per month, full year view |
 | `GET /v1/conditions` | Climate data for a location and time |
 | `GET /v1/library` | Full plant library — 145 varieties |
 | `GET /v1/varieties` | Filterable plant list |
@@ -75,18 +84,23 @@ Full parameter reference: [REFERENCE.md](REFERENCE.md)
 
 ## Parameters — /v1/recommend
 
-| Parameter | Required | Type | Description |
-|---|---|---|---|
-| `lat` | yes | float | Latitude −90 to 90 |
-| `lng` | yes | float | Longitude −180 to 180 |
-| `orientation` | yes | enum | `N` `NE` `E` `SE` `S` `SW` `W` `NW` — surface facing direction |
-| `context` | yes | enum | `windowsill` `balcony` `garden` |
-| `week` | no | integer | ISO week 1–53. Takes priority over `month`. More precise timing. |
-| `month` | no | integer | 1–12. Defaults to current month. Used when `week` is not supplied. |
-| `mode` | no | enum | `top10` (default) `optimal` `optimistic` `all` |
-| `start_type` | no | enum | `seed` (default) `plant` — affects timing and weeks to harvest |
-| `species` | no | string | Filter by species slug, e.g. `basil`, `tomato` |
-| `type` | no | string | `op` `heirloom` `hybrid` |
+| Parameter | Required | Type | Default | Description |
+|---|---|---|---|---|
+| `lat` | yes | float | — | Latitude −90 to 90 |
+| `lng` | yes | float | — | Longitude −180 to 180 |
+| `orientation` | yes | enum | — | `N` `NE` `E` `SE` `S` `SW` `W` `NW` |
+| `context` | yes | enum | — | `windowsill` `balcony` `garden` |
+| `week` | no | integer | current week | ISO week 1–53. More precise than month. |
+| `month` | no | integer | current month | 1–12. Used when `week` not supplied. |
+| `limit` | no | integer | `10` | Max results returned (1–50) |
+| `min_score` | no | float | `0.55` | Minimum match score (0.0–1.0) |
+| `optimistic` | no | boolean | `false` | Relax temperature thresholds ±3°C |
+| `shuffle` | no | boolean | `false` | Score-banded shuffle — vary results each call |
+| `pool` | no | integer | `30` | Candidate pool size for shuffle |
+| `exclude` | no | string | — | Comma-separated IDs to exclude, e.g. `WSL-0001,WSL-0038` |
+| `start_type` | no | enum | `seed` | `seed` or `plant` — affects timing |
+| `species` | no | string | — | Filter by species slug, e.g. `basil`, `tomato` |
+| `type` | no | string | — | `op` `heirloom` `hybrid` |
 
 ---
 
@@ -146,9 +160,11 @@ This API and its documentation site use no cookies and no analytics. Requests ar
 
 | Version | Description |
 |---|---|
+| API v0.6.0 | Modern params: limit, min_score, optimistic, shuffle, exclude. New /v1/now endpoint. |
 | API v0.5.0 | Context-aware sun model: balcony gets diffuse light from 3 sides, garden ignores orientation |
 | API v0.4.0 | ISO week support, 8-point compass, elevation correction, real winter zones |
 | Library 2026-06-05 | 145 varieties |
+| Scoring v0.8.0 | Score-banded shuffle, exclude filter, /v1/now |
 | Scoring v0.7.0 | Context-aware sun hours in all scoring and calendar calculations |
 | Scoring v0.6.0 | Week-precise frost timing, day-of-year sun calculation |
 

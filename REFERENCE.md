@@ -1,6 +1,6 @@
 # Windowsill API — Technical Reference
 
-Version: API v0.5.0 · Library 2026-06-05 · Scoring v0.7.0  
+Version: API v0.6.0 · Library 2026-06-05 · Scoring v0.8.0  
 Base URL: https://api.windowsill.dk  
 Documentation: https://windowsill.dk/docs.html  
 Source: https://github.com/DennisHedegreen/windowsill-api
@@ -60,42 +60,68 @@ Keys via email: api@windowsill.dk
 
 ## Endpoints
 
+### GET /v1/now
+
+What to plant this week. Automatically uses the current ISO week and returns 5 shuffled top picks plus a frost warning if relevant.
+
+| Parameter | Required | Type | Default | Description |
+|---|---|---|---|---|
+| `lat` | yes | float | — | Latitude −90 to 90 |
+| `lng` | yes | float | — | Longitude −180 to 180 |
+| `orientation` | yes | enum | — | `N` `NE` `E` `SE` `S` `SW` `W` `NW` |
+| `context` | yes | enum | — | `windowsill` `balcony` `garden` |
+| `start_type` | no | enum | `seed` | `seed` or `plant` |
+| `optimistic` | no | boolean | `false` | Relax temperature thresholds ±3°C |
+
+```bash
+curl "https://api.windowsill.dk/v1/now?lat=55.67&lng=12.57&orientation=S&context=garden"
+```
+
+Response includes `plant_now` (5 shuffled picks) and `watch_out` (frost warnings).
+
+---
+
 ### GET /v1/recommend
 
 Ranked plant recommendations for a location and time.
 
 **Parameters**
 
-| Parameter | Required | Type | Description |
-|---|---|---|---|
-| `lat` | yes | float | Latitude −90 to 90 |
-| `lng` | yes | float | Longitude −180 to 180 |
-| `orientation` | yes | enum | `N` `NE` `E` `SE` `S` `SW` `W` `NW` — surface facing direction |
-| `context` | yes | enum | `windowsill` `balcony` `garden` |
-| `week` | no | integer | ISO week 1–53. Takes priority over `month`. Uses weekly temperature averages and day-of-year sun calculation for higher precision. |
-| `month` | no | integer | 1–12. Defaults to current month. Used when `week` is not supplied. |
-| `mode` | no | enum | See mode table below. Default: `top10`. |
-| `start_type` | no | enum | `seed` (default) `plant` — affects timing and weeks to harvest |
-| `species` | no | string | Filter by species slug, e.g. `basil`, `tomato`, `kale` |
-| `type` | no | string | Filter by variety type: `op` `heirloom` `hybrid` |
-
-**Mode values**
-
-| Mode | Description |
-|---|---|
-| `top10` | Up to 10 reliable matches (score ≥ 0.55). Default. |
-| `optimal` | Single best reliable match only. |
-| `optimistic` | Single stretch pick — relaxed temperature thresholds (±3°C). |
-| `all` | Full ranked list including weak matches. |
+| Parameter | Required | Type | Default | Description |
+|---|---|---|---|---|
+| `lat` | yes | float | — | Latitude −90 to 90 |
+| `lng` | yes | float | — | Longitude −180 to 180 |
+| `orientation` | yes | enum | — | `N` `NE` `E` `SE` `S` `SW` `W` `NW` — surface facing direction |
+| `context` | yes | enum | — | `windowsill` `balcony` `garden` |
+| `week` | no | integer | current week | ISO week 1–53. Takes priority over `month`. More precise timing. |
+| `month` | no | integer | current month | 1–12. Used when `week` is not supplied. |
+| `limit` | no | integer | `10` | Max results returned (1–50) |
+| `min_score` | no | float | `0.55` | Minimum match score threshold (0.0–1.0) |
+| `optimistic` | no | boolean | `false` | Relax temperature thresholds by ±3°C |
+| `shuffle` | no | boolean | `false` | Score-banded shuffle — randomise order within equal-scoring plants |
+| `pool` | no | integer | `30` | Candidate pool size for shuffle draw (default 3× limit) |
+| `exclude` | no | string | — | Comma-separated plant IDs to exclude, e.g. `WSL-0001,WSL-0038` |
+| `start_type` | no | enum | `seed` | `seed` or `plant` — affects timing and weeks to harvest |
+| `species` | no | string | — | Filter by species slug, e.g. `basil`, `tomato`, `kale` |
+| `type` | no | string | — | Filter by variety type: `op` `heirloom` `hybrid` |
 
 **Examples**
 
 ```bash
-# By month
-curl "https://api.windowsill.dk/v1/recommend?lat=55.67&lng=12.57&orientation=S&context=garden&month=6&start_type=seed"
+# Standard top 10
+curl "https://api.windowsill.dk/v1/recommend?lat=55.67&lng=12.57&orientation=S&context=garden&week=22"
 
-# By ISO week — more precise
-curl "https://api.windowsill.dk/v1/recommend?lat=55.67&lng=12.57&orientation=SE&context=balcony&week=22"
+# Lower threshold, more results
+curl "https://api.windowsill.dk/v1/recommend?lat=55.67&lng=12.57&orientation=N&context=windowsill&week=22&min_score=0.4&limit=20"
+
+# Shuffle for variety — different picks each call
+curl "https://api.windowsill.dk/v1/recommend?lat=55.67&lng=12.57&orientation=SE&context=balcony&week=22&shuffle=true"
+
+# Stretch picks
+curl "https://api.windowsill.dk/v1/recommend?lat=55.67&lng=12.57&orientation=N&context=windowsill&week=22&optimistic=true"
+
+# Exclude plants you already have
+curl "https://api.windowsill.dk/v1/recommend?lat=55.67&lng=12.57&orientation=S&context=garden&week=22&exclude=WSL-0001,WSL-0038"
 ```
 
 **Response fields**
@@ -114,7 +140,8 @@ curl "https://api.windowsill.dk/v1/recommend?lat=55.67&lng=12.57&orientation=SE&
 | `conditions.avg_temp` | Average temperature (°C), elevation-corrected |
 | `conditions.sun_hours_direct` | Effective sun hours — adjusted for context (see Sun model below) |
 | `count` | Number of results returned |
-| `hidden_weak` | Matches below reliability threshold (hidden in top10/optimal) |
+| `total_qualified` | Total plants that passed `min_score` threshold |
+| `hidden_weak` | Plants below threshold, not returned |
 | `recommendations[]` | Ranked plant array |
 
 **Per-plant fields**
@@ -128,19 +155,33 @@ curl "https://api.windowsill.dk/v1/recommend?lat=55.67&lng=12.57&orientation=SE&
 | `overwinter.plant_zone` | USDA zone required for the plant to overwinter |
 | `weeks_to_harvest` | Weeks until first harvest from current start_type |
 | `score_breakdown` | Scores per factor: temperature, sun, habit |
+| `could_work_if` | Present when `optimistic=true` — what adjustments would help |
 | `safety` | Present if plant has culinary safety flags |
 
 ---
 
 ### GET /v1/calendar
 
-Best plant per month, full year view.
+Top plants per month, full year view. Returns up to `limit` recommendations per month (default 3).
 
-Same parameters as `/v1/recommend` except `month` and `week` — returns all 12 months. Elevation correction applied to all months.
+| Parameter | Required | Type | Default | Description |
+|---|---|---|---|---|
+| `lat` | yes | float | — | |
+| `lng` | yes | float | — | |
+| `orientation` | yes | enum | — | |
+| `context` | yes | enum | — | |
+| `limit` | no | integer | `3` | Results per month (1–10) |
+| `min_score` | no | float | `0.55` | Minimum score threshold |
+| `optimistic` | no | boolean | `false` | |
+| `start_type` | no | enum | `seed` | |
+| `species` | no | string | — | |
+| `type` | no | string | — | |
 
 ```bash
-curl "https://api.windowsill.dk/v1/calendar?lat=55.67&lng=12.57&orientation=S&context=garden&mode=optimal"
+curl "https://api.windowsill.dk/v1/calendar?lat=55.67&lng=12.57&orientation=S&context=garden"
 ```
+
+Each month in the `calendar` array contains `recommendations[]` with up to `limit` plants.
 
 ---
 
@@ -175,8 +216,6 @@ Full plant library, optionally filtered by context.
 ```bash
 curl "https://api.windowsill.dk/v1/library?context=windowsill"
 ```
-
----
 
 ### GET /v1/varieties
 
@@ -238,6 +277,12 @@ Full outdoor. Frost penalty when frost < 6 weeks away (max −0.40).
 | Temperature match | 0.50 |
 | Sun match | 0.30 |
 | Habit (garden rating) | 0.20 |
+
+### Shuffle — score-banded randomisation
+
+When `shuffle=true`, plants within 0.05 of each other in score are treated as equally good and randomised within their band. High-scoring plants still appear before low-scoring ones, but two plants at 0.95 and 0.93 may swap positions. This prevents the same plants appearing at the top of every call.
+
+The draw is taken from `pool` candidates (default 30). Set `pool` higher for a wider draw.
 
 ### Sun model — context-aware calculation
 
