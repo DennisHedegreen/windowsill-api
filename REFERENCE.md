@@ -1,6 +1,6 @@
 # Windowsill API — Technical Reference
 
-Version: API v0.4.0 · Library 2026-06-05 · Scoring v0.6.0  
+Version: API v0.5.0 · Library 2026-06-05 · Scoring v0.7.0  
 Base URL: https://api.windowsill.dk  
 Documentation: https://windowsill.dk/docs.html  
 Source: https://github.com/DennisHedegreen/windowsill-api
@@ -112,7 +112,7 @@ curl "https://api.windowsill.dk/v1/recommend?lat=55.67&lng=12.57&orientation=SE&
 | `conditions.week_label` | Human label, e.g. `Week 22 (mid May)` |
 | `conditions.elevation` | Elevation in metres from Open-Meteo |
 | `conditions.avg_temp` | Average temperature (°C), elevation-corrected |
-| `conditions.sun_hours_direct` | Direct sun hours for the given orientation |
+| `conditions.sun_hours_direct` | Effective sun hours — adjusted for context (see Sun model below) |
 | `count` | Number of results returned |
 | `hidden_weak` | Matches below reliability threshold (hidden in top10/optimal) |
 | `recommendations[]` | Ranked plant array |
@@ -239,6 +239,35 @@ Full outdoor. Frost penalty when frost < 6 weeks away (max −0.40).
 | Sun match | 0.30 |
 | Habit (garden rating) | 0.20 |
 
+### Sun model — context-aware calculation
+
+Sun hours are not a simple orientation lookup. The calculation depends on context:
+
+**Windowsill** — one face only. Direct sun from the chosen orientation.
+
+| Orientation (northern hemisphere) | Factor |
+|---|---|
+| S | 0.70 |
+| SE / SW | 0.55 |
+| E / W | 0.40 |
+| NE / NW | 0.25 |
+| N | 0.10 |
+
+**Balcony** — open on three sides. Primary face contributes 60%, each neighbouring direction 20%. A N-facing balcony still receives diffuse light from NW and NE.
+
+```
+sun = daylight × (primary × 0.60 + left_neighbour × 0.20 + right_neighbour × 0.20)
+```
+
+Example — N-facing balcony, Copenhagen, week 22:  
+`daylight × (0.10 × 0.60 + 0.55 × 0.20 + 0.55 × 0.20) = daylight × 0.28`
+
+**Garden** — open sky. Orientation is ignored. Garden plots receive approximately 85% of full daylight (terrain and tree margin).
+
+```
+sun = daylight × 0.85
+```
+
 ### Orientation quality factors
 
 | Orientation | Quality |
@@ -307,7 +336,7 @@ Example: Peppermint `min_temp: 5°C`, `hardiness_temp: −29°C` — stops growi
 | Source | Used for |
 |---|---|
 | Open-Meteo Archive API | Monthly and weekly temperature averages 2003–2022. Elevation. Winter minimum for USDA zone. |
-| Astronomical calculation | Sun hours from latitude, orientation, and day of year. No external API. |
+| Astronomical calculation | Sun hours from latitude, orientation, day of year, and growing context. No external API. |
 | Plant library | Maintained in this repository. Community contributions via pull request. |
 
 When Open-Meteo is unavailable, temperature is estimated from latitude (`data_confidence: low`).

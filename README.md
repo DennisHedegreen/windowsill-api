@@ -27,7 +27,7 @@ Response:
 ```json
 {
   "api_version": "0.4.0",
-  "scoring_version": "0.6.0",
+  "scoring_version": "0.7.0",
   "location": { "lat": 55.67, "lng": 12.57 },
   "conditions": {
     "week": 22,
@@ -146,8 +146,10 @@ This API and its documentation site use no cookies and no analytics. Requests ar
 
 | Version | Description |
 |---|---|
+| API v0.5.0 | Context-aware sun model: balcony gets diffuse light from 3 sides, garden ignores orientation |
 | API v0.4.0 | ISO week support, 8-point compass, elevation correction, real winter zones |
 | Library 2026-06-05 | 145 varieties |
+| Scoring v0.7.0 | Context-aware sun hours in all scoring and calendar calculations |
 | Scoring v0.6.0 | Week-precise frost timing, day-of-year sun calculation |
 
 A Hedegreen Research project — api@windowsill.dk
