@@ -916,23 +916,28 @@ async def library(
 
 
 @app.get("/")
-async def root():
+async def root(request: Request):
+    base = str(request.base_url).rstrip("/")
     return {
         **version_block(),
         "name": "Windowsill API",
+        "purpose": "Geo-climate edible plant growing recommendation API — get the best plants to grow for any location and month.",
+        "project": "Hedegreen Research / Windowsill",
+        "contact": "windowsill@hedegreenresearch.com",
         "status": "ok",
-        "docs": "/docs",
-        "health": "/v1/health",
-        "endpoints": [
-            "GET /v1/health",
-            "GET /v1/status",
-            "GET /v1/recommend",
-            "GET /v1/calendar",
-            "GET /v1/conditions",
-            "GET /v1/library",
-            "GET /v1/varieties",
-            "GET /v1/varieties/{id}",
-        ],
+        "docs": f"{base}/docs",
+        "openapi": f"{base}/openapi.json",
+        "health": f"{base}/v1/health",
+        "endpoints": {
+            "recommend":  f"{base}/v1/recommend",
+            "calendar":   f"{base}/v1/calendar",
+            "conditions": f"{base}/v1/conditions",
+            "library":    f"{base}/v1/library",
+            "varieties":  f"{base}/v1/varieties",
+            "health":     f"{base}/v1/health",
+            "status":     f"{base}/v1/status",
+        },
+        "example": f"{base}/v1/recommend?lat=55.67&lng=12.57&orientation=S&context=garden&month=6",
         "access": {
             "no_key": f"{RATE_LIMIT_NO_KEY} requests/hour per IP",
             "free_key": "1,000 requests/month",
