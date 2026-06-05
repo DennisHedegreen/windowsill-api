@@ -135,6 +135,21 @@ app.add_middleware(
 )
 
 
+# ── CORS preflight catch-all ───────────────────────────────────────────────────
+
+@app.options("/{rest_of_path:path}")
+async def preflight(rest_of_path: str, request: Request):
+    return JSONResponse(
+        content={},
+        headers={
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET, OPTIONS",
+            "Access-Control-Allow-Headers": "*",
+            "Access-Control-Max-Age": "600",
+        },
+    )
+
+
 # ── Error handlers ─────────────────────────────────────────────────────────────
 
 @app.exception_handler(RequestValidationError)
