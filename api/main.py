@@ -124,7 +124,23 @@ app.add_middleware(
     allow_origins=CORS_ORIGINS,
     allow_methods=["GET"],
     allow_headers=["*"],
+    expose_headers=["X-RateLimit-Limit", "X-RateLimit-Remaining", "X-RateLimit-Reset", "Retry-After"],
 )
+
+
+@app.middleware("http")
+async def rate_limit_headers(request: Request, call_next):
+    response = await call_next(request)
+    ip = request.client.host if request.client else "unknown"
+    now = time.time()
+    cutoff = now - 3600
+    bucket = [t for t in _ip_buckets.get(ip, []) if t > cutoff]
+    remaining = max(0, RATE_LIMIT_NO_KEY - len(bucket))
+    reset_at = int(min(bucket) + 3600) if bucket else int(now + 3600)
+    response.headers["X-RateLimit-Limit"] = str(RATE_LIMIT_NO_KEY)
+    response.headers["X-RateLimit-Remaining"] = str(remaining)
+    response.headers["X-RateLimit-Reset"] = str(reset_at)
+    return response
 
 
 # ── Error handlers ─────────────────────────────────────────────────────────────
@@ -278,7 +294,7 @@ async def require_access(request: Request) -> dict:
             }
             status = 429 if "limit" in reason else 401
             raise HTTPException(status_code=status, detail=messages.get(reason, reason))
-        return {"auth": "key"}
+        return {"auth": "key", "remaining": None}
 
     # IP rate limiting is in-memory — resets on server restart. Acceptable for MVP.
     ip = request.client.host if request.client else "unknown"
@@ -290,7 +306,12 @@ async def require_access(request: Request) -> dict:
                 "Rate limit reached (60 req/hour without key). "
                 "Free API keys available — or email for sponsored access."
             ),
-            headers={"Retry-After": "3600"},
+            headers={
+                "Retry-After": "3600",
+                "X-RateLimit-Limit": str(RATE_LIMIT_NO_KEY),
+                "X-RateLimit-Remaining": "0",
+                "X-RateLimit-Reset": str(int(time.time()) + 3600),
+            },
         )
     return {"auth": "ip", "remaining": remaining}
 
@@ -939,10 +960,16 @@ async def root(request: Request):
         },
         "example": f"{base}/v1/recommend?lat=55.67&lng=12.57&orientation=S&context=garden&month=6",
         "access": {
-            "no_key": f"{RATE_LIMIT_NO_KEY} requests/hour per IP",
-            "free_key": "1,000 requests/month",
-            "builder_key": "10,000 requests/month",
-            "sponsored": "Email windowsill@hedegreenresearch.com",
+            "no_key": f"{RATE_LIMIT_NO_KEY} requests/hour per IP — no registration required",
+            "free_key": "1,000 requests/month — email windowsill@hedegreenresearch.com",
+            "builder_key": "10,000 requests/month — email windowsill@hedegreenresearch.com",
+            "sponsored": "Unlimited — email windowsill@hedegreenresearch.com",
+            "auth": "Pass key as header: X-API-Key: <your-key>  or query param: ?api_key=<your-key>",
+        },
+        "rate_limit_headers": {
+            "X-RateLimit-Limit": "requests allowed per hour",
+            "X-RateLimit-Remaining": "requests remaining this hour",
+            "X-RateLimit-Reset": "unix timestamp when limit resets",
         },
     }
 
