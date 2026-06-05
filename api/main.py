@@ -24,9 +24,9 @@ if _USE_PG:
 
 # ── Version ────────────────────────────────────────────────────────────────────
 
-API_VERSION = "0.5.0"
+API_VERSION = "0.6.0"
 LIBRARY_VERSION = "2026-06-05"
-SCORING_VERSION = "0.7.0"
+SCORING_VERSION = "0.8.0"
 
 # ── Config ─────────────────────────────────────────────────────────────────────
 
@@ -788,21 +788,27 @@ def timing_assessment(plant: dict, start_type: str, month: int, lat: float,
 
 
 def filter_and_score(plants: list[dict], context: str, temp: float, sun: float,
-                     orientation: str, data_confidence: str, mode: str,
+                     orientation: str, data_confidence: str,
                      species: str | None, variety_type: str | None,
                      start_type: str = "seed", lat: float = 0.0,
                      month: int = 6, winter_min_temp: float | None = None,
-                     week: int | None = None) -> dict:
+                     week: int | None = None,
+                     limit: int = 10, min_score: float = RELIABLE_THRESHOLD,
+                     optimistic: bool = False, shuffle: bool = False,
+                     pool: int = 30,
+                     exclude: list[str] | None = None) -> dict:
     candidates = [p for p in plants if context in p.get("context", [])]
     if species:
         candidates = [p for p in candidates if p.get("species") == species]
     if variety_type:
         candidates = [p for p in candidates if p.get("type") == variety_type]
+    if exclude:
+        candidates = [p for p in candidates if p.get("id") not in exclude]
 
     winter_temp = winter_min_temp if winter_min_temp is not None else coldest_month_temp(lat)
     location_zone = usda_zone_from_temp(winter_temp)
 
-    def _score_and_enrich(p, optimistic=False):
+    def _score_and_enrich(p):
         result = score_plant(p, temp, sun, orientation, data_confidence, context, optimistic, lat, month)
         enriched = _enrich(p, result)
         enriched["timing"] = timing_assessment(p, start_type, month, lat, week)
@@ -814,56 +820,8 @@ def filter_and_score(plants: list[dict], context: str, temp: float, sun: float,
         )
         if context in ("balcony", "garden"):
             enriched["overwinter"] = overwinter_assessment(p, location_zone)
-        return enriched
-
-    TIMING_RANK = {"ok": 0, "tight": 1, "year_round": 0, "too_late": 2}
-
-    def _sort_key(p):
-        timing_rank = TIMING_RANK.get(p.get("timing", {}).get("status", "ok"), 2)
-        weeks = p.get("weeks_to_harvest") or p.get("grow_time_weeks", 99)
-        return (-p["match_score"], timing_rank, weeks)
-
-    all_scored = sorted(
-        [_score_and_enrich(p) for p in candidates],
-        key=_sort_key
-    )
-    reliable = [p for p in all_scored if p["match_score"] >= RELIABLE_THRESHOLD]
-    weak = [p for p in all_scored if p["match_score"] < RELIABLE_THRESHOLD]
-
-    if mode == "top10":
-        return {
-            "results": reliable[:10],
-            "hidden_weak": len(weak),
-            "mode_note": f"Up to 10 reliable recommendations (final_confidence ≥ {RELIABLE_THRESHOLD}). {len(weak)} weak match{'es' if len(weak) != 1 else ''} hidden.",
-            "empty_state": None if reliable else {
-                "title": "No reliable recommendations",
-                "message": "No herbs passed the reliability threshold for this location, orientation and month.",
-                "suggestions": ["Try a south-facing window", "Try a warmer month",
-                                "Use optimistic mode for stretch options", "Use all mode to inspect weak matches"],
-            },
-        }
-
-    if mode == "optimal":
-        return {
-            "results": reliable[:1],
-            "hidden_weak": len(all_scored) - (1 if reliable else 0),
-            "mode_note": "Single best reliable recommendation." if reliable else "No reliable optimal recommendation for these conditions.",
-            "empty_state": None if reliable else {
-                "title": "No reliable optimal pick",
-                "message": "The best available match did not pass the confidence threshold.",
-                "suggestions": ["Use optimistic mode for a stretch suggestion", "Try a different orientation or month"],
-            },
-        }
-
-    if mode == "optimistic":
-        opt_scored = sorted(
-            [_score_and_enrich(p, optimistic=True) for p in candidates],
-            key=lambda x: x["match_score"], reverse=True
-        )
-        stretch = [p for p in opt_scored if OPTIMISTIC_RANGE[0] <= p["match_score"] <= OPTIMISTIC_RANGE[1]]
-        pick = (stretch or opt_scored or [None])[0]
-        if pick:
-            bd = pick.get("score_breakdown", {})
+        if optimistic:
+            bd = enriched.get("score_breakdown", {})
             needs = []
             t = bd.get("temperature", {})
             s = bd.get("sun", {})
@@ -874,20 +832,47 @@ def filter_and_score(plants: list[dict], context: str, temp: float, sun: float,
                 needs.append("grow light or brighter window")
             if h.get("label") in ("acceptable", "risky"):
                 needs.append("good drainage and appropriate pot size")
-            pick = {**pick, "could_work_if": needs or ["conditions are close — try it"]}
-        return {
-            "results": [pick] if pick else [],
-            "hidden_weak": 0,
-            "mode_note": "Stretch recommendation — may work with some adjustment.",
-            "empty_state": None,
-        }
+            enriched["could_work_if"] = needs or ["conditions are close — try it"]
+        return enriched
 
-    # all
+    TIMING_RANK = {"ok": 0, "tight": 1, "year_round": 0, "too_late": 2}
+
+    def _sort_key(p):
+        timing_rank = TIMING_RANK.get(p.get("timing", {}).get("status", "ok"), 2)
+        weeks = p.get("weeks_to_harvest") or p.get("grow_time_weeks", 99)
+        return (-p["match_score"], timing_rank, weeks)
+
+    all_scored = sorted([_score_and_enrich(p) for p in candidates], key=_sort_key)
+    qualified = [p for p in all_scored if p["match_score"] >= min_score]
+    hidden = len(all_scored) - len(qualified)
+
+    if shuffle and qualified:
+        # Score-banded shuffle: plants within 0.05 of each other are equally good
+        import random
+        BAND = 0.05
+        result = []
+        i = 0
+        while i < len(qualified):
+            band_score = qualified[i]["match_score"]
+            band = [p for p in qualified[i:] if band_score - p["match_score"] <= BAND]
+            random.shuffle(band)
+            result.extend(band)
+            i += len(band)
+        qualified = result
+
+    # Draw from a pool wider than limit to give shuffle meaningful variation
+    draw_pool = qualified[:max(pool, limit)]
+    results = draw_pool[:limit]
+
     return {
-        "results": all_scored,
-        "hidden_weak": 0,
-        "mode_note": "All ranked matches including weak and unsuitable. Research/debug mode.",
-        "empty_state": None,
+        "results": results,
+        "total_qualified": len(qualified),
+        "hidden_weak": hidden,
+        "empty_state": None if results else {
+            "title": "No recommendations",
+            "message": f"No plants passed the score threshold ({min_score}) for this location and conditions.",
+            "suggestions": ["Lower min_score", "Try optimistic=true", "Try a different orientation"],
+        },
     }
 
 
@@ -923,17 +908,23 @@ async def recommend(
     context: str = Query(..., pattern="^(windowsill|balcony|garden)$"),
     month: int = Query(default=0, ge=0, le=12),
     week: int | None = Query(default=None, ge=1, le=53),
-    mode: str = Query(default="top10", pattern="^(all|top10|optimal|optimistic)$"),
+    limit: int = Query(default=10, ge=1, le=50),
+    min_score: float = Query(default=RELIABLE_THRESHOLD, ge=0.0, le=1.0),
+    optimistic: bool = Query(default=False),
+    shuffle: bool = Query(default=False),
+    pool: int = Query(default=30, ge=1, le=145),
+    exclude: str | None = Query(default=None),
     species: str | None = Query(default=None),
     type: str | None = Query(default=None),
     start_type: str = Query(default="seed", pattern="^(seed|plant)$"),
     _access: dict = Depends(require_access),
 ):
-    # week takes priority — derive month from it if not supplied
     if week is not None:
         m = week_to_month(week) if month == 0 else month
     else:
         m = month if month > 0 else datetime.now().month
+
+    exclude_ids = [e.strip() for e in exclude.split(",")] if exclude else None
 
     climate_data = await fetch_all_monthly_temps(lat, lng)
     cond = await get_conditions(lat, lng, orientation, m, week, context)
@@ -943,9 +934,11 @@ async def recommend(
     else:
         winter_min = coldest_month_temp(lat)
     scored = filter_and_score(plants, context, cond["avg_temp"], cond["sun_hours_direct"],
-                              orientation, cond["data_confidence"], mode, species, type,
+                              orientation, cond["data_confidence"], species, type,
                               start_type=start_type, lat=lat, month=m,
-                              winter_min_temp=winter_min, week=week)
+                              winter_min_temp=winter_min, week=week,
+                              limit=limit, min_score=min_score, optimistic=optimistic,
+                              shuffle=shuffle, pool=pool, exclude=exclude_ids)
     location_zone = usda_zone_from_temp(winter_min)
     zone_basis = "Open-Meteo archive" if (climate_data and climate_data["months"]) else "latitude estimate"
     return {
@@ -953,11 +946,10 @@ async def recommend(
         "location": {"lat": lat, "lng": lng},
         "conditions": {**cond, "context": context},
         "location_zone": {"usda": location_zone, "basis": zone_basis},
-        "mode": mode,
         "start_type": start_type,
-        "mode_note": scored["mode_note"],
         "result_type": "estimated" if cond["data_confidence"] != "high" else "standard",
         "count": len(scored["results"]),
+        "total_qualified": scored["total_qualified"],
         "hidden_weak": scored["hidden_weak"],
         "empty_state": scored["empty_state"],
         "recommendations": scored["results"],
@@ -970,7 +962,9 @@ async def calendar(
     lng: float = Query(..., ge=-180, le=180),
     orientation: str = Query(..., pattern="^(N|NE|E|SE|S|SW|W|NW)$"),
     context: str = Query(..., pattern="^(windowsill|balcony|garden)$"),
-    mode: str = Query(default="optimal", pattern="^(all|top10|optimal|optimistic)$"),
+    limit: int = Query(default=3, ge=1, le=10),
+    min_score: float = Query(default=RELIABLE_THRESHOLD, ge=0.0, le=1.0),
+    optimistic: bool = Query(default=False),
     species: str | None = Query(default=None),
     type: str | None = Query(default=None),
     start_type: str = Query(default="seed", pattern="^(seed|plant)$"),
@@ -994,16 +988,16 @@ async def calendar(
         m_adj = ((m - 1 + 6) % 12) + 1 if lat < 0 else m
         daylight = round(12 + math.sin(((m_adj - 3) / 12) * 2 * math.pi) * (abs_lat / 90 * 8), 1)
         sun = calc_sun_hours(lat, orientation, m, context)
-        scored = filter_and_score(plants, context, temp, sun, orientation, confidence, mode, species, type,
-                                  start_type=start_type, lat=lat, month=m, winter_min_temp=winter_min)
-        best = scored["results"][0] if scored["results"] else None
+        scored = filter_and_score(plants, context, temp, sun, orientation, confidence, species, type,
+                                  start_type=start_type, lat=lat, month=m, winter_min_temp=winter_min,
+                                  limit=limit, min_score=min_score, optimistic=optimistic)
         months.append({
             "month": m,
             "month_name": MONTH_NAMES[m],
             "avg_temp": temp,
             "sun_hours_direct": sun,
             "data_confidence": confidence,
-            "recommendation": best,
+            "recommendations": scored["results"],
         })
 
     overall = "high" if all(m["data_confidence"] == "high" for m in months) else "mixed"
@@ -1012,7 +1006,6 @@ async def calendar(
         "location": {"lat": lat, "lng": lng, "elevation": elevation},
         "orientation": orientation,
         "context": context,
-        "mode": mode,
         "data_confidence": overall,
         "calendar": months,
     }
@@ -1059,6 +1052,53 @@ async def variety(plant_id: str, _access: dict = Depends(require_access)):
     if not match:
         raise HTTPException(status_code=404, detail=f"Variety {plant_id} not found.")
     return {**version_block(), **match}
+
+
+@app.get("/v1/now")
+async def now(
+    lat: float = Query(..., ge=-90, le=90),
+    lng: float = Query(..., ge=-180, le=180),
+    orientation: str = Query(..., pattern="^(N|NE|E|SE|S|SW|W|NW)$"),
+    context: str = Query(..., pattern="^(windowsill|balcony|garden)$"),
+    start_type: str = Query(default="seed", pattern="^(seed|plant)$"),
+    optimistic: bool = Query(default=False),
+    _access: dict = Depends(require_access),
+):
+    current_week = datetime.utcnow().isocalendar()[1]
+    current_month = datetime.utcnow().month
+
+    climate_data = await fetch_all_monthly_temps(lat, lng)
+    cond = await get_conditions(lat, lng, orientation, current_month, current_week, context)
+    plants = load_plants()
+    winter_min = min(climate_data["months"].values()) if climate_data and climate_data["months"] else coldest_month_temp(lat)
+
+    scored = filter_and_score(plants, context, cond["avg_temp"], cond["sun_hours_direct"],
+                              orientation, cond["data_confidence"], None, None,
+                              start_type=start_type, lat=lat, month=current_month,
+                              winter_min_temp=winter_min, week=current_week,
+                              limit=5, min_score=RELIABLE_THRESHOLD,
+                              optimistic=optimistic, shuffle=True, pool=20)
+
+    # what to harvest now — plants that are past their grow time
+    harvest_now = [p for p in plants
+                   if context in p.get("context", [])
+                   and p.get("grow_time_weeks", 99) <= 4]
+
+    # what needs attention — frost within 6 weeks
+    frost_w = weeks_until_frost(lat, current_month, current_week)
+    frost_warning = None
+    if frost_w is not None and frost_w <= 6:
+        frost_warning = f"Frost expected in ~{frost_w} weeks — move tender plants indoors or harvest now."
+
+    return {
+        **version_block(),
+        "location": {"lat": lat, "lng": lng},
+        "week": current_week,
+        "week_label": week_label(current_week, current_month),
+        "conditions": {**cond, "context": context},
+        "plant_now": scored["results"],
+        "watch_out": [w for w in [frost_warning] if w],
+    }
 
 
 @app.get("/v1/status")
