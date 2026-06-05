@@ -4,7 +4,7 @@ Geo-climate edible plant growing recommendation API.
 
 Send a GPS coordinate, a growing context, and a month — get back the best plants to grow for that exact location, based on historical climate data and astronomical sun calculations.
 
-**Live API:** https://windowsill-api-production.up.railway.app  
+**Live API:** https://api.windowsill.dk  
 **Documentation:** https://windowsill.dk/docs.html  
 **Contribute a plant:** https://windowsill.dk/contribute.html
 
@@ -15,7 +15,7 @@ Send a GPS coordinate, a growing context, and a month — get back the best plan
 No key required. 60 requests per hour per IP.
 
 ```bash
-curl "https://windowsill-api-production.up.railway.app/v1/recommend?lat=55.67&lng=12.57&orientation=S&context=garden&month=6"
+curl "https://api.windowsill.dk/v1/recommend?lat=55.67&lng=12.57&orientation=S&context=garden&month=6"
 ```
 
 Response:
@@ -85,10 +85,10 @@ Pass key as header or query parameter:
 
 ```bash
 # Header (preferred)
-curl -H "X-API-Key: your-key" "https://windowsill-api-production.up.railway.app/v1/recommend?..."
+curl -H "X-API-Key: your-key" "https://api.windowsill.dk/v1/recommend?..."
 
 # Query parameter
-curl "https://windowsill-api-production.up.railway.app/v1/recommend?api_key=your-key&..."
+curl "https://api.windowsill.dk/v1/recommend?api_key=your-key&..."
 ```
 
 Keys via email: api@windowsill.dk

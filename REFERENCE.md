@@ -1,7 +1,7 @@
 # Windowsill API — Technical Reference
 
 Version: API v0.2.0 · Library 2026-06-05 · Scoring v0.5.0  
-Base URL: https://windowsill-api-production.up.railway.app  
+Base URL: https://api.windowsill.dk  
 Documentation: https://windowsill.dk/docs.html  
 Source: https://github.com/DennisHedegreen/windowsill-api
 
@@ -16,7 +16,7 @@ Windowsill gives growing recommendations, not guarantees. A `match_score` of 1.0
 ## Base URL
 
 ```
-https://windowsill-api-production.up.railway.app
+https://api.windowsill.dk
 ```
 
 All endpoints accept `GET` requests. All responses are JSON.
@@ -32,10 +32,10 @@ No key required for up to 60 requests per hour per IP.
 
 ```bash
 # Header (preferred)
-curl -H "X-API-Key: your-key" "https://windowsill-api-production.up.railway.app/v1/recommend?..."
+curl -H "X-API-Key: your-key" "https://api.windowsill.dk/v1/recommend?..."
 
 # Query parameter
-curl "https://windowsill-api-production.up.railway.app/v1/recommend?api_key=your-key&..."
+curl "https://api.windowsill.dk/v1/recommend?api_key=your-key&..."
 ```
 
 Keys via email: api@windowsill.dk
@@ -92,7 +92,7 @@ Ranked plant recommendations for a location and month.
 **Example**
 
 ```bash
-curl "https://windowsill-api-production.up.railway.app/v1/recommend?lat=55.67&lng=12.57&orientation=S&context=garden&month=6&start_type=seed"
+curl "https://api.windowsill.dk/v1/recommend?lat=55.67&lng=12.57&orientation=S&context=garden&month=6&start_type=seed"
 ```
 
 **Response fields**
@@ -131,7 +131,7 @@ Best plant per month, full year view.
 Same parameters as `/v1/recommend` except `month` is not accepted — returns all 12 months.
 
 ```bash
-curl "https://windowsill-api-production.up.railway.app/v1/calendar?lat=55.67&lng=12.57&orientation=S&context=garden&mode=optimal"
+curl "https://api.windowsill.dk/v1/calendar?lat=55.67&lng=12.57&orientation=S&context=garden&mode=optimal"
 ```
 
 Returns a `calendar` array with one entry per month. Each entry includes the best plant recommendation, avg temperature, and sun hours for that month.
@@ -156,7 +156,7 @@ Climate data for a location and month, without plant recommendations.
 Full plant library, optionally filtered by context.
 
 ```bash
-curl "https://windowsill-api-production.up.railway.app/v1/library?context=windowsill"
+curl "https://api.windowsill.dk/v1/library?context=windowsill"
 ```
 
 ---
