@@ -917,7 +917,7 @@ async def library(
 
 @app.get("/")
 async def root(request: Request):
-    base = str(request.base_url).rstrip("/")
+    base = os.getenv("PUBLIC_URL", str(request.base_url).rstrip("/")).rstrip("/")
     return {
         **version_block(),
         "name": "Windowsill API",
