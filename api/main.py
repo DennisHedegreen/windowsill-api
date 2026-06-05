@@ -24,7 +24,7 @@ if _USE_PG:
 
 # ── Version ────────────────────────────────────────────────────────────────────
 
-API_VERSION = "0.3.0"
+API_VERSION = "0.4.0"
 LIBRARY_VERSION = "2026-06-05"
 SCORING_VERSION = "0.6.0"
 
@@ -322,7 +322,13 @@ def load_plants() -> list[dict]:
 
 # ── Climate ────────────────────────────────────────────────────────────────────
 
-_climate_cache: dict[tuple, dict] = {}  # key → {"months": {1..12: float}, "elevation": float|None}
+_climate_cache: dict[tuple, dict] = {}  # key → {"months": {1..12}, "weeks": {1..53}, "elevation": float|None}
+
+
+def _iso_week(date_str: str) -> int:
+    from datetime import date
+    d = date(int(date_str[:4]), int(date_str[5:7]), int(date_str[8:10]))
+    return d.isocalendar()[1]
 
 
 async def fetch_all_monthly_temps(lat: float, lng: float) -> dict | None:
@@ -342,16 +348,19 @@ async def fetch_all_monthly_temps(lat: float, lng: float) -> dict | None:
             data = r.json()
         times = data["daily"]["time"]
         temps = data["daily"]["temperature_2m_mean"]
-        buckets: dict[int, list[float]] = {m: [] for m in range(1, 13)}
+        month_buckets: dict[int, list[float]] = {m: [] for m in range(1, 13)}
+        week_buckets: dict[int, list[float]] = {w: [] for w in range(1, 54)}
         for d, t in zip(times, temps):
             if t is not None:
-                buckets[int(d[5:7])].append(t)
-        months = {m: round(sum(v) / len(v), 1) for m, v in buckets.items() if v}
+                month_buckets[int(d[5:7])].append(t)
+                week_buckets[_iso_week(d)].append(t)
+        months = {m: round(sum(v) / len(v), 1) for m, v in month_buckets.items() if v}
+        weeks = {w: round(sum(v) / len(v), 1) for w, v in week_buckets.items() if v}
         elevation = data.get("elevation")
         if elevation is not None:
             elevation = round(float(elevation), 1)
         if months:
-            result = {"months": months, "elevation": elevation}
+            result = {"months": months, "weeks": weeks, "elevation": elevation}
             _climate_cache[key] = result
             return result
         return None
@@ -369,24 +378,52 @@ async def fetch_elevation(lat: float, lng: float) -> float | None:
     return data["elevation"] if data else None
 
 
-def estimate_temp(lat: float, month: int) -> float:
+def iso_week_to_day_of_year(week: int) -> float:
+    """Mid-point day of year for an ISO week (week 1 ≈ day 4, each week = 7 days)."""
+    return (week - 1) * 7 + 4
+
+
+def week_to_month(week: int) -> int:
+    """Approximate month for a given ISO week number."""
+    from datetime import date
+    # Use a non-leap year; week 53 maps to January of next year → return 12
+    try:
+        d = date.fromisocalendar(2015, min(week, 52), 4)
+        return d.month
+    except Exception:
+        return 12
+
+
+def estimate_temp_by_doy(lat: float, doy: float) -> float:
+    """Estimate temperature from day-of-year (1–365) instead of month mid-point."""
     abs_lat = abs(lat)
-    m = ((month - 1 + 6) % 12) + 1 if lat < 0 else month
+    # Southern hemisphere: shift by 182 days
+    d = (doy + 182) % 365 if lat < 0 else doy
     seasonal_amplitude = min(abs_lat * 0.4, 16)
-    seasonal = math.cos(((m - 7) / 12) * 2 * math.pi) * seasonal_amplitude
+    seasonal = math.cos(((d - 196) / 365) * 2 * math.pi) * seasonal_amplitude
     return round(27 - abs_lat * 0.55 + seasonal, 1)
 
 
-def calc_sun_hours(lat: float, orientation: str, month: int) -> float:
+def estimate_temp(lat: float, month: int) -> float:
+    doy = (month - 1) * 30.4 + 15
+    return estimate_temp_by_doy(lat, doy)
+
+
+def calc_sun_hours_by_doy(lat: float, orientation: str, doy: float) -> float:
     abs_lat = abs(lat)
-    m = ((month - 1 + 6) % 12) + 1 if lat < 0 else month
-    daylight = 12 + math.sin(((m - 3) / 12) * 2 * math.pi) * (abs_lat / 90 * 8)
+    d = (doy + 182) % 365 if lat < 0 else doy
+    daylight = 12 + math.sin(((d - 80) / 365) * 2 * math.pi) * (abs_lat / 90 * 8)
     factors = (
         {"S": 0.10, "SE": 0.25, "SW": 0.25, "E": 0.40, "W": 0.40, "NE": 0.55, "NW": 0.55, "N": 0.70}
         if lat < 0 else
         {"S": 0.70, "SE": 0.55, "SW": 0.55, "E": 0.40, "W": 0.40, "NE": 0.25, "NW": 0.25, "N": 0.10}
     )
     return round(daylight * factors[orientation], 1)
+
+
+def calc_sun_hours(lat: float, orientation: str, month: int) -> float:
+    doy = (month - 1) * 30.4 + 15
+    return calc_sun_hours_by_doy(lat, orientation, doy)
 
 
 def build_warnings(lat: float, data_confidence: str) -> list[str]:
@@ -402,32 +439,55 @@ def build_warnings(lat: float, data_confidence: str) -> list[str]:
     return warnings
 
 
-async def get_conditions(lat: float, lng: float, orientation: str, month: int) -> dict:
+def week_label(week: int, month: int) -> str:
+    week_in_month = ((week - 1) % 4) + 1
+    labels = ["early", "mid", "late", "late"]
+    return f"Week {week} ({labels[week_in_month - 1]} {MONTH_NAMES[month]})"
+
+
+async def get_conditions(lat: float, lng: float, orientation: str,
+                         month: int, week: int | None = None) -> dict:
     climate_data = await fetch_all_monthly_temps(lat, lng)
     data_source = "Open-Meteo archive 2003–2022"
     data_confidence = "high"
     elevation = None
 
-    if climate_data:
-        temp = climate_data["months"].get(month)
-        elevation = climate_data["elevation"]
+    if week is not None:
+        doy = iso_week_to_day_of_year(week)
+        if climate_data:
+            temp = climate_data["weeks"].get(week)
+            elevation = climate_data["elevation"]
+        else:
+            temp = None
+        if temp is None:
+            temp = estimate_temp_by_doy(lat, doy)
+            data_source = "latitude estimate"
+            data_confidence = "low"
+        sun = calc_sun_hours_by_doy(lat, orientation, doy)
+        abs_lat = abs(lat)
+        d_adj = (doy + 182) % 365 if lat < 0 else doy
+        daylight = round(12 + math.sin(((d_adj - 80) / 365) * 2 * math.pi) * (abs_lat / 90 * 8), 1)
     else:
-        temp = None
-
-    if temp is None:
-        temp = estimate_temp(lat, month)
-        data_source = "latitude estimate"
-        data_confidence = "low"
+        doy = None
+        if climate_data:
+            temp = climate_data["months"].get(month)
+            elevation = climate_data["elevation"]
+        else:
+            temp = None
+        if temp is None:
+            temp = estimate_temp(lat, month)
+            data_source = "latitude estimate"
+            data_confidence = "low"
+        sun = calc_sun_hours(lat, orientation, month)
+        abs_lat = abs(lat)
+        m_adj = ((month - 1 + 6) % 12) + 1 if lat < 0 else month
+        daylight = round(12 + math.sin(((m_adj - 3) / 12) * 2 * math.pi) * (abs_lat / 90 * 8), 1)
 
     # Elevation lapse rate: −0.6°C per 100m
     if elevation and elevation > 0:
         temp = round(temp - (elevation / 100) * 0.6, 1)
 
-    abs_lat = abs(lat)
-    m_adj = ((month - 1 + 6) % 12) + 1 if lat < 0 else month
-    daylight = round(12 + math.sin(((m_adj - 3) / 12) * 2 * math.pi) * (abs_lat / 90 * 8), 1)
-    sun = calc_sun_hours(lat, orientation, month)
-    return {
+    result = {
         "month": month,
         "month_name": MONTH_NAMES[month],
         "avg_temp": temp,
@@ -440,6 +500,10 @@ async def get_conditions(lat: float, lng: float, orientation: str, month: int) -
         "warnings": build_warnings(lat, data_confidence),
         "indoor_note": "Outdoor climate normal used as baseline. Indoor windowsill temperature may differ.",
     }
+    if week is not None:
+        result["week"] = week
+        result["week_label"] = week_label(week, month)
+    return result
 
 
 # ── Scoring ────────────────────────────────────────────────────────────────────
@@ -573,29 +637,39 @@ def _enrich(plant: dict, score_result: dict) -> dict:
     }
 
 
-def weeks_until_frost(lat: float, month: int) -> int | None:
-    """Rough estimate of weeks until first frost based on latitude and current month.
-    Returns None if frost is not expected (tropical/subtropical climates)."""
+def first_frost_week(lat: float) -> int | None:
+    """ISO week of typical first frost. Returns None for tropical climates."""
     abs_lat = abs(lat)
     if abs_lat < 25:
-        return None  # frost unlikely
-    # Approximate first frost month based on latitude
+        return None
     if abs_lat >= 60:
-        first_frost_month = 9   # September
+        frost_week = 36   # ~early September
     elif abs_lat >= 50:
-        first_frost_month = 10  # October
+        frost_week = 42   # ~mid October
     elif abs_lat >= 40:
-        first_frost_month = 11  # November
+        frost_week = 46   # ~mid November
     else:
-        first_frost_month = 12  # December
-
-    # Southern hemisphere: flip
+        frost_week = 50   # ~mid December
+    # Southern hemisphere: shift by 26 weeks
     if lat < 0:
-        first_frost_month = ((first_frost_month + 5) % 12) + 1
+        frost_week = ((frost_week + 26 - 1) % 52) + 1
+    return frost_week
 
-    if month <= first_frost_month:
-        return (first_frost_month - month) * 4
-    return None  # past frost already — next year
+
+def weeks_until_frost(lat: float, month: int, week: int | None = None) -> int | None:
+    """Weeks until first frost. Uses ISO week when available for precision."""
+    frost_week = first_frost_week(lat)
+    if frost_week is None:
+        return None
+    if week is not None:
+        if week <= frost_week:
+            return frost_week - week
+        return None  # past frost — next year
+    # Month-based fallback
+    current_week = (month - 1) * 4 + 2
+    if current_week <= frost_week:
+        return frost_week - current_week
+    return None
 
 
 def coldest_month_temp(lat: float) -> float:
@@ -639,13 +713,14 @@ def overwinter_assessment(plant: dict, location_zone: int) -> dict:
                 "note": f"Annual only at this location — cannot overwinter outdoors (zone {plant_zone} plant, zone {location_zone} here)."}
 
 
-def timing_assessment(plant: dict, start_type: str, month: int, lat: float) -> dict:
+def timing_assessment(plant: dict, start_type: str, month: int, lat: float,
+                      week: int | None = None) -> dict:
     """Assess whether there is enough time to harvest before frost/winter."""
     weeks_needed = (plant.get("weeks_from_transplant") or plant.get("grow_time_weeks", 8)
                     if start_type == "plant"
                     else plant.get("grow_time_weeks", 8))
 
-    frost_weeks = weeks_until_frost(lat, month)
+    frost_weeks = weeks_until_frost(lat, month, week)
 
     if frost_weeks is None:
         return {"status": "ok", "note": "No frost expected — year-round growing possible."}
@@ -673,7 +748,8 @@ def filter_and_score(plants: list[dict], context: str, temp: float, sun: float,
                      orientation: str, data_confidence: str, mode: str,
                      species: str | None, variety_type: str | None,
                      start_type: str = "seed", lat: float = 0.0,
-                     month: int = 6, winter_min_temp: float | None = None) -> dict:
+                     month: int = 6, winter_min_temp: float | None = None,
+                     week: int | None = None) -> dict:
     candidates = [p for p in plants if context in p.get("context", [])]
     if species:
         candidates = [p for p in candidates if p.get("species") == species]
@@ -686,7 +762,7 @@ def filter_and_score(plants: list[dict], context: str, temp: float, sun: float,
     def _score_and_enrich(p, optimistic=False):
         result = score_plant(p, temp, sun, orientation, data_confidence, context, optimistic, lat, month)
         enriched = _enrich(p, result)
-        enriched["timing"] = timing_assessment(p, start_type, month, lat)
+        enriched["timing"] = timing_assessment(p, start_type, month, lat, week)
         enriched["start_type"] = start_type
         enriched["weeks_to_harvest"] = (
             p.get("weeks_from_transplant") or p.get("grow_time_weeks", 8)
@@ -803,24 +879,30 @@ async def recommend(
     orientation: str = Query(..., pattern="^(N|NE|E|SE|S|SW|W|NW)$"),
     context: str = Query(..., pattern="^(windowsill|balcony|garden)$"),
     month: int = Query(default=0, ge=0, le=12),
+    week: int | None = Query(default=None, ge=1, le=53),
     mode: str = Query(default="top10", pattern="^(all|top10|optimal|optimistic)$"),
     species: str | None = Query(default=None),
     type: str | None = Query(default=None),
     start_type: str = Query(default="seed", pattern="^(seed|plant)$"),
     _access: dict = Depends(require_access),
 ):
-    m = month if month > 0 else datetime.now().month
+    # week takes priority — derive month from it if not supplied
+    if week is not None:
+        m = week_to_month(week) if month == 0 else month
+    else:
+        m = month if month > 0 else datetime.now().month
+
     climate_data = await fetch_all_monthly_temps(lat, lng)
-    cond = await get_conditions(lat, lng, orientation, m)
+    cond = await get_conditions(lat, lng, orientation, m, week)
     plants = load_plants()
-    # Real winter minimum from climate data — fall back to latitude estimate
     if climate_data and climate_data["months"]:
         winter_min = min(climate_data["months"].values())
     else:
         winter_min = coldest_month_temp(lat)
     scored = filter_and_score(plants, context, cond["avg_temp"], cond["sun_hours_direct"],
                               orientation, cond["data_confidence"], mode, species, type,
-                              start_type=start_type, lat=lat, month=m, winter_min_temp=winter_min)
+                              start_type=start_type, lat=lat, month=m,
+                              winter_min_temp=winter_min, week=week)
     location_zone = usda_zone_from_temp(winter_min)
     zone_basis = "Open-Meteo archive" if (climate_data and climate_data["months"]) else "latitude estimate"
     return {
@@ -899,10 +981,14 @@ async def conditions(
     lng: float = Query(..., ge=-180, le=180),
     orientation: str = Query(..., pattern="^(N|NE|E|SE|S|SW|W|NW)$"),
     month: int = Query(default=0, ge=0, le=12),
+    week: int | None = Query(default=None, ge=1, le=53),
     _access: dict = Depends(require_access),
 ):
-    m = month if month > 0 else datetime.now().month
-    cond = await get_conditions(lat, lng, orientation, m)
+    if week is not None:
+        m = week_to_month(week) if month == 0 else month
+    else:
+        m = month if month > 0 else datetime.now().month
+    cond = await get_conditions(lat, lng, orientation, m, week)
     return {**version_block(), "location": {"lat": lat, "lng": lng}, **cond}
 
 
