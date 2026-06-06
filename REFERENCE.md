@@ -104,6 +104,7 @@ Ranked plant recommendations for a location and time.
 | `start_type` | no | enum | `seed` | `seed` or `plant` — affects timing and weeks to harvest |
 | `species` | no | string | — | Filter by species slug, e.g. `basil`, `tomato`, `kale` |
 | `type` | no | string | — | Filter by variety type: `op` `heirloom` `hybrid` |
+| `format` | no | enum | — | Use `rima` for a compact Heat Pressure/Rima response shape |
 
 **Examples**
 
@@ -122,6 +123,9 @@ curl "https://api.windowsill.dk/v1/recommend?lat=55.67&lng=12.57&orientation=N&c
 
 # Exclude plants you already have
 curl "https://api.windowsill.dk/v1/recommend?lat=55.67&lng=12.57&orientation=S&context=garden&week=22&exclude=WSL-0001,WSL-0038"
+
+# Compact Heat Pressure/Rima response
+curl "https://api.windowsill.dk/v1/recommend?lat=55.67&lng=12.57&orientation=S&context=windowsill&week=22&format=rima"
 ```
 
 **Response fields**
@@ -157,6 +161,58 @@ curl "https://api.windowsill.dk/v1/recommend?lat=55.67&lng=12.57&orientation=S&c
 | `score_breakdown` | Scores per factor: temperature, sun, habit |
 | `could_work_if` | Present when `optimistic=true` — what adjustments would help |
 | `safety` | Present if plant has culinary safety flags |
+
+#### Compact Rima response
+
+`format=rima` keeps `/v1/recommend` backwards compatible while returning a smaller response shape for Heat Pressure's Rima panel.
+
+```json
+{
+  "api_version": "0.6.0",
+  "library_version": "2026-06-05",
+  "scoring_version": "0.8.0",
+  "format": "rima",
+  "location": {
+    "lat": 55.67,
+    "lng": 12.57
+  },
+  "conditions": {
+    "week": 22,
+    "week_label": "Week 22 (mid May)",
+    "month": 5,
+    "month_name": "May",
+    "avg_temp": 16.4,
+    "sun_hours_direct": 5.2,
+    "orientation": "S",
+    "context": "windowsill",
+    "data_source": "Open-Meteo archive 2003–2022",
+    "data_confidence": "high",
+    "warnings": [],
+    "indoor_note": "Outdoor climate normal used as baseline. Indoor windowsill temperature may differ."
+  },
+  "recommendations": [
+    {
+      "id": "WSL-0001",
+      "name": "Genovese Basil",
+      "local_name": "Genovese Basilikum",
+      "latin": "Ocimum basilicum 'Genovese'",
+      "species": "basil",
+      "type": "op",
+      "type_label": "open-pollinated",
+      "could_work": "5.2h direct S-facing light for a windowsill. Enough time — harvest expected ~6w, frost ~27w away.",
+      "likely_failure": "Pinch regularly to stay compact — bolts quickly without it.",
+      "grow_time_weeks": 6,
+      "match_score": 0.94,
+      "timing": {
+        "status": "ok",
+        "note": "Enough time — harvest expected ~6w, frost ~27w away."
+      },
+      "safety": null,
+      "data_warning": "Plant data is seeded and needs source verification."
+    }
+  ]
+}
+```
 
 ---
 

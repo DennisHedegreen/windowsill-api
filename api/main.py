@@ -2,6 +2,7 @@ import asyncio
 import json
 import math
 import os
+import re
 import time
 import hashlib
 import sqlite3
@@ -42,6 +43,9 @@ OPTIMISTIC_RANGE = (0.35, 0.68)
 RATE_LIMIT_NO_KEY = int(os.getenv("RATE_LIMIT_NO_KEY", "60"))  # per hour
 _cors_env = os.getenv("CORS_ORIGINS", "*")
 CORS_ORIGINS = ["*"] if _cors_env.strip() == "*" else _cors_env.split(",")
+DEFAULT_CORS_ORIGIN_REGEX = r"^https://(www\.)?hedegreenresearch\.com$|^http://(localhost|127\.0\.0\.1):\d+$"
+CORS_ORIGIN_REGEX = os.getenv("CORS_ORIGIN_REGEX", DEFAULT_CORS_ORIGIN_REGEX).strip() or None
+_CORS_ORIGIN_RE = re.compile(CORS_ORIGIN_REGEX) if CORS_ORIGIN_REGEX else None
 
 PLAN_LIMITS = {
     "free": 1_000,
@@ -129,6 +133,7 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=CORS_ORIGINS,
+    allow_origin_regex=CORS_ORIGIN_REGEX,
     allow_methods=["GET", "OPTIONS"],
     allow_headers=["*"],
     allow_credentials=False,
@@ -137,12 +142,23 @@ app.add_middleware(
 
 # ── CORS preflight catch-all ───────────────────────────────────────────────────
 
+def cors_origin_for_request(request: Request) -> str:
+    origin = request.headers.get("origin")
+    if not origin:
+        return "*"
+    if "*" in CORS_ORIGINS or origin in CORS_ORIGINS:
+        return origin
+    if _CORS_ORIGIN_RE and _CORS_ORIGIN_RE.match(origin):
+        return origin
+    return "null"
+
+
 @app.options("/{rest_of_path:path}")
 async def preflight(rest_of_path: str, request: Request):
     return JSONResponse(
         content={},
         headers={
-            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Origin": cors_origin_for_request(request),
             "Access-Control-Allow-Methods": "GET, OPTIONS",
             "Access-Control-Allow-Headers": "*",
             "Access-Control-Max-Age": "600",
@@ -680,6 +696,109 @@ def _enrich(plant: dict, score_result: dict) -> dict:
     }
 
 
+def could_work_text(plant: dict, conditions: dict) -> str:
+    timing = plant.get("timing", {})
+    habit = plant.get("score_breakdown", {}).get("habit", {})
+    parts = []
+    sun_hours = conditions.get("sun_hours_direct")
+    orientation = conditions.get("orientation")
+    context = conditions.get("context")
+    if sun_hours is not None and orientation and context:
+        parts.append(f"{round(sun_hours, 1)}h direct {orientation}-facing light for a {context}.")
+    if timing.get("status") in ("ok", "year_round") and timing.get("note"):
+        parts.append(timing["note"])
+    elif plant.get("weeks_to_harvest"):
+        parts.append(f"Harvest expected in ~{plant['weeks_to_harvest']}w under suitable care.")
+    if habit.get("label") == "good" and habit.get("note"):
+        parts.append(habit["note"])
+    return " ".join(parts) or "Conditions are within the current matching band."
+
+
+def likely_failure_text(plant: dict) -> str:
+    safety = plant.get("safety")
+    if safety and safety.get("warning"):
+        return safety["warning"]
+
+    timing = plant.get("timing", {})
+    if timing.get("status") in ("tight", "too_late") and timing.get("note"):
+        return timing["note"]
+
+    breakdown = plant.get("score_breakdown", {})
+    temp = breakdown.get("temperature", {})
+    sun = breakdown.get("sun", {})
+    habit = breakdown.get("habit", {})
+    if temp.get("label") in ("weak", "poor"):
+        actual = temp.get("actual_c")
+        optimal = temp.get("optimal_c")
+        if actual is not None and optimal is not None:
+            return f"Temperature is the weak point: {actual}°C baseline against ~{optimal}°C optimal."
+        return "Temperature is the weak point."
+    if sun.get("label") in ("weak", "poor"):
+        actual = sun.get("actual_hours")
+        required = sun.get("required_hours")
+        if actual is not None and required is not None:
+            return f"Light is the weak point: {actual}h direct sun against ~{required}h required."
+        return "Light is the weak point."
+    if habit.get("note"):
+        return habit["note"]
+    if plant.get("data_warning"):
+        return plant["data_warning"]
+    return "No single failure point is identified by the current prototype profile."
+
+
+def rima_recommendation(plant: dict, conditions: dict) -> dict:
+    return {
+        "id": plant.get("id"),
+        "name": plant.get("name_en") or plant.get("name_latin") or plant.get("id"),
+        "local_name": plant.get("name_da") or plant.get("name_en") or plant.get("name_latin"),
+        "latin": plant.get("name_latin"),
+        "species": plant.get("species"),
+        "type": plant.get("type"),
+        "type_label": plant.get("type_label"),
+        "could_work": could_work_text(plant, conditions),
+        "likely_failure": likely_failure_text(plant),
+        "grow_time_weeks": plant.get("weeks_to_harvest") or plant.get("grow_time_weeks"),
+        "match_score": plant.get("match_score"),
+        "timing": plant.get("timing"),
+        "safety": plant.get("safety"),
+        "data_warning": plant.get("data_warning"),
+    }
+
+
+def rima_response(payload: dict) -> dict:
+    conditions = payload["conditions"]
+    return {
+        **version_block(),
+        "format": "rima",
+        "location": payload["location"],
+        "conditions": {
+            "week": conditions.get("week"),
+            "week_label": conditions.get("week_label"),
+            "month": conditions.get("month"),
+            "month_name": conditions.get("month_name"),
+            "avg_temp": conditions.get("avg_temp"),
+            "sun_hours_direct": conditions.get("sun_hours_direct"),
+            "orientation": conditions.get("orientation"),
+            "context": conditions.get("context"),
+            "data_source": conditions.get("data_source"),
+            "data_confidence": conditions.get("data_confidence"),
+            "warnings": conditions.get("warnings", []),
+            "indoor_note": conditions.get("indoor_note"),
+        },
+        "location_zone": payload["location_zone"],
+        "start_type": payload["start_type"],
+        "result_type": payload["result_type"],
+        "count": payload["count"],
+        "total_qualified": payload["total_qualified"],
+        "hidden_weak": payload["hidden_weak"],
+        "empty_state": payload["empty_state"],
+        "recommendations": [
+            rima_recommendation(plant, conditions)
+            for plant in payload["recommendations"]
+        ],
+    }
+
+
 def first_frost_week(lat: float) -> int | None:
     """ISO week of typical first frost. Returns None for tropical climates."""
     abs_lat = abs(lat)
@@ -917,6 +1036,7 @@ async def recommend(
     species: str | None = Query(default=None),
     type: str | None = Query(default=None),
     start_type: str = Query(default="seed", pattern="^(seed|plant)$"),
+    response_format: str | None = Query(default=None, alias="format", pattern="^rima$"),
     _access: dict = Depends(require_access),
 ):
     if week is not None:
@@ -941,7 +1061,7 @@ async def recommend(
                               shuffle=shuffle, pool=pool, exclude=exclude_ids)
     location_zone = usda_zone_from_temp(winter_min)
     zone_basis = "Open-Meteo archive" if (climate_data and climate_data["months"]) else "latitude estimate"
-    return {
+    payload = {
         **version_block(),
         "location": {"lat": lat, "lng": lng},
         "conditions": {**cond, "context": context},
@@ -954,6 +1074,9 @@ async def recommend(
         "empty_state": scored["empty_state"],
         "recommendations": scored["results"],
     }
+    if response_format == "rima":
+        return rima_response(payload)
+    return payload
 
 
 @app.get("/v1/calendar")
