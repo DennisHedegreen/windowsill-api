@@ -104,7 +104,7 @@ Ranked plant recommendations for a location and time.
 | `start_type` | no | enum | `seed` | `seed` or `plant` — affects timing and weeks to harvest |
 | `species` | no | string | — | Filter by species slug, e.g. `basil`, `tomato`, `kale` |
 | `type` | no | string | — | Filter by variety type: `op` `heirloom` `hybrid` |
-| `format` | no | enum | — | Use `rima` for a compact Heat Pressure/Rima response shape |
+| `format` | no | enum | — | Use `compact` for a compact widget/card response shape. `rima` is accepted as a deprecated alias. |
 
 **Examples**
 
@@ -124,8 +124,8 @@ curl "https://api.windowsill.dk/v1/recommend?lat=55.67&lng=12.57&orientation=N&c
 # Exclude plants you already have
 curl "https://api.windowsill.dk/v1/recommend?lat=55.67&lng=12.57&orientation=S&context=garden&week=22&exclude=WSL-0001,WSL-0038"
 
-# Compact Heat Pressure/Rima response
-curl "https://api.windowsill.dk/v1/recommend?lat=55.67&lng=12.57&orientation=S&context=windowsill&week=22&format=rima"
+# Compact widget/card response
+curl "https://api.windowsill.dk/v1/recommend?lat=55.67&lng=12.57&orientation=S&context=windowsill&week=22&format=compact"
 ```
 
 **Response fields**
@@ -162,16 +162,16 @@ curl "https://api.windowsill.dk/v1/recommend?lat=55.67&lng=12.57&orientation=S&c
 | `could_work_if` | Present when `optimistic=true` — what adjustments would help |
 | `safety` | Present if plant has culinary safety flags |
 
-#### Compact Rima response
+#### Compact response
 
-`format=rima` keeps `/v1/recommend` backwards compatible while returning a smaller response shape for Heat Pressure's Rima panel.
+`format=compact` keeps `/v1/recommend` backwards compatible while returning a smaller response shape for cards, widgets, and embedded clients. `format=rima` is temporarily accepted as a deprecated alias, but new clients should use `format=compact`.
 
 ```json
 {
   "api_version": "0.6.0",
   "library_version": "2026-06-05",
   "scoring_version": "0.8.0",
-  "format": "rima",
+  "format": "compact",
   "location": {
     "lat": 55.67,
     "lng": 12.57
