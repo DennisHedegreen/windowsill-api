@@ -2,6 +2,10 @@
 
 The Windowsill plant library is open. If you know a plant variety that is missing, you can add it via GitHub pull request.
 
+Windowsill welcomes both human-only and AI-assisted contributions. AI can help with research, structure and drafting, but contributors are responsible for checking the data and stating uncertainty clearly.
+
+For a full AI-assisted workflow, see [docs/AI_PLANT_WORKFLOW.md](docs/AI_PLANT_WORKFLOW.md).
+
 ## What we need
 
 Each plant variety is one JSON file. A good contribution has accurate climate data — specifically `min_temp`, `optimal_temp`, `hardiness_temp`, and `sun_hours`. These are the values the scoring model depends on.
@@ -10,11 +14,38 @@ If you are not sure about a value, make a reasonable estimate and note it in `co
 
 ## How to contribute
 
-1. Fork this repository
-2. Find the next available ID in `api/plants/` — check `api/plants/index.json` for the highest number
-3. Create `api/plants/WSL-XXXX-your-plant-name.json` following the template below
-4. Add the filename to the `plants` array in `api/plants/index.json`
-5. Open a pull request — include your data source in the PR description
+1. Fork this repository or create a branch if you have write access
+2. Find the next available ID in `plants/` — check `plants/index.json` for the highest number
+3. Create `plants/WSL-XXXX-your-plant-name.json` following the template below
+4. Add the filename to the `plants` array in `plants/index.json`
+5. Update the `count` value in `plants/index.json`
+6. Open a pull request — include your data sources and uncertainty notes in the PR description
+
+## AI-assisted contributions
+
+If you use an AI tool to help add a plant, do not ask it to simply "make a plant JSON".
+
+Ask it to prepare a small research-backed work pack:
+
+```text
+plant.json
+source_registry.md
+field_rationale.md
+uncertainty_notes.md
+pr_description.md
+```
+
+At minimum, the AI-assisted work should check:
+
+- accepted botanical name, family and genus
+- whether the plant is native, introduced, cultivated or only culturally associated with the region
+- active growth temperature, optimal temperature, heat limit and survival/hardiness temperature
+- sun requirement and container suitability
+- growth habit: compact herb, vine, shrub, tree, tuber crop, cactus, etc.
+- food safety concerns
+- whether the plant realistically fits `windowsill`, `balcony` or `garden`
+
+Use the starter prompt and source hierarchy in [docs/AI_PLANT_WORKFLOW.md](docs/AI_PLANT_WORKFLOW.md) when preparing AI-assisted plant contributions.
 
 ## Plant file template
 
@@ -66,7 +97,7 @@ If you are not sure about a value, make a reasonable estimate and note it in `co
 
 If a plant has culinary safety concerns, include one of these exact phrases in `notes`:
 
-```
+```text
 "Toxic in large quantities — not for culinary use."
 "Phototoxic sap — handle with gloves."
 "Internal use restricted due to alkaloids."
