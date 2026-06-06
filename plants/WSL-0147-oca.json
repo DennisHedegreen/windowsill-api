@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0147",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Release-candidate contribution. Sources: Kew POWO for accepted taxonomy and Peru native range; CIP for Andean root/tuber crop context; Cultivariable and RHS for cool-season container and short-day tuberisation guidance.",
+  "name_en": "Oca",
+  "name_da": "Oca",
+  "name_latin": "Oxalis tuberosa",
+  "family": "Oxalidaceae",
+  "genus": "Oxalis",
+  "species": "oca",
+  "type": "op",
+  "min_temp": 5,
+  "max_temp": 30,
+  "optimal_temp": 18,
+  "sun_hours": 5,
+  "sun_direct": "partial",
+  "context": [
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 28,
+  "weeks_from_transplant": 24,
+  "hardiness_temp": 1,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "acceptable",
+    "garden": "good",
+    "note": "Cool-season Andean tuber crop. Needs a large container or garden bed and a long season; tuberisation is short-day sensitive."
+  },
+  "notes": "Andean root/tuber crop from Oxalis tuberosa. Better suited to large balcony containers, raised beds or garden plots than a normal windowsill. Prefers cool to mild conditions, partial sun and a long frost-free season. Most varieties form tubers under shorter autumn days, so protect from early frost if grown in temperate climates."
+}
