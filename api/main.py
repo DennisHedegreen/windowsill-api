@@ -765,11 +765,11 @@ def rima_recommendation(plant: dict, conditions: dict) -> dict:
     }
 
 
-def rima_response(payload: dict) -> dict:
+def compact_response(payload: dict) -> dict:
     conditions = payload["conditions"]
     return {
         **version_block(),
-        "format": "rima",
+        "format": "compact",
         "location": payload["location"],
         "conditions": {
             "week": conditions.get("week"),
@@ -1036,7 +1036,7 @@ async def recommend(
     species: str | None = Query(default=None),
     type: str | None = Query(default=None),
     start_type: str = Query(default="seed", pattern="^(seed|plant)$"),
-    response_format: str | None = Query(default=None, alias="format", pattern="^rima$"),
+    response_format: str | None = Query(default=None, alias="format", pattern="^(compact|rima)$"),
     _access: dict = Depends(require_access),
 ):
     if week is not None:
@@ -1074,8 +1074,8 @@ async def recommend(
         "empty_state": scored["empty_state"],
         "recommendations": scored["results"],
     }
-    if response_format == "rima":
-        return rima_response(payload)
+    if response_format in ("compact", "rima"):
+        return compact_response(payload)
     return payload
 
 
