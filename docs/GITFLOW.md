@@ -1,13 +1,18 @@
 # Windowsill Git Flow
 
 Status: operating guide
-Updated: 2026-06-07
+Updated: 2026-06-08
 
 Windowsill uses a two-step path for new plants.
 
 The research pack comes first.
 
 The plant library entry comes after review.
+
+See also:
+
+- `docs/RESEARCH_PACK_CONTRACT.md`
+- `docs/WEEKLY_MERGE_PLAN.md`
 
 ## Branch pattern
 
@@ -54,8 +59,26 @@ That means:
 - `research-packs/WSL-XXXX-plant-name/` may merge as a pending contribution
 - `plants/WSL-XXXX-plant-name.json` should wait until review
 - `plants/index.json` should wait until the plant is accepted
+- public plant count should not change when only a research pack merges
 
 This keeps the public contribution pipeline open without silently trusting AI output.
+
+## After main merge
+
+After a research-pack PR merges into `main`:
+
+- update research-pack status/count if shown publicly
+- do not update live API plant count
+- do not deploy the API unless production plant files changed
+- keep the pack marked pending review
+
+After a production plant promotion merges into `main`:
+
+- update `plants/index.json`
+- update API bundle plant files if separate
+- update README/reference/public website count claims
+- deploy API and verify live status
+- update release notes / operational memory
 
 ## Pull request expectations
 
