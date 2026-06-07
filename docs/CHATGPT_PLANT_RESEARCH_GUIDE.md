@@ -10,10 +10,12 @@ If you know a plant that should be in the library, the useful first step is not 
 The useful first step is a small research pack:
 
 ```text
+research-packs/WSL-XXXX-plant-name/
 plant.json
 source_registry.md
 field_rationale.md
 uncertainty_notes.md
+expert_review.md
 pr_description.md
 ```
 
@@ -69,12 +71,29 @@ My personal observation, if any:
 [HAVE YOU GROWN IT? WHERE? WHAT HAPPENED?]
 
 Task:
-Prepare a Windowsill research pack with these five sections.
+Prepare a Windowsill research pack in this exact folder shape:
+
+research-packs/WSL-XXXX-[plant-slug]/
+  plant.json
+  source_registry.md
+  field_rationale.md
+  uncertainty_notes.md
+  expert_review.md
+  pr_description.md
+
+Return each file separately, with the filename as a heading.
 
 1. plant.json
 - Draft a candidate Windowsill plant JSON.
 - Use WSL-XXXX as placeholder ID unless I provide the next ID.
 - Include contributor_note with source and uncertainty summary.
+- Include expert_review with this default state:
+  - status: not_reviewed
+  - model: three_independent_reviewers_per_plant
+  - reviewers_required: 3
+  - reviews: []
+  - agreement_summary fields for botanical_name, edibility, container_fit, climate_fit and safety
+  - decision: pending
 - Include realistic values for:
   - min_temp
   - max_temp
@@ -108,7 +127,13 @@ Prepare a Windowsill research pack with these five sections.
 - List source disagreements.
 - List safety, naming or regional uncertainty.
 
-5. pr_description.md
+5. expert_review.md
+- Mark status as not reviewed unless I provide real independent expert notes.
+- Explain that Windowsill uses three independent reviewers per plant, not one authority score.
+- Do not invent reviewer names or expert opinions.
+- Include empty sections for Reviewer 1, Reviewer 2 and Reviewer 3.
+
+6. pr_description.md
 - Write a short pull-request or email description.
 - Include sources.
 - Include uncertainty.
@@ -140,6 +165,7 @@ Attach or paste:
 - source_registry.md
 - field_rationale.md
 - uncertainty_notes.md
+- expert_review.md
 - pr_description.md
 ```
 
