@@ -55,8 +55,8 @@ Main sources:
 Still uncertain:
 
 - Whether Windowsill should store `Ocimum basilicum 'Genovese'` as the Latin name or split species and cultivar/type.
-- Whether `grow_time_weeks` should mean first edible leaves, first useful harvest or full maturity.
-- Whether `hardiness_temp` should model plant death, active outdoor suitability or protected survival.
+- Whether `grow_time_weeks: 8` is the right estimate under the locked Windowsill meaning: first realistic edible harvest from seed/sowing.
+- Whether `hardiness_temp: 0` is the right approximate survival threshold for frost-sensitive basil.
 - Whether the current `type: op` is broadly safe for the generic Genovese entry or only source-specific.
 
 ## Expert review

@@ -24,8 +24,8 @@ The following values are estimates:
   - Not a cultivar-specific measured optimum for Genovese Basil.
 
 - `grow_time_weeks: 8`
-  - A compromise between early leaf picking and full seed-to-harvest maturity.
-  - Johnny's lists 68 days from seed; Kew notes earlier micro-herb use.
+  - A practical estimate for first realistic edible harvest from seed/sowing.
+  - Johnny's lists 68 days from seed; Kew notes earlier micro-herb use, which is earlier than Windowsill's normal useful-harvest meaning.
 
 - `weeks_from_transplant: 5`
   - Based partly on Genovese-type transplant timing from seed-company data.
@@ -106,7 +106,7 @@ Existing entry reviewed from `plants/WSL-0001-genovese-basil.json`:
 ## Source disagreements or tension
 
 - Seed suppliers vary on days to maturity and harvest readiness.
-- Some sources discuss first edible leaves, others commercial harvest, others maturity.
+- Some sources discuss first edible leaves, others commercial harvest, others maturity; Windowsill uses first realistic edible harvest, so these sources need interpretation.
 - General basil sources may not apply perfectly to Genovese-specific strains.
 - Indoor windowsill performance depends heavily on local light, glass orientation, season and room temperature.
 

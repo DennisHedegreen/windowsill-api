@@ -94,6 +94,6 @@ Empty — no reviewer note provided.
 ## Human-review questions
 
 1. Should `name_latin` stay as `Ocimum basilicum 'Genovese'`, or should Windowsill split species and cultivar/type into separate fields?
-2. Should `grow_time_weeks` mean first edible leaves, first useful harvest, or full seed-to-maturity timing?
-3. Should `hardiness_temp` represent death/frost risk, active outdoor suitability or survival under protection?
+2. Is `grow_time_weeks: 8` a reasonable estimate under the locked Windowsill meaning: first realistic edible harvest from seed/sowing?
+3. Is `hardiness_temp: 0` a reasonable approximate survival threshold for frost-sensitive basil?
 4. Should safety notes mention alkenylbenzenes for ordinary basil entries, or only for concentrated/extract products?

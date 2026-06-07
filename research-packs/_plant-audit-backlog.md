@@ -24,6 +24,6 @@ Review WSL-0001 manually before moving to WSL-0002.
 Checklist:
 
 - Confirm whether `species` should be taxonomic (`basilicum`) or common (`basil`).
-- Confirm whether `grow_time_weeks` means first edible leaves, useful harvest or full maturity.
-- Confirm whether `hardiness_temp` should model death/frost risk or active growth suitability.
+- Confirm whether `grow_time_weeks: 8` is the right estimate under the locked meaning: first realistic edible harvest from seed/sowing.
+- Confirm whether `hardiness_temp: 0` is the right approximate survival threshold for frost-sensitive basil.
 - Decide if safety caveat for essential oil/extract/supplement should be standard for basil-type entries.

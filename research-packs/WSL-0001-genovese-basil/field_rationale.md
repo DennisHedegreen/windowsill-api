@@ -174,7 +174,7 @@ Why not keep the existing values?
 
 Uncertainty:
 
-- If Windowsill models "first edible leaves" instead of "useful harvest," `grow_time_weeks` could be lower. If it models full seed-to-maturity, it could be 9–10.
+- Under the locked Windowsill meaning, `grow_time_weeks` means first realistic edible harvest from seed/sowing. The uncertainty is whether 8 weeks is the best practical estimate, not what the field means.
 
 ## Edibility and safety
 
