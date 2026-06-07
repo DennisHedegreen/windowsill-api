@@ -55,6 +55,7 @@ Updated: 2026-06-07
 
 **Phase 6 — Trust Layers**
 
+- [x] API key access policy drafted locally
 - [ ] Taxonomic Review Score design implemented as data fields or linked review records
 - [ ] Community Signal design implemented as separate field reports
 - [ ] Phone-first contribution path via issue/discussion templates
@@ -66,9 +67,15 @@ Updated: 2026-06-07
 ## TID Tool
 
 - [x] Windowsill tool source exists locally — 3-screen flow (input -> results -> report/PDF)
-- [ ] Register Windowsill in Hedegreen Research TID objects
-- [ ] Build/stage/upload public TID route
+- [x] Register Windowsill in Hedegreen Research TID objects
+- [x] Build/stage/upload public TID route
+- [x] Windowsill BUILD article published on Hedegreen Research
 - [x] Heat Pressure: live Windowsill API call for Rima household prompt
+
+Live surfaces:
+
+- TID tool: https://hedegreenresearch.com/tid/windowsill/tool/
+- BUILD article: https://hedegreenresearch.com/articles/the-window-became-a-climate-interface/
 
 ---
 
