@@ -102,15 +102,15 @@ Each herb variety is one record with the following fields:
 | `genus` | string | Botanical genus (e.g. `Ocimum`) |
 | `species` | string | Common species grouping (e.g. `basil`, `mint`, `chive`) |
 | `type` | string | `heirloom`, `hybrid`, or `op` (open-pollinated) |
-| `min_temp` | float | Minimum temperature for growth (°C) |
-| `max_temp` | float | Maximum temperature (°C) |
-| `optimal_temp` | float | Optimal growing temperature (°C) |
+| `min_temp` | float | Practical lower threshold for active growth or realistic recommendation (°C), not survival minimum |
+| `max_temp` | float | Practical upper threshold before heat stress or quality problems become likely (°C) |
+| `optimal_temp` | float | Practical growth sweet spot (°C) |
 | `sun_hours` | float | Minimum direct sun hours per day |
 | `sun_direct` | string | `full`, `partial`, or `shade` |
 | `context` | array | Suitable contexts: `windowsill`, `balcony`, `garden` |
-| `grow_time_weeks` | integer | Weeks from sowing to first harvest |
-| `weeks_from_transplant` | integer | Weeks from transplanting a young plant to first harvest |
-| `hardiness_temp` | float | Coldest temperature the plant can survive (°C) — overwinter tolerance, not growth minimum |
+| `grow_time_weeks` | integer | Estimated weeks from seed/sowing to first realistic edible harvest |
+| `weeks_from_transplant` | integer | Estimated weeks from transplanting or buying a young plant to first realistic edible harvest |
+| `hardiness_temp` | float | Approximate survival threshold (°C) — overwinter tolerance, not active growth temperature |
 | `hardiness_zone_min` | integer | USDA hardiness zone derived from `hardiness_temp` |
 | `habit` | object | Per-context suitability: `windowsill`, `balcony`, `garden` — values: `good`, `acceptable`, `risky`, `unsuitable` |
 | `notes` | string | Special requirements or observations |
@@ -119,10 +119,19 @@ Each herb variety is one record with the following fields:
 
 These are two distinct values that are often confused:
 
-- `min_temp` — the lowest temperature at which the plant actively grows. Below this, growth stops.
-- `hardiness_temp` — the lowest temperature the plant can survive (e.g. dormant underground, as a woody perennial, or as a self-seeding annual). This is what determines USDA hardiness zone.
+- `min_temp` — practical lower threshold for active growth or realistic recommendation. Not the plant's survival minimum.
+- `hardiness_temp` — approximate survival threshold (e.g. dormant underground, as a woody perennial, or as a self-seeding annual). This is what determines USDA hardiness zone.
 
 Example: Peppermint has `min_temp: 5°C` (stops growing in cold) but `hardiness_temp: -29°C` (survives winter as a rhizome — USDA zone 5).
+
+### Timing field semantics
+
+Do not add `maturity_weeks` yet.
+
+- `grow_time_weeks` means estimated weeks from seed/sowing to first realistic edible harvest.
+- `weeks_from_transplant` means estimated weeks from transplanting or buying a young plant to first realistic edible harvest.
+
+For herbs and cut crops, this is the first useful kitchen harvest, not biological maturity. Ongoing or cut-and-come-again harvest behaviour belongs in `notes` and source rationale until enough plants have been audited to justify a new field.
 
 ### Why variety-first, not species-first
 

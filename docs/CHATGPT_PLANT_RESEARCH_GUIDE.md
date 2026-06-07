@@ -1,7 +1,7 @@
 # Add a plant with ChatGPT
 
 Status: public guide
-Updated: 2026-06-07
+Updated: 2026-06-08
 
 You do not need to be a developer to suggest a plant for Windowsill.
 
@@ -54,6 +54,13 @@ Important rules:
 - Do not casually say a plant is edible if preparation, dosage, plant part or safety matters.
 - Only include contexts where the plant can realistically work: windowsill, balcony, garden.
 - If the plant is risky, invasive, toxic, medicinal, phototoxic or only conditionally edible, say so clearly.
+- Do not add new schema fields. Do not add maturity_weeks.
+- Use grow_time_weeks for estimated weeks from seed/sowing to first realistic edible harvest.
+- Use weeks_from_transplant for estimated weeks from a young plant/transplant to first realistic edible harvest.
+- Use hardiness_temp for approximate survival threshold, not active growth temperature.
+- Use min_temp for practical lower threshold for active growth or realistic recommendation.
+- Use optimal_temp for the practical growth sweet spot.
+- Use max_temp for practical upper threshold before heat stress or quality problems become likely.
 
 Plant I want to add:
 [COMMON NAME]
@@ -116,6 +123,8 @@ Return each file separately, with the filename as a heading.
 
 3. field_rationale.md
 - Explain why each modelling value was chosen.
+- Explain timing fields using first realistic edible harvest, not biological maturity.
+- If harvest is ongoing or cut-and-come-again, explain that in prose. Do not add a new field.
 - Explain whether the plant fits:
   - windowsill
   - balcony
