@@ -8,6 +8,8 @@ If you want the easiest path, start with [Add a plant with ChatGPT](docs/CHATGPT
 
 For the fuller AI-assisted workflow, see [docs/AI_PLANT_WORKFLOW.md](docs/AI_PLANT_WORKFLOW.md).
 
+For the exact merge format, see [docs/RESEARCH_PACK_CONTRACT.md](docs/RESEARCH_PACK_CONTRACT.md) and [docs/GITFLOW.md](docs/GITFLOW.md).
+
 ## What we need
 
 Each plant variety is one JSON file. A good contribution has accurate climate data — specifically `min_temp`, `optimal_temp`, `hardiness_temp`, and `sun_hours`. These are the values the scoring model depends on.
@@ -16,12 +18,14 @@ If you are not sure about a value, make a reasonable estimate and note it in `co
 
 ## How to contribute
 
+New plants should normally start as a research pack, not as a direct plant-library entry.
+
 1. Fork this repository or create a branch if you have write access
-2. Find the next available ID in `plants/` — check `plants/index.json` for the highest number
-3. Create `plants/WSL-XXXX-your-plant-name.json` following the template below
-4. Add the filename to the `plants` array in `plants/index.json`
-5. Update the `count` value in `plants/index.json`
-6. Open a pull request — include your data sources and uncertainty notes in the PR description
+2. Create one folder under `research-packs/`
+3. Use the exact required files from `research-packs/_template/`
+4. Run `python3 scripts/validate_research_packs.py`
+5. Open a pull request — include your data sources and uncertainty notes in the PR description
+6. Promote into `plants/` only after review
 
 ## AI-assisted contributions
 
@@ -34,10 +38,13 @@ plant.json
 source_registry.md
 field_rationale.md
 uncertainty_notes.md
+expert_review.md
 pr_description.md
 ```
 
 Use `research-packs/_template/` if you want files to copy.
+
+Pull requests that add research packs are checked by GitHub Actions. The validator only accepts the required folder/file structure and controlled values.
 
 At minimum, the AI-assisted work should check:
 

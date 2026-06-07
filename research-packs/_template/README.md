@@ -14,8 +14,15 @@ Files:
 - `source_registry.md` — sources and what each source supports
 - `field_rationale.md` — why modelling values were chosen
 - `uncertainty_notes.md` — weak values, disagreements and open questions
+- `expert_review.md` — three independent same-plant reviewer status
 - `pr_description.md` — ready-to-paste PR or email text
 
 This pack is recommended for new plants.
 
 It is not required retroactively for every existing seeded entry.
+
+Before opening a pull request, run:
+
+```bash
+python3 scripts/validate_research_packs.py
+```

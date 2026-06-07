@@ -169,11 +169,19 @@ AI-assisted contributions are welcome if they keep sources, uncertainty and huma
 
 - [CONTRIBUTING.md](CONTRIBUTING.md)
 - [docs/CHATGPT_PLANT_RESEARCH_GUIDE.md](docs/CHATGPT_PLANT_RESEARCH_GUIDE.md)
+- [docs/RESEARCH_PACK_CONTRACT.md](docs/RESEARCH_PACK_CONTRACT.md)
+- [docs/GITFLOW.md](docs/GITFLOW.md)
 - [docs/AI_PLANT_WORKFLOW.md](docs/AI_PLANT_WORKFLOW.md)
 - [docs/SOURCE_HIERARCHY.md](docs/SOURCE_HIERARCHY.md)
 - [docs/UNCERTAINTY_NOTES.md](docs/UNCERTAINTY_NOTES.md)
 - [docs/PLANT_ENTRY_REVIEW.md](docs/PLANT_ENTRY_REVIEW.md)
 - [research-packs/_template/](research-packs/_template/)
+
+Research-pack pull requests are checked with:
+
+```bash
+python3 scripts/validate_research_packs.py
+```
 
 ---
 

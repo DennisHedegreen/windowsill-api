@@ -25,5 +25,19 @@
     "garden": "acceptable",
     "note": "Explain container/open-ground fit."
   },
-  "notes": "Growing notes, food use, safety notes and caveats."
+  "notes": "Growing notes, food use, safety notes and caveats.",
+  "expert_review": {
+    "status": "not_reviewed",
+    "model": "three_independent_reviewers_per_plant",
+    "reviewers_required": 3,
+    "reviews": [],
+    "agreement_summary": {
+      "botanical_name": "not_assessed",
+      "edibility": "not_assessed",
+      "container_fit": "not_assessed",
+      "climate_fit": "not_assessed",
+      "safety": "not_assessed"
+    },
+    "decision": "pending"
+  }
 }
