@@ -51,7 +51,7 @@ Use the starter prompt and source hierarchy in [docs/AI_PLANT_WORKFLOW.md](docs/
 
 ```json
 {
-  "id": "WSL-0146",
+  "id": "WSL-0149",
   "contributor": "your-github-handle",
   "contributor_note": "Source: RHS Plant Finder / personal observation / etc.",
   "name_en": "Plant Variety Name",
