@@ -95,10 +95,10 @@ Use personal observation for:
 Copy this prompt into your AI tool and replace the bracketed parts.
 
 ```text
-You are helping me add one plant variety to the Windowsill API plant library.
+You are helping me prepare one plant research pack for the Windowsill API plant library.
 
 Goal:
-Create one release-candidate plant JSON file following the schema in REFERENCE.md.
+Create one research pack following docs/RESEARCH_PACK_CONTRACT.md.
 
 Plant:
 [COMMON NAME]
@@ -106,12 +106,15 @@ Plant:
 [KNOWN LATIN NAME, if any]
 
 Repository rules:
-- One plant = one JSON file in plants/
-- Use the next available WSL-XXXX ID from plants/index.json
-- Add the filename to plants/index.json
+- One plant = one research pack folder under research-packs/
+- Use WSL-XXXX as placeholder ID unless the maintainer gives you a real ID
+- Do not update plants/ or plants/index.json
+- Production plant promotion happens later after review
 - Do not invent facts
 - Mark uncertain values in contributor_note
 - Only include contexts where the plant can realistically succeed: windowsill, balcony, garden
+- Do not add new schema fields
+- Do not add maturity_weeks
 
 Research requirements:
 1. Verify accepted botanical name, family and genus.
@@ -121,12 +124,13 @@ Research requirements:
 5. Check growth habit: compact herb, vine, shrub, tree, tuber crop, cactus, etc.
 6. Check food safety concerns.
 7. Decide whether the plant should be recommended for windowsill, balcony, garden, or suppressed from one or more contexts.
-8. Produce:
-   - final JSON
-   - source notes
-   - modelling rationale
-   - PR description
-   - uncertainty notes
+8. Produce the six required research-pack files:
+   - plant.json
+   - source_registry.md
+   - field_rationale.md
+   - uncertainty_notes.md
+   - expert_review.md
+   - pr_description.md
 ```
 
 ---
@@ -252,15 +256,16 @@ Examples that need caution:
 
 Before opening a PR:
 
-- [ ] The file is in `plants/`
-- [ ] The ID is the next available `WSL-XXXX`
-- [ ] The filename is added to `plants/index.json`
-- [ ] `count` in `plants/index.json` is updated
-- [ ] JSON is valid
+- [ ] The pack is in `research-packs/WSL-XXXX-plant-name/`
+- [ ] The six required research-pack files are present
+- [ ] `plant.json` is valid JSON
+- [ ] No unsupported schema fields are added
 - [ ] The plant has realistic context values
-- [ ] Sources are listed in the PR description
+- [ ] Sources are listed in `source_registry.md` and the PR description
 - [ ] Uncertainty is stated clearly
 - [ ] No unsupported claims are presented as facts
+- [ ] The pack does not claim expert review unless real reviewer notes exist
+- [ ] The PR says whether it is research-pack only or a production promotion
 
 ---
 

@@ -9,7 +9,8 @@ Send a GPS coordinate, a growing context, and a week number — get back the bes
 **Plant library:** https://windowsill.dk/library.html  
 **Contribute a plant:** https://windowsill.dk/contribute.html
 
-Repository library state: 148 varieties.
+Repository production library state: 148 varieties.
+Merged research packs: 1 pending review.
 
 Deployment note: verify `GET /v1/status` after deployment before claiming the live API has the same plant count.
 
@@ -156,14 +157,17 @@ Each variety is one JSON file in `plants/`. IDs follow the format `WSL-0001`.
 
 ## Contribute a plant
 
-The library is open. To add a variety:
+The library is open.
 
-1. Fork this repository
-2. Find the next available ID in `plants/` (currently WSL-0149+)
-3. Create `plants/WSL-0149-your-plant-name.json` following the schema in [REFERENCE.md](REFERENCE.md#plant-schema)
-4. Add the filename to `plants/index.json`
-5. Update the `count` value in `plants/index.json`
-6. Open a pull request — include your data source in the description
+New plants should start as research packs, not direct production plant files.
+
+1. Fork this repository.
+2. Create one folder under `research-packs/`.
+3. Use the exact required files from `research-packs/_template/`.
+4. Run `python3 scripts/validate_research_packs.py`.
+5. Open a pull request and state that it is a research pack.
+
+Do not update `plants/` or `plants/index.json` until a later review/promotion step accepts the plant for the production library.
 
 AI-assisted contributions are welcome if they keep sources, uncertainty and human responsibility visible. See:
 
@@ -171,6 +175,7 @@ AI-assisted contributions are welcome if they keep sources, uncertainty and huma
 - [docs/CHATGPT_PLANT_RESEARCH_GUIDE.md](docs/CHATGPT_PLANT_RESEARCH_GUIDE.md)
 - [docs/RESEARCH_PACK_CONTRACT.md](docs/RESEARCH_PACK_CONTRACT.md)
 - [docs/GITFLOW.md](docs/GITFLOW.md)
+- [docs/WEEKLY_MERGE_PLAN.md](docs/WEEKLY_MERGE_PLAN.md)
 - [docs/AI_PLANT_WORKFLOW.md](docs/AI_PLANT_WORKFLOW.md)
 - [docs/SOURCE_HIERARCHY.md](docs/SOURCE_HIERARCHY.md)
 - [docs/UNCERTAINTY_NOTES.md](docs/UNCERTAINTY_NOTES.md)
