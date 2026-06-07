@@ -176,6 +176,7 @@ AI-assisted contributions are welcome if they keep sources, uncertainty and huma
 - [docs/RESEARCH_PACK_CONTRACT.md](docs/RESEARCH_PACK_CONTRACT.md)
 - [docs/GITFLOW.md](docs/GITFLOW.md)
 - [docs/WEEKLY_MERGE_PLAN.md](docs/WEEKLY_MERGE_PLAN.md)
+- [docs/BOTANIST_REVIEW_OUTREACH.md](docs/BOTANIST_REVIEW_OUTREACH.md)
 - [docs/AI_PLANT_WORKFLOW.md](docs/AI_PLANT_WORKFLOW.md)
 - [docs/SOURCE_HIERARCHY.md](docs/SOURCE_HIERARCHY.md)
 - [docs/UNCERTAINTY_NOTES.md](docs/UNCERTAINTY_NOTES.md)
