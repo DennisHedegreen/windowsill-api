@@ -1,7 +1,7 @@
 # Windowsill Research Pack Contract
 
 Status: operating contract
-Updated: 2026-06-07
+Updated: 2026-06-08
 
 This contract defines the folder format for proposed plant additions.
 
@@ -90,6 +90,25 @@ risky
 unsuitable
 unknown
 ```
+
+## Field meaning lock
+
+Do not add new plant timing or temperature fields until at least 10-20 new plant packs have been audited against the current schema.
+
+These existing fields have fixed meanings:
+
+| Field | Meaning |
+|---|---|
+| `grow_time_weeks` | Estimated weeks from seed/sowing to first realistic edible harvest. For herbs and cut crops, this means the first useful kitchen harvest, not biological maturity. |
+| `weeks_from_transplant` | Estimated weeks from transplanting or buying a young plant to first realistic edible harvest. |
+| `hardiness_temp` | Approximate survival threshold, not active growth temperature. This is used for overwinter tolerance and hardiness-zone reasoning. |
+| `min_temp` | Practical lower threshold for active growth or realistic recommendation. Not the plant's survival minimum. |
+| `optimal_temp` | Practical growth sweet spot. |
+| `max_temp` | Practical upper threshold before heat stress or quality problems become likely. |
+
+Do not add `maturity_weeks` to research packs yet.
+
+If a future field is added after enough plants have been audited, `harvest_type` is the likely first candidate. For now, explain harvest behaviour in `field_rationale.md` and `notes`.
 
 ## Expert review field
 

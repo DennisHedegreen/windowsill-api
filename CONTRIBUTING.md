@@ -97,12 +97,18 @@ Use the starter prompt and source hierarchy in [docs/AI_PLANT_WORKFLOW.md](docs/
 | Field | Notes |
 |---|---|
 | `type` | `op` = open-pollinated, `heirloom`, `hybrid` |
-| `min_temp` | Temperature in °C at which active growth stops. Not the survival minimum. |
-| `hardiness_temp` | Coldest temperature the plant survives (overwinter tolerance). Use RHS H-rating or USDA zone data. Different from `min_temp`. |
+| `min_temp` | Practical lower threshold for active growth or realistic recommendation. Not the survival minimum. |
+| `optimal_temp` | Practical growth sweet spot. |
+| `max_temp` | Practical upper threshold before heat stress or quality problems become likely. |
+| `grow_time_weeks` | Estimated weeks from seed/sowing to first realistic edible harvest, not biological maturity. |
+| `weeks_from_transplant` | Estimated weeks from transplanting or buying a young plant to first realistic edible harvest. |
+| `hardiness_temp` | Approximate survival threshold or overwinter tolerance. Use RHS H-rating or USDA zone data. Different from `min_temp`. |
 | `hardiness_zone_min` | Derive from `hardiness_temp` — see USDA table in [REFERENCE.md](REFERENCE.md#usda-zone-from-hardiness_temp) |
 | `sun_direct` | `full` = needs direct sun · `partial` = tolerates partial shade · `shade` = prefers shade |
 | `context` | Only include contexts where the plant can realistically succeed |
 | `habit` values | `good` · `acceptable` · `risky` · `unsuitable` |
+
+Do not add `maturity_weeks` yet. If a plant is cut-and-come-again or has ongoing harvest behaviour, explain it in `notes` and the research pack rationale.
 
 ## Safety flags
 

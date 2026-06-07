@@ -414,25 +414,33 @@ Each plant is one JSON file in `plants/`. IDs: `WSL-0001` format.
 | `genus` | string | Botanical genus |
 | `species` | string | Species slug, e.g. `basil` |
 | `type` | enum | `op` `heirloom` `hybrid` |
-| `min_temp` | float °C | Lowest temperature for active growth |
-| `max_temp` | float °C | Highest temperature tolerated |
-| `optimal_temp` | float °C | Optimal growing temperature |
-| `hardiness_temp` | float °C | Coldest survival temperature |
+| `min_temp` | float °C | Practical lower threshold for active growth or realistic recommendation |
+| `max_temp` | float °C | Practical upper threshold before heat stress or quality problems become likely |
+| `optimal_temp` | float °C | Practical growth sweet spot |
+| `hardiness_temp` | float °C | Approximate survival threshold, not active growth temperature |
 | `hardiness_zone_min` | integer | USDA zone derived from hardiness_temp |
 | `sun_hours` | float | Minimum direct sun hours per day |
 | `sun_direct` | enum | `full` `partial` `shade` |
 | `context` | array | Suitable contexts: `windowsill` `balcony` `garden` |
-| `grow_time_weeks` | integer | Weeks from seed to first harvest |
-| `weeks_from_transplant` | integer | Weeks from transplant to first harvest |
+| `grow_time_weeks` | integer | Estimated weeks from seed/sowing to first realistic edible harvest |
+| `weeks_from_transplant` | integer | Estimated weeks from transplanting or buying a young plant to first realistic edible harvest |
 | `habit` | object | Per-context suitability: `good` `acceptable` `risky` `unsuitable` |
 | `notes` | string | Growing notes and special requirements |
 
 ### min_temp vs hardiness_temp
 
-`min_temp` — temperature at which growth stops.  
-`hardiness_temp` — lowest temperature the plant survives.
+`min_temp` — practical lower threshold for active growth or realistic recommendation.  
+`hardiness_temp` — approximate survival threshold, not active growth temperature.
 
 Example: Peppermint `min_temp: 5°C`, `hardiness_temp: −29°C` — stops growing in cold but survives winter as a dormant rhizome.
+
+### Timing fields
+
+`grow_time_weeks` is the estimated time from seed/sowing to first realistic edible harvest.
+
+`weeks_from_transplant` is the estimated time from transplanting or buying a young plant to first realistic edible harvest.
+
+For herbs and cut crops, first harvest means the first useful kitchen harvest, not biological maturity. Do not add `maturity_weeks` yet; use `notes` for ongoing or cut-and-come-again harvest behaviour.
 
 ---
 
