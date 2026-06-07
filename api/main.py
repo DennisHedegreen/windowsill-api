@@ -26,7 +26,7 @@ if _USE_PG:
 # ── Version ────────────────────────────────────────────────────────────────────
 
 API_VERSION = "0.6.0"
-LIBRARY_VERSION = "2026-06-05"
+LIBRARY_VERSION = "2026-06-07"
 SCORING_VERSION = "0.8.0"
 
 # ── Config ─────────────────────────────────────────────────────────────────────
@@ -1031,7 +1031,7 @@ async def recommend(
     min_score: float = Query(default=RELIABLE_THRESHOLD, ge=0.0, le=1.0),
     optimistic: bool = Query(default=False),
     shuffle: bool = Query(default=False),
-    pool: int = Query(default=30, ge=1, le=145),
+    pool: int = Query(default=30, ge=1, le=500),
     exclude: str | None = Query(default=None),
     species: str | None = Query(default=None),
     type: str | None = Query(default=None),

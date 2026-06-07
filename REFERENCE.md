@@ -1,6 +1,6 @@
 # Windowsill API — Technical Reference
 
-Version: API v0.6.0 · Library 2026-06-05 · Scoring v0.8.0  
+Version: API v0.6.0 · Library 2026-06-07 · Scoring v0.8.0  
 Base URL: https://api.windowsill.dk  
 Documentation: https://windowsill.dk/docs.html  
 Source: https://github.com/DennisHedegreen/windowsill-api
@@ -169,7 +169,7 @@ curl "https://api.windowsill.dk/v1/recommend?lat=55.67&lng=12.57&orientation=S&c
 ```json
 {
   "api_version": "0.6.0",
-  "library_version": "2026-06-05",
+  "library_version": "2026-06-07",
   "scoring_version": "0.8.0",
   "format": "compact",
   "location": {

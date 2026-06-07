@@ -9,6 +9,10 @@ Send a GPS coordinate, a growing context, and a week number — get back the bes
 **Plant library:** https://windowsill.dk/library.html  
 **Contribute a plant:** https://windowsill.dk/contribute.html
 
+Repository library state: 148 varieties.
+
+Deployment note: verify `GET /v1/status` after deployment before claiming the live API has the same plant count.
+
 ---
 
 ## Quick start
@@ -72,7 +76,7 @@ Response:
 | `GET /v1/recommend` | Ranked plant recommendations for a location and time |
 | `GET /v1/calendar` | Top plants per month, full year view |
 | `GET /v1/conditions` | Climate data for a location and time |
-| `GET /v1/library` | Full plant library — 145 varieties |
+| `GET /v1/library` | Full plant library — repository currently contains 148 varieties |
 | `GET /v1/varieties` | Filterable plant list |
 | `GET /v1/varieties/{id}` | Single plant variety by ID |
 | `GET /v1/health` | Service health |
@@ -127,12 +131,20 @@ Keys via email: api@windowsill.dk
 
 ## Plant library
 
-145 edible plant varieties across four groups:
+148 edible plant varieties.
+
+The original seeded library contained 145 varieties across four groups:
 
 - Herbs and spices (85 varieties)
 - Summer vegetables (25 varieties)
 - Perennial garden herbs (20 varieties)
 - Cold-tolerant / winter crops (15 varieties)
+
+Additional release-candidate contributions currently include:
+
+- Sacha Culantro
+- Oca
+- Ulluco
 
 Each variety is one JSON file in `plants/`. IDs follow the format `WSL-0001`.
 
@@ -143,10 +155,19 @@ Each variety is one JSON file in `plants/`. IDs follow the format `WSL-0001`.
 The library is open. To add a variety:
 
 1. Fork this repository
-2. Find the next available ID in `plants/` (currently WSL-0146+)
-3. Create `plants/WSL-0146-your-plant-name.json` following the schema in [REFERENCE.md](REFERENCE.md#plant-schema)
+2. Find the next available ID in `plants/` (currently WSL-0149+)
+3. Create `plants/WSL-0149-your-plant-name.json` following the schema in [REFERENCE.md](REFERENCE.md#plant-schema)
 4. Add the filename to `plants/index.json`
-5. Open a pull request — include your data source in the description
+5. Update the `count` value in `plants/index.json`
+6. Open a pull request — include your data source in the description
+
+AI-assisted contributions are welcome if they keep sources, uncertainty and human responsibility visible. See:
+
+- [CONTRIBUTING.md](CONTRIBUTING.md)
+- [docs/AI_PLANT_WORKFLOW.md](docs/AI_PLANT_WORKFLOW.md)
+- [docs/SOURCE_HIERARCHY.md](docs/SOURCE_HIERARCHY.md)
+- [docs/UNCERTAINTY_NOTES.md](docs/UNCERTAINTY_NOTES.md)
+- [docs/PLANT_ENTRY_REVIEW.md](docs/PLANT_ENTRY_REVIEW.md)
 
 ---
 
@@ -163,7 +184,7 @@ This API and its documentation site use no cookies and no analytics. Requests ar
 | API v0.6.0 | Modern params: limit, min_score, optimistic, shuffle, exclude. New /v1/now endpoint. |
 | API v0.5.0 | Context-aware sun model: balcony gets diffuse light from 3 sides, garden ignores orientation |
 | API v0.4.0 | ISO week support, 8-point compass, elevation correction, real winter zones |
-| Library 2026-06-05 | 145 varieties |
+| Library 2026-06-07 | 148 repository varieties; verify live API after deployment |
 | Scoring v0.8.0 | Score-banded shuffle, exclude filter, /v1/now |
 | Scoring v0.7.0 | Context-aware sun hours in all scoring and calendar calculations |
 | Scoring v0.6.0 | Week-precise frost timing, day-of-year sun calculation |
