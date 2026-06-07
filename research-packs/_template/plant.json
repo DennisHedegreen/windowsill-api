@@ -1,0 +1,29 @@
+{
+  "id": "WSL-XXXX",
+  "contributor": "your-name-or-handle",
+  "contributor_note": "Sources and uncertainty summary.",
+  "name_en": "Plant Name",
+  "name_da": "",
+  "name_latin": "Genus species",
+  "family": "",
+  "genus": "",
+  "species": "species-slug",
+  "type": "op",
+  "min_temp": 0,
+  "max_temp": 0,
+  "optimal_temp": 0,
+  "sun_hours": 0,
+  "sun_direct": "full",
+  "context": ["windowsill"],
+  "grow_time_weeks": 0,
+  "weeks_from_transplant": 0,
+  "hardiness_temp": 0,
+  "hardiness_zone_min": 0,
+  "habit": {
+    "windowsill": "acceptable",
+    "balcony": "acceptable",
+    "garden": "acceptable",
+    "note": "Explain container/open-ground fit."
+  },
+  "notes": "Growing notes, food use, safety notes and caveats."
+}

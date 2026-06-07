@@ -4,7 +4,9 @@ The Windowsill plant library is open. If you know a plant variety that is missin
 
 Windowsill welcomes both human-only and AI-assisted contributions. AI can help with research, structure and drafting, but contributors are responsible for checking the data and stating uncertainty clearly.
 
-For a full AI-assisted workflow, see [docs/AI_PLANT_WORKFLOW.md](docs/AI_PLANT_WORKFLOW.md).
+If you want the easiest path, start with [Add a plant with ChatGPT](docs/CHATGPT_PLANT_RESEARCH_GUIDE.md).
+
+For the fuller AI-assisted workflow, see [docs/AI_PLANT_WORKFLOW.md](docs/AI_PLANT_WORKFLOW.md).
 
 ## What we need
 
@@ -34,6 +36,8 @@ field_rationale.md
 uncertainty_notes.md
 pr_description.md
 ```
+
+Use `research-packs/_template/` if you want files to copy.
 
 At minimum, the AI-assisted work should check:
 
