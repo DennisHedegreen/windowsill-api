@@ -168,10 +168,12 @@ The library is open. To add a variety:
 AI-assisted contributions are welcome if they keep sources, uncertainty and human responsibility visible. See:
 
 - [CONTRIBUTING.md](CONTRIBUTING.md)
+- [docs/CHATGPT_PLANT_RESEARCH_GUIDE.md](docs/CHATGPT_PLANT_RESEARCH_GUIDE.md)
 - [docs/AI_PLANT_WORKFLOW.md](docs/AI_PLANT_WORKFLOW.md)
 - [docs/SOURCE_HIERARCHY.md](docs/SOURCE_HIERARCHY.md)
 - [docs/UNCERTAINTY_NOTES.md](docs/UNCERTAINTY_NOTES.md)
 - [docs/PLANT_ENTRY_REVIEW.md](docs/PLANT_ENTRY_REVIEW.md)
+- [research-packs/_template/](research-packs/_template/)
 
 ---
 

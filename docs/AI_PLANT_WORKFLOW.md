@@ -4,6 +4,8 @@ Windowsill accepts plant data contributions through pull requests. AI tools may 
 
 The goal is not to add as many plants as possible. The goal is to add plants with traceable reasoning, realistic growing contexts and clear uncertainty notes.
 
+If you want the easiest public-facing version first, use [Add a plant with ChatGPT](CHATGPT_PLANT_RESEARCH_GUIDE.md).
+
 ---
 
 ## Core principle
