@@ -312,7 +312,7 @@ async def require_access(request: Request) -> dict:
                 "key_expired": "This API key has expired.",
                 "monthly_limit_reached": (
                     "Monthly request limit reached. "
-                    "Send an email to windowsill@hedegreenresearch.com for sponsored access."
+                    "Email api@windowsill.dk for small-project or sponsored access."
                 ),
             }
             status = 429 if "limit" in reason else 401
@@ -327,7 +327,7 @@ async def require_access(request: Request) -> dict:
             status_code=429,
             detail=(
                 "Rate limit reached (60 req/hour without key). "
-                "Free API keys available — or email for sponsored access."
+                "Email api@windowsill.dk for a free small-project key."
             ),
             headers={"Retry-After": "3600"},
         )
@@ -1275,7 +1275,7 @@ async def root():
             "no_key": f"{RATE_LIMIT_NO_KEY} requests/hour per IP",
             "free_key": "1,000 requests/month",
             "builder_key": "10,000 requests/month",
-            "sponsored": "Email windowsill@hedegreenresearch.com",
+            "sponsored": "Email api@windowsill.dk",
         },
     }
 
