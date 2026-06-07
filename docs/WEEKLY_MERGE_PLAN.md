@@ -101,4 +101,5 @@ Next useful system work:
 
 - build reviewer/public-signal tools
 - review `WSL-0001 Genovese Basil`
+- use `docs/BOTANIST_REVIEW_OUTREACH.md` for the first reviewer outreach pass
 - decide whether and how reviewed packs become production plant updates
