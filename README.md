@@ -120,6 +120,8 @@ curl "https://api.windowsill.dk/v1/recommend?api_key=your-key&..."
 
 Keys via email: api@windowsill.dk
 
+Small non-commercial, educational, local, experimental or otherwise non-abusive projects can ask for a free key. The API is rate-limited to keep the service stable, not to turn small plant tools into a paywall.
+
 | Plan | Limit |
 |---|---|
 | No key | 60 requests / hour per IP |

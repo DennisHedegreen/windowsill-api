@@ -17,7 +17,7 @@ async def require_access(request: Request) -> dict:
                 "invalid_key": "Invalid API key.",
                 "key_inactive": "This API key has been deactivated.",
                 "key_expired": "This API key has expired.",
-                "monthly_limit_reached": "Monthly request limit reached. Upgrade your plan or contact windowsill@hedegreenresearch.com for sponsored access.",
+                "monthly_limit_reached": "Monthly request limit reached. Email api@windowsill.dk for small-project or sponsored access.",
             }
             raise HTTPException(status_code=429 if "limit" in reason else 401,
                                 detail=messages.get(reason, reason))
@@ -31,7 +31,7 @@ async def require_access(request: Request) -> dict:
             status_code=429,
             detail=(
                 "Rate limit reached. Add an API key for higher limits. "
-                "Free keys available at windowsill.org — or send an email for sponsored access."
+                "Email api@windowsill.dk for a free small-project key."
             ),
             headers={"Retry-After": "3600"},
         )
