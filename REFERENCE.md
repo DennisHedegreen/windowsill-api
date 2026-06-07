@@ -42,6 +42,8 @@ Keys via email: api@windowsill.dk
 
 Small non-commercial, educational, local, experimental or otherwise non-abusive projects can ask for a free key. The API is rate-limited to keep the service stable, not to turn small plant tools into a paywall.
 
+Working access policy: [docs/API_KEY_POLICY.md](docs/API_KEY_POLICY.md)
+
 | Plan | Limit | Key required |
 |---|---|---|
 | No key | 60 requests / hour per IP | No |
