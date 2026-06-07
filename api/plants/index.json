@@ -1,6 +1,6 @@
 {
   "version": "1",
-  "count": 145,
+  "count": 148,
   "plants": [
     "WSL-0001-genovese-basil.json",
     "WSL-0002-thai-basil.json",
@@ -146,6 +146,9 @@
     "WSL-0142-broad-bean.json",
     "WSL-0143-claytonia.json",
     "WSL-0144-good-king-henry.json",
-    "WSL-0145-sea-kale.json"
+    "WSL-0145-sea-kale.json",
+    "WSL-0146-sacha-culantro.json",
+    "WSL-0147-oca.json",
+    "WSL-0148-ulluco.json"
   ]
 }

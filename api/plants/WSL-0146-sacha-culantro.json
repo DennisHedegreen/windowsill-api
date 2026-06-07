@@ -1,0 +1,33 @@
+{
+  "id": "WSL-0146",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Release-candidate contribution. Sources: Kew POWO for taxonomy and range; Slow Food Ark of Taste for Peruvian Amazon culinary context; UF/IFAS and West Coast Seeds for cultivation guidance.",
+  "name_en": "Sacha Culantro",
+  "name_da": "Sacha Culantro",
+  "name_latin": "Eryngium foetidum",
+  "family": "Apiaceae",
+  "genus": "Eryngium",
+  "species": "culantro",
+  "type": "op",
+  "min_temp": 15,
+  "max_temp": 32,
+  "optimal_temp": 24,
+  "sun_hours": 2,
+  "sun_direct": "shade",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 12,
+  "weeks_from_transplant": 8,
+  "hardiness_temp": 10,
+  "hardiness_zone_min": 12,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "acceptable",
+    "garden": "acceptable",
+    "note": "Warm, moist, shade-tolerant herb. Good windowsill candidate if kept warm and evenly moist; avoid cold drafts."
+  },
+  "notes": "Peruvian Amazon culinary herb also known as jungle culantro. Prefers warmth, moisture and shade or filtered light. Slow to germinate and not frost tolerant. Best for warm windowsills, sheltered balconies or humid garden corners; keep soil evenly moist."
+}

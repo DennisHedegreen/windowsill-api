@@ -1,0 +1,32 @@
+{
+  "id": "WSL-0148",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Release-candidate contribution. Sources: Kew POWO for accepted taxonomy and Peru native range; Cultivariable and agronomy literature for cool-season, short-day tuberisation and heat-sensitivity guidance.",
+  "name_en": "Ulluco",
+  "name_da": "Ulluco",
+  "name_latin": "Ullucus tuberosus",
+  "family": "Basellaceae",
+  "genus": "Ullucus",
+  "species": "ulluco",
+  "type": "op",
+  "min_temp": 5,
+  "max_temp": 26,
+  "optimal_temp": 16,
+  "sun_hours": 5,
+  "sun_direct": "partial",
+  "context": [
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 32,
+  "weeks_from_transplant": 28,
+  "hardiness_temp": 1,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "unsuitable",
+    "balcony": "acceptable",
+    "garden": "good",
+    "note": "Cool, moist Andean tuber crop with a long season. Poor fit for normal windowsills; better in large containers or garden beds."
+  },
+  "notes": "Andean tuber crop from Ullucus tuberosus. Prefers cool, moist conditions and dislikes hot, dry summers. Tuber formation is short-day sensitive, so temperate growers may need to keep plants alive into autumn while protecting them from early frost. Best treated as a specialist balcony-container or garden crop, not a casual indoor herb."
+}
