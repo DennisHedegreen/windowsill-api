@@ -1,0 +1,47 @@
+{
+  "id": "WSL-0001",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Audit draft for existing Windowsill entry WSL-0001. Botanical identity is supported as Ocimum basilicum L.; 'Genovese' is treated here as a cultivar/type label, not a separate accepted species. Edibility is limited to normal culinary use of leaves and flowers. Temperature and timing values are modelling estimates based on horticultural sources; expert review is still pending.",
+  "name_en": "Genovese Basil",
+  "name_da": "Genovese Basilikum",
+  "name_latin": "Ocimum basilicum 'Genovese'",
+  "family": "Lamiaceae",
+  "genus": "Ocimum",
+  "species": "basilicum",
+  "type": "op",
+  "min_temp": 15,
+  "max_temp": 32,
+  "optimal_temp": 26,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 8,
+  "weeks_from_transplant": 5,
+  "hardiness_temp": 0,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Fits all three contexts if warm, bright, well drained and regularly pinched. Windowsill fit depends on strong light and air circulation; outdoor balcony/garden fit depends on frost-free conditions."
+  },
+  "notes": "Classic culinary basil type used for pesto. Use leaves for normal culinary purposes; flowers are also edible according to Kew guidance. Tender annual in temperate climates. Very sensitive to cold and frost. Pinch regularly and remove flowers if leaf production is the goal. Do not treat essential oil, medicinal dosing or high-concentrate extracts as covered by this edible-plant entry.",
+  "expert_review": {
+    "status": "not_reviewed",
+    "model": "three_independent_reviewers_per_plant",
+    "reviewers_required": 3,
+    "reviews": [],
+    "agreement_summary": {
+      "botanical_name": "not_assessed",
+      "edibility": "not_assessed",
+      "container_fit": "not_assessed",
+      "climate_fit": "not_assessed",
+      "safety": "not_assessed"
+    },
+    "decision": "pending"
+  }
+}
