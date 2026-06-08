@@ -63,6 +63,67 @@ Give a free key when:
 - the tool does not present recommendations as certainty
 - the user accepts rate limits
 
+## Reviewer Thank-You Keys
+
+Independent plant reviewers may receive a free API key as a thank-you.
+
+This is not payment for agreement.
+
+Reviewer keys also act as invitation links for the reviewer tool:
+
+```text
+https://windowsill.dk/review/genovese-basil/?key=PERSONAL_REVIEW_KEY
+```
+
+No cookies, account or browser-stored login is required.
+
+Give a reviewer key when:
+
+- the reviewer has sent a real correction note or review signal
+- the review is logged before the key is issued
+- the key is framed as optional access for small projects, teaching, prototypes or local experiments
+- the key does not change the review status, score or decision
+
+Default reviewer key:
+
+```text
+plan: free
+monthly_limit: 1000
+project: Windowsill reviewer access
+note: Reviewer thank-you key for [plant / reviewer / date]
+```
+
+Do not issue unlimited `sponsored` keys by default. Use `sponsored` only if there is a concrete reason and the use is trusted.
+
+Manual local helper:
+
+```bash
+python3 windowsill/api/scripts/create_api_key.py \
+  --owner "Reviewer Name" \
+  --reviewer-email "reviewer@example.org" \
+  --project "Windowsill reviewer access - WSL-0001 Genovese Basil" \
+  --plan free \
+  --review-plant WSL-0001 \
+  --note "Reviewer thank-you key after received review"
+```
+
+The raw key is printed once. Store and send it outside git.
+
+Live/Railway helper, only when `DATABASE_URL` is intentionally set:
+
+```bash
+DATABASE_URL="..." python3 windowsill/api/scripts/create_api_key.py \
+  --use-database-url \
+  --owner "Reviewer Name" \
+  --reviewer-email "reviewer@example.org" \
+  --project "Windowsill reviewer access - WSL-0001 Genovese Basil" \
+  --plan free \
+  --review-plant WSL-0001 \
+  --note "Reviewer thank-you key after received review"
+```
+
+Do not run live key creation casually. The review should be received and logged first.
+
 ## Say Not Yet When
 
 Say not yet when:

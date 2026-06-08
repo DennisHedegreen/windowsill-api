@@ -5,6 +5,17 @@ Updated: 2026-06-08
 
 Windowsill uses three independent same-plant reviewers.
 
+Operational queue:
+
+```text
+Release Control -> Outreach
+private/data/mail/contact-lists.csv -> list_windowsill_genovese_basil_reviewers
+private/data/tactical/outreach-ledger.csv -> plan_20260608_windowsill_genovese_basil_three_reviewer_model
+private/data/mail/drafts/windowsill/2026-06-08-windowsill-genovese-basil-review-draft.md
+```
+
+Do not mark anything as sent until the Outreach panel actually sends it or Dennis manually confirms it was sent.
+
 The point is not to force agreement.
 
 The point is to make disagreement visible before a research pack is promoted into the production plant library.
@@ -141,7 +152,7 @@ Use as:
 Subject:
 
 ```text
-Small open plant-library review request: Genovese Basil
+Short expert check request: Genovese Basil in an open plant-library API
 ```
 
 Body:
@@ -149,34 +160,57 @@ Body:
 ```text
 Hello [Name],
 
-My name is Dennis Hedegreen. I am building Windowsill, a small open plant recommendation API and public plant-library project:
+My name is Dennis Hedegreen. I am building Windowsill, a small public plant recommendation API and plant-library project.
 
 https://windowsill.dk
 https://github.com/DennisHedegreen/windowsill-api
 
-I am not asking you to endorse the project.
+The idea is simple: a person enters a location, window/balcony/garden context, direction and season, and Windowsill returns edible plants that may realistically fit that situation. It is meant as a practical, correctable tool, not as an AI gardening oracle.
 
-I am trying to make the plant data more accountable before it is treated as reliable.
+I am writing because I do not want the plant library to become polished but weak data. Before a research pack is promoted into the production plant library, I want it checked by people who can disagree from real plant knowledge.
 
-The first research pack is for Genovese Basil:
+The first review candidate is Genovese Basil.
+
+You do not need to edit JSON or use GitHub. I made a small review page that shows the entry in normal language and lets you submit a correction note directly:
+
+https://windowsill.dk/review/genovese-basil/?key=[PERSONAL_REVIEW_KEY]
+
+The link uses a personal reviewer API key. It does not use cookies, tracking or an account.
+
+The underlying source pack is public here, if you want to inspect it:
 
 https://github.com/DennisHedegreen/windowsill-api/tree/main/research-packs/WSL-0001-genovese-basil
 
-Windowsill uses a three-independent-reviewer model for each plant. The goal is not to force agreement. The goal is to show where plant-knowledge reviewers agree or disagree.
+For this first plant, I am trying a three-independent-reviewer model:
 
-Would you be willing to give a short review of this one entry?
+- one reviewer with basil horticulture / breeding context
+- one reviewer with plant pathology / disease-risk context
+- one reviewer with botanical or Genovese/Italian agronomic context
 
-The useful review can be very small:
+The goal is not to force agreement. The goal is to record where serious plant reviewers agree, disagree, or say that the entry is too uncertain.
 
-1. Is the botanical/name framing acceptable?
-2. Is the edible/safety boundary acceptable?
-3. Is the container/windowsill/balcony/garden fit too optimistic, too cautious, or reasonable?
-4. Are the temperature and harvest-time estimates obviously wrong?
-5. What should be corrected before this becomes a production plant-library entry?
+I am not asking for an endorsement, a long review, or unpaid consulting. A short correction note would already be useful.
 
-This would not be published as your endorsement. It would be recorded as an independent review note, with any uncertainty or disagreement kept visible.
+If you have time, the most useful questions are:
 
-If you prefer not to be named publicly, I can record it as an unnamed expert review note.
+1. Is the botanical/name framing acceptable for a practical public plant library?
+2. Is the edible/safety boundary proportionate for a normal culinary herb entry?
+3. Is the windowsill/balcony/garden assessment too optimistic, too cautious, or reasonable?
+4. Are the temperature and first-harvest estimates obviously wrong?
+5. What should be corrected before this entry is treated as production data?
+
+The specific fields I am trying to verify are ordinary practical fields such as `name_latin`, `species`, `context`, `habit`, `hardiness_temp`, `min_temp`, `optimal_temp`, `max_temp`, `grow_time_weeks` and `weeks_from_transplant`.
+
+I can record your response in one of two ways:
+
+- named expert review, if you explicitly permit that
+- unnamed expert review note, if you prefer not to be named publicly
+
+Either way, I will not present your reply as endorsement of Windowsill. I will treat it only as a correction / review signal for this plant entry.
+
+If this is not the right route, no problem. Even a short "not my field" or "ask someone else" is useful.
+
+As a thank-you, the same key can remain available as a free Windowsill API key for small projects, teaching, prototypes or local experiments. That is optional and does not depend on whether your review agrees with the current entry.
 
 Thank you,
 

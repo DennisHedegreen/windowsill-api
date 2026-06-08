@@ -33,7 +33,7 @@ SCORING_VERSION = "0.8.0"
 
 _HERE = Path(__file__).parent
 PLANTS_DIR = (_HERE.parent / "plants") if (_HERE.parent / "plants").exists() else (_HERE / "plants")
-DB_PATH = Path(__file__).parent / "keys.db"
+DB_PATH = Path(os.getenv("WINDOWSILL_KEYS_DB_PATH", str(Path(__file__).parent / "keys.db")))
 
 MONTH_NAMES = ["", "January", "February", "March", "April", "May", "June",
                "July", "August", "September", "October", "November", "December"]
@@ -43,7 +43,7 @@ OPTIMISTIC_RANGE = (0.35, 0.68)
 RATE_LIMIT_NO_KEY = int(os.getenv("RATE_LIMIT_NO_KEY", "60"))  # per hour
 _cors_env = os.getenv("CORS_ORIGINS", "*")
 CORS_ORIGINS = ["*"] if _cors_env.strip() == "*" else _cors_env.split(",")
-DEFAULT_CORS_ORIGIN_REGEX = r"^https://(www\.)?hedegreenresearch\.com$|^http://(localhost|127\.0\.0\.1):\d+$"
+DEFAULT_CORS_ORIGIN_REGEX = r"^https://(www\.)?hedegreenresearch\.com$|^https://(www\.)?windowsill\.dk$|^http://(localhost|127\.0\.0\.1):\d+$"
 CORS_ORIGIN_REGEX = os.getenv("CORS_ORIGIN_REGEX", DEFAULT_CORS_ORIGIN_REGEX).strip() or None
 _CORS_ORIGIN_RE = re.compile(CORS_ORIGIN_REGEX) if CORS_ORIGIN_REGEX else None
 
@@ -134,7 +134,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=CORS_ORIGINS,
     allow_origin_regex=CORS_ORIGIN_REGEX,
-    allow_methods=["GET", "OPTIONS"],
+    allow_methods=["GET", "POST", "OPTIONS"],
     allow_headers=["*"],
     allow_credentials=False,
 )
@@ -159,7 +159,7 @@ async def preflight(rest_of_path: str, request: Request):
         content={},
         headers={
             "Access-Control-Allow-Origin": cors_origin_for_request(request),
-            "Access-Control-Allow-Methods": "GET, OPTIONS",
+            "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
             "Access-Control-Allow-Headers": "*",
             "Access-Control-Max-Age": "600",
         },
@@ -250,6 +250,32 @@ def init_keys_db():
                 created_at    INTEGER NOT NULL
             )
         """)
+        _exec(conn, """
+            CREATE TABLE IF NOT EXISTS review_invitations (
+                invite_id      TEXT PRIMARY KEY,
+                key_hash       TEXT NOT NULL,
+                reviewer_name  TEXT,
+                reviewer_email TEXT,
+                allowed_plants TEXT NOT NULL,
+                active         INTEGER NOT NULL DEFAULT 1,
+                created_at     INTEGER NOT NULL,
+                note           TEXT
+            )
+        """)
+        _exec(conn, """
+            CREATE TABLE IF NOT EXISTS review_submissions (
+                submission_id  TEXT PRIMARY KEY,
+                key_hash       TEXT NOT NULL,
+                plant_id       TEXT NOT NULL,
+                plant_slug     TEXT NOT NULL,
+                reviewer_name  TEXT,
+                reviewer_email TEXT,
+                permission     TEXT,
+                payload_json   TEXT NOT NULL,
+                github_issue   TEXT,
+                created_at     INTEGER NOT NULL
+            )
+        """)
 
 
 def _hash_key(key: str) -> str:
@@ -260,19 +286,26 @@ def _current_month() -> str:
     return time.strftime("%Y-%m")
 
 
-def check_api_key(raw_key: str) -> tuple[bool, str]:
+def lookup_api_key_record(raw_key: str) -> dict | None:
     h = _hash_key(raw_key)
     with _db() as conn:
         row = _exec(conn, "SELECT * FROM api_keys WHERE key_hash=?", (h,)).fetchone()
     if not row:
+        return None
+    return dict(row)
+
+
+def check_api_key(raw_key: str) -> tuple[bool, str]:
+    row = lookup_api_key_record(raw_key)
+    if not row:
         return False, "invalid_key"
-    row = dict(row)
     if not row["active"]:
         return False, "key_inactive"
     if row["expires_at"] and time.time() > row["expires_at"]:
         return False, "key_expired"
     month = _current_month()
     limit = row["monthly_limit"] if row["monthly_limit"] is not None else PLAN_LIMITS.get(row["plan"])
+    h = _hash_key(raw_key)
     with _db() as conn:
         if row["usage_month"] != month:
             _exec(conn, "UPDATE api_keys SET usage_month=?, usage_count=1 WHERE key_hash=?", (month, h))
@@ -281,6 +314,37 @@ def check_api_key(raw_key: str) -> tuple[bool, str]:
                 return False, "monthly_limit_reached"
             _exec(conn, "UPDATE api_keys SET usage_count=usage_count+1 WHERE key_hash=?", (h,))
     return True, "ok"
+
+
+def review_invitation_for_key(raw_key: str) -> dict | None:
+    h = _hash_key(raw_key)
+    with _db() as conn:
+        row = _exec(
+            conn,
+            "SELECT * FROM review_invitations WHERE key_hash=? AND active=1",
+            (h,),
+        ).fetchone()
+    if not row:
+        return None
+    invite = dict(row)
+    invite["allowed_plants_list"] = [
+        p.strip() for p in (invite.get("allowed_plants") or "").split(",") if p.strip()
+    ]
+    return invite
+
+
+def review_access(raw_key: str) -> tuple[dict, dict]:
+    record = lookup_api_key_record(raw_key)
+    if not record:
+        raise HTTPException(status_code=401, detail="Invalid reviewer key.")
+    if not record["active"]:
+        raise HTTPException(status_code=401, detail="Reviewer key is inactive.")
+    if record["expires_at"] and time.time() > record["expires_at"]:
+        raise HTTPException(status_code=401, detail="Reviewer key has expired.")
+    invite = review_invitation_for_key(raw_key)
+    if not invite:
+        raise HTTPException(status_code=403, detail="This API key is not a reviewer invitation.")
+    return record, invite
 
 
 # ── Rate limiting (IP, no key) ─────────────────────────────────────────────────
@@ -332,6 +396,224 @@ async def require_access(request: Request) -> dict:
             headers={"Retry-After": "3600"},
         )
     return {"auth": "ip", "remaining": remaining}
+
+
+# ── Reviewer access / submissions ──────────────────────────────────────────────
+
+REVIEW_PLANTS = {
+    "WSL-0001": {
+        "plant_id": "WSL-0001",
+        "plant_slug": "genovese-basil",
+        "title": "Genovese Basil",
+        "review_url": "https://windowsill.dk/review/genovese-basil/",
+        "source_pack": "https://github.com/DennisHedegreen/windowsill-api/tree/main/research-packs/WSL-0001-genovese-basil",
+        "summary": "First Windowsill expert-review candidate. Tender culinary basil; review focuses on botanical framing, edible/safety boundary, container fit, climate values and timing.",
+    }
+}
+
+
+def public_review_plant(plant_id: str) -> dict | None:
+    return REVIEW_PLANTS.get(plant_id)
+
+
+def normalise_review_value(value: str, allowed: set[str], default: str) -> str:
+    value = str(value or "").strip()
+    return value if value in allowed else default
+
+
+def review_markdown(payload: dict, invite: dict) -> str:
+    def clean(key: str) -> str:
+        return str(payload.get(key, "") or "").strip()
+
+    return "\n".join([
+        "## Windowsill expert review submission",
+        "",
+        f"- Plant: `{clean('plant_id')}` / `{clean('plant_slug')}`",
+        f"- Reviewer: {clean('reviewer_name') or invite.get('reviewer_name') or '[not provided]'}",
+        f"- Affiliation/context: {clean('reviewer_affiliation') or '[not provided]'}",
+        f"- Email: {clean('reviewer_email') or invite.get('reviewer_email') or '[not provided]'}",
+        f"- Permission to name publicly: `{clean('name_permission') or 'unclear'}`",
+        f"- API key requested as thank-you: `{clean('api_key_requested') or 'no'}`",
+        "",
+        "### Assessment",
+        "",
+        f"- Botanical name: `{clean('botanical_name')}`",
+        f"- Edibility / safety: `{clean('edibility')}`",
+        f"- Container fit: `{clean('container_fit')}`",
+        f"- Climate fit: `{clean('climate_fit')}`",
+        f"- Timing values: `{clean('timing')}`",
+        f"- Overall decision: `{clean('decision')}`",
+        "",
+        "### Correction notes",
+        "",
+        clean("notes") or "_None provided._",
+        "",
+        "### Suggested wording or values",
+        "",
+        clean("suggested_corrections") or "_None provided._",
+        "",
+        "### Boundary",
+        "",
+        "This is a correction/review signal only. It is not an endorsement and should not automatically change the live plant score.",
+    ])
+
+
+async def create_github_review_issue(payload: dict, invite: dict) -> str:
+    token = os.getenv("GITHUB_TOKEN", "").strip()
+    repo = os.getenv("WINDOWSILL_REVIEW_GITHUB_REPO", "DennisHedegreen/windowsill-api").strip()
+    if not token:
+        return ""
+    title_name = payload.get("reviewer_name") or invite.get("reviewer_name") or "reviewer"
+    title = f"Expert review: {payload.get('plant_id')} {payload.get('plant_slug')} - {title_name}"
+    url = f"https://api.github.com/repos/{repo}/issues"
+    async with httpx.AsyncClient(timeout=20) as client:
+        response = await client.post(
+            url,
+            headers={
+                "Authorization": f"Bearer {token}",
+                "Accept": "application/vnd.github+json",
+                "X-GitHub-Api-Version": "2022-11-28",
+            },
+            json={
+                "title": title,
+                "body": review_markdown(payload, invite),
+                "labels": ["expert-review", "windowsill", payload.get("plant_id", "")],
+            },
+        )
+    if response.status_code >= 400:
+        raise HTTPException(status_code=502, detail=f"GitHub issue creation failed: HTTP {response.status_code}")
+    return response.json().get("html_url", "")
+
+
+def save_review_submission(raw_key: str, payload: dict, github_issue: str) -> str:
+    created_at = int(time.time())
+    payload_digest = hashlib.sha1(json.dumps(payload, sort_keys=True).encode()).hexdigest()[:10]
+    submission_id = f"review_{created_at}_{payload.get('plant_id', 'plant').lower()}_{payload_digest}"
+    with _db() as conn:
+        _exec(
+            conn,
+            """
+            INSERT INTO review_submissions (
+                submission_id, key_hash, plant_id, plant_slug, reviewer_name,
+                reviewer_email, permission, payload_json, github_issue, created_at
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                submission_id,
+                _hash_key(raw_key),
+                payload.get("plant_id", ""),
+                payload.get("plant_slug", ""),
+                payload.get("reviewer_name", ""),
+                payload.get("reviewer_email", ""),
+                payload.get("name_permission", ""),
+                json.dumps(payload, ensure_ascii=False, sort_keys=True),
+                github_issue,
+                created_at,
+            ),
+        )
+    return submission_id
+
+
+@app.post("/v1/review/validate")
+async def review_validate(request: Request):
+    body = await request.json()
+    raw_key = str(body.get("api_key", "")).strip()
+    if not raw_key:
+        raise HTTPException(status_code=400, detail="api_key is required.")
+    record, invite = review_access(raw_key)
+    plants = [
+        public_review_plant(plant_id)
+        for plant_id in invite.get("allowed_plants_list", [])
+        if public_review_plant(plant_id)
+    ]
+    return {
+        **version_block(),
+        "ok": True,
+        "reviewer": {
+            "name": invite.get("reviewer_name") or record.get("owner", ""),
+            "email": invite.get("reviewer_email", ""),
+        },
+        "access": {
+            "plan": record.get("plan", ""),
+            "project": record.get("project", ""),
+            "monthly_limit": record.get("monthly_limit") if record.get("monthly_limit") is not None else PLAN_LIMITS.get(record.get("plan")),
+        },
+        "plants": plants,
+    }
+
+
+@app.get("/v1/review/queue")
+async def review_queue(api_key: str = Query(..., min_length=8)):
+    record, invite = review_access(api_key)
+    return {
+        **version_block(),
+        "ok": True,
+        "reviewer": {
+            "name": invite.get("reviewer_name") or record.get("owner", ""),
+            "email": invite.get("reviewer_email", ""),
+        },
+        "plants": [
+            public_review_plant(plant_id)
+            for plant_id in invite.get("allowed_plants_list", [])
+            if public_review_plant(plant_id)
+        ],
+    }
+
+
+@app.post("/v1/review/submit")
+async def review_submit(request: Request):
+    body = await request.json()
+    raw_key = str(body.get("api_key", "")).strip()
+    if not raw_key:
+        raise HTTPException(status_code=400, detail="api_key is required.")
+    _record, invite = review_access(raw_key)
+
+    plant_id = str(body.get("plant_id", "")).strip()
+    if plant_id not in invite.get("allowed_plants_list", []):
+        raise HTTPException(status_code=403, detail="This reviewer key is not invited for that plant.")
+    plant = public_review_plant(plant_id)
+    if not plant:
+        raise HTTPException(status_code=404, detail="Review plant not found.")
+
+    assessment_values = {"not_assessed", "agree", "minor_fix", "dispute"}
+    decision_values = {"not_enough_information", "agree", "minor_fix", "major_dispute", "reject"}
+    permission_values = {"yes", "no", "unclear"}
+    payload = {
+        "plant_id": plant_id,
+        "plant_slug": plant["plant_slug"],
+        "reviewer_name": str(body.get("reviewer_name", "")).strip()[:200],
+        "reviewer_affiliation": str(body.get("reviewer_affiliation", "")).strip()[:300],
+        "reviewer_email": str(body.get("reviewer_email", "")).strip()[:200],
+        "name_permission": normalise_review_value(body.get("name_permission", ""), permission_values, "unclear"),
+        "botanical_name": normalise_review_value(body.get("botanical_name", ""), assessment_values, "not_assessed"),
+        "edibility": normalise_review_value(body.get("edibility", ""), assessment_values, "not_assessed"),
+        "container_fit": normalise_review_value(body.get("container_fit", ""), assessment_values, "not_assessed"),
+        "climate_fit": normalise_review_value(body.get("climate_fit", ""), assessment_values, "not_assessed"),
+        "timing": normalise_review_value(body.get("timing", ""), assessment_values, "not_assessed"),
+        "decision": normalise_review_value(body.get("decision", ""), decision_values, "not_enough_information"),
+        "notes": str(body.get("notes", "")).strip()[:8000],
+        "suggested_corrections": str(body.get("suggested_corrections", "")).strip()[:8000],
+        "api_key_requested": "yes" if str(body.get("api_key_requested", "")).strip().lower() == "yes" else "no",
+    }
+    if not payload["notes"] and not payload["suggested_corrections"]:
+        raise HTTPException(status_code=400, detail="A review note or suggested correction is required.")
+
+    github_issue = ""
+    github_error = ""
+    try:
+        github_issue = await create_github_review_issue(payload, invite)
+    except HTTPException as exc:
+        github_error = str(exc.detail)
+    submission_id = save_review_submission(raw_key, payload, github_issue)
+    return {
+        **version_block(),
+        "ok": True,
+        "submission_id": submission_id,
+        "github_issue": github_issue,
+        "github_error": github_error,
+        "message": "Review submitted. Thank you.",
+    }
 
 
 # ── Plant library ──────────────────────────────────────────────────────────────
@@ -1270,6 +1552,9 @@ async def root():
             "GET /v1/library",
             "GET /v1/varieties",
             "GET /v1/varieties/{id}",
+            "POST /v1/review/validate",
+            "GET /v1/review/queue",
+            "POST /v1/review/submit",
         ],
         "access": {
             "no_key": f"{RATE_LIMIT_NO_KEY} requests/hour per IP",
