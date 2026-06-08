@@ -63,9 +63,12 @@ Give a free key when:
 - the tool does not present recommendations as certainty
 - the user accepts rate limits
 
-## Reviewer Thank-You Keys
+## Reviewer Invitation / Thank-You Keys
 
-Independent plant reviewers may receive a free API key as a thank-you.
+Independent plant reviewers may receive a personal API key that works as both:
+
+- the invitation credential for the reviewer page
+- an optional free API key after the review, if they want to keep using it for small projects
 
 This is not payment for agreement.
 
@@ -77,10 +80,18 @@ https://windowsill.dk/review/genovese-basil/?key=PERSONAL_REVIEW_KEY
 
 No cookies, account or browser-stored login is required.
 
-Give a reviewer key when:
+Give a reviewer invitation key when:
+
+- Dennis has approved that this person should be contacted
+- the reviewer is attached to a specific plant review invitation
+- the key is sent only through the outreach draft or a direct approved message
+- the key is framed as access to the review tool, not as a public login
+- the key can be disabled later if it is shared, abused or no longer needed
+
+Let the same key remain as a thank-you key when:
 
 - the reviewer has sent a real correction note or review signal
-- the review is logged before the key is issued
+- the review is logged before the key is treated as ongoing API access
 - the key is framed as optional access for small projects, teaching, prototypes or local experiments
 - the key does not change the review status, score or decision
 
@@ -95,7 +106,7 @@ note: Reviewer thank-you key for [plant / reviewer / date]
 
 Do not issue unlimited `sponsored` keys by default. Use `sponsored` only if there is a concrete reason and the use is trusted.
 
-Manual local helper:
+Manual local helper for a reviewer invitation:
 
 ```bash
 python3 windowsill/api/scripts/create_api_key.py \
@@ -104,12 +115,12 @@ python3 windowsill/api/scripts/create_api_key.py \
   --project "Windowsill reviewer access - WSL-0001 Genovese Basil" \
   --plan free \
   --review-plant WSL-0001 \
-  --note "Reviewer thank-you key after received review"
+  --note "Reviewer invitation key for WSL-0001"
 ```
 
 The raw key is printed once. Store and send it outside git.
 
-Live/Railway helper, only when `DATABASE_URL` is intentionally set:
+Live/Railway helper for a reviewer invitation, only when `DATABASE_URL` is intentionally set:
 
 ```bash
 DATABASE_URL="..." python3 windowsill/api/scripts/create_api_key.py \
@@ -119,10 +130,14 @@ DATABASE_URL="..." python3 windowsill/api/scripts/create_api_key.py \
   --project "Windowsill reviewer access - WSL-0001 Genovese Basil" \
   --plan free \
   --review-plant WSL-0001 \
-  --note "Reviewer thank-you key after received review"
+  --note "Reviewer invitation key for WSL-0001"
 ```
 
-Do not run live key creation casually. The review should be received and logged first.
+Do not run live key creation casually.
+
+For outreach, create only the keys Dennis has approved to send.
+
+For thank-you access, keep the same key active only after the review has been logged.
 
 ## Say Not Yet When
 
