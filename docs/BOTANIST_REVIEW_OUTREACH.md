@@ -3,7 +3,21 @@
 Status: working outreach plan
 Updated: 2026-06-08
 
-Windowsill uses three independent same-plant reviewers.
+Windowsill uses three independent same-plant review signals before a research pack can be promoted into the production plant library.
+
+The outreach pool may be larger than three people.
+
+For WSL-0001, the first practical pool is 10 candidates:
+
+- 3 primary scientific reviewers
+- 6 additional scientific / extension candidates
+- 1 Genovese DOP context contact
+
+If more than three people reply, that is useful.
+
+It does not create a popularity score.
+
+It creates a better correction record.
 
 Operational queue:
 
@@ -11,6 +25,7 @@ Operational queue:
 Release Control -> Outreach
 private/data/mail/contact-lists.csv -> list_windowsill_genovese_basil_reviewers
 private/data/tactical/outreach-ledger.csv -> plan_20260608_windowsill_genovese_basil_three_reviewer_model
+private/data/tactical/outreach-ledger.csv -> plan_20260608_windowsill_genovese_basil_reviewer_candidate_pool
 private/data/mail/drafts/windowsill/2026-06-08-windowsill-genovese-basil-review-draft.md
 ```
 
@@ -34,6 +49,30 @@ Production promotion status:
 not promoted
 ```
 
+## Reviewer gate
+
+Promotion into `plants/` needs:
+
+```text
+minimum_accepted_same_plant_reviews: 3
+minimum_distinct_review_contexts: 2
+preferred_distinct_review_contexts: 3
+```
+
+The three accepted reviews do not need to agree.
+
+Disagreement should be logged.
+
+Do not average the reviewers into one false score.
+
+The production decision should say:
+
+- what was corrected
+- where reviewers agreed
+- where reviewers disagreed
+- where Windowsill chose cautious wording
+- what remains uncertain
+
 ## Reviewer mix
 
 For one plant, choose three independent reviewers who can plausibly disagree because they bring different plant-knowledge contexts.
@@ -47,6 +86,30 @@ For Genovese Basil, the first target mix should be:
 This is still one same-plant review.
 
 It is not three different scores.
+
+## Review tool
+
+Reviewers should not be asked to edit JSON or use GitHub.
+
+Send a personal reviewer link:
+
+```text
+https://windowsill.dk/review/genovese-basil/?key=[PERSONAL_REVIEW_KEY]
+```
+
+The key is a normal API key with reviewer access attached.
+
+It requires no cookies, no account and no browser-stored login.
+
+The browser submits to:
+
+```text
+POST https://api.windowsill.dk/v1/review/submit
+```
+
+The API stores the review and, when GitHub credentials are configured, creates a GitHub issue in the Windowsill API repository.
+
+Email is only fallback.
 
 ## Candidate reviewers / contacts
 
@@ -146,6 +209,96 @@ Use as:
 - context source
 - optional fourth local-practice contact
 - not one of the three scientific reviewers unless a named technical reviewer responds
+
+## Additional candidate pool
+
+These are not lower-quality reviewers.
+
+They are the practical first-wave buffer so Windowsill does not depend on exactly three busy people replying.
+
+### Andy Wyenandt — Rutgers NJAES / Plant Biology
+
+Fit:
+
+- vegetable pathology
+- basil downy mildew
+- useful pressure-test for disease, resistance and production-risk wording
+
+Contact:
+
+```text
+wyenandt@njaes.rutgers.edu
+```
+
+### Leanne Pundt — UConn Extension
+
+Fit:
+
+- greenhouse basil downy mildew guidance
+- humidity, ventilation and susceptible Genovese variety context
+- useful for windowsill/container realism
+
+Contact:
+
+```text
+Leanne.Pundt@uconn.edu
+```
+
+### Shuresh Ghimire — UConn Extension
+
+Fit:
+
+- vegetable crops extension
+- practical seed-selection and disease-management framing
+- useful for small-grower vs field-production wording
+
+Contact:
+
+```text
+shuresh.ghimire@uconn.edu
+```
+
+### Marissa Schuh — University of Minnesota Extension
+
+Fit:
+
+- horticulture IPM
+- basil downy mildew for garden/home growers
+- useful for proportionate public-facing disease notes
+
+Contact:
+
+```text
+mschuh@umn.edu
+```
+
+### Natalie Hoidal — University of Minnesota Extension
+
+Fit:
+
+- vegetable production
+- local foods and practical grower support
+- useful for first-harvest estimates and edible-container wording
+
+Contact:
+
+```text
+hoida016@umn.edu
+```
+
+### Richard N. Raid — University of Florida IFAS
+
+Fit:
+
+- plant pathology
+- basil downy mildew and culinary herb disease context
+- useful warm-climate counterweight
+
+Contact:
+
+```text
+rnraid@ufl.edu
+```
 
 ## Outreach email template
 
