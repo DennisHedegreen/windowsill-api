@@ -123,7 +123,7 @@ The raw key is printed once. Store and send it outside git.
 Live/Railway helper for a reviewer invitation, only when `DATABASE_URL` is intentionally set:
 
 ```bash
-DATABASE_URL="..." python3 windowsill/api/scripts/create_api_key.py \
+/opt/venv/bin/python scripts/create_api_key.py \
   --use-database-url \
   --owner "Reviewer Name" \
   --reviewer-email "reviewer@example.org" \
@@ -138,6 +138,29 @@ Do not run live key creation casually.
 For outreach, create only the keys Dennis has approved to send.
 
 For thank-you access, keep the same key active only after the review has been logged.
+
+Railway console note:
+
+```text
+Use /opt/venv/bin/python for app scripts.
+Do not use plain python in the Railway console; it may point to a raw Nix Python without app dependencies.
+```
+
+If a test key is exposed, deactivate it by hash:
+
+```bash
+/opt/venv/bin/python scripts/deactivate_api_key.py \
+  --use-database-url \
+  --key-hash SHA256_KEY_HASH
+```
+
+Or by raw key, if the raw key is already exposed and must be retired:
+
+```bash
+/opt/venv/bin/python scripts/deactivate_api_key.py \
+  --use-database-url \
+  --raw-key "wsl_free_..."
+```
 
 ## Say Not Yet When
 
