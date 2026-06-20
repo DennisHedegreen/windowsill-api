@@ -1,0 +1,35 @@
+name: Data correction
+description: Report a correction to an existing plant entry, documentation page, or API behavior note.
+title: "[Correction]: "
+labels:
+  - correction
+body:
+  - type: input
+    id: target
+    attributes:
+      label: What needs correction?
+      placeholder: WSL-0008 peppermint, README plant count, API docs
+    validations:
+      required: true
+  - type: textarea
+    id: current_problem
+    attributes:
+      label: What looks wrong now?
+      placeholder: A field is inaccurate, a claim is outdated, the docs overstate something
+    validations:
+      required: true
+  - type: textarea
+    id: suggested_fix
+    attributes:
+      label: What should it say instead?
+      placeholder: The corrected temperature, wording, source note, or behavior
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence or source
+      description: Include a source, field observation, or a reproducible API example if possible.
+      placeholder: URL, book citation, grower note, curl example
+    validations:
+      required: false

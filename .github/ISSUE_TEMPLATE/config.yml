@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Windowsill contribution guide
+    url: https://github.com/DennisHedegreen/windowsill-api/blob/main/CONTRIBUTING.md
+    about: Read this first before opening contribution-related issues.
+  - name: Collaborator setup
+    url: https://github.com/DennisHedegreen/windowsill-api/blob/main/docs/COLLABORATOR_SETUP.md
+    about: Maintainer and collaborator workflow for pull requests and review.

@@ -1,0 +1,60 @@
+name: Plant suggestion
+description: Suggest a new plant or variety that should start as a research pack.
+title: "[Plant]: "
+labels:
+  - plant-suggestion
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this when a plant or variety is missing from Windowsill.
+
+        New additions should normally start as a research pack, not a direct `plants/` entry.
+  - type: input
+    id: plant_name
+    attributes:
+      label: Plant or variety name
+      placeholder: Genovese basil, sea kale, lemon verbena
+    validations:
+      required: true
+  - type: input
+    id: region_context
+    attributes:
+      label: Region or growing context
+      placeholder: Denmark, Mediterranean balcony, indoor windowsill
+    validations:
+      required: false
+  - type: textarea
+    id: why_missing
+    attributes:
+      label: Why should it be added?
+      description: Explain why this plant matters for the library.
+      placeholder: Missing common edible variety, useful for local growers, often requested
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Any source leads?
+      description: URLs, books, seed catalogues, horticulture sources, or personal field knowledge
+      placeholder: RHS, seed supplier, local grower report, extension service
+    validations:
+      required: false
+  - type: dropdown
+    id: ai_help
+    attributes:
+      label: Was AI already used for this suggestion?
+      options:
+        - "No"
+        - "Yes"
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I understand this should normally become a research pack first.
+          required: true
+        - label: I am not treating AI output as a source by itself.
+          required: false
