@@ -8,6 +8,7 @@ Send a GPS coordinate, a growing context, and a week number — get back the bes
 **Documentation:** https://windowsill.dk/docs.html  
 **Plant library:** https://windowsill.dk/library.html  
 **Contribute a plant:** https://windowsill.dk/contribute.html
+**License:** [MIT](LICENSE)
 
 Repository production library state: 148 varieties.
 Merged research packs: 1 pending review.
@@ -172,6 +173,7 @@ Do not update `plants/` or `plants/index.json` until a later review/promotion st
 AI-assisted contributions are welcome if they keep sources, uncertainty and human responsibility visible. See:
 
 - [CONTRIBUTING.md](CONTRIBUTING.md)
+- [docs/COLLABORATOR_SETUP.md](docs/COLLABORATOR_SETUP.md)
 - [docs/CHATGPT_PLANT_RESEARCH_GUIDE.md](docs/CHATGPT_PLANT_RESEARCH_GUIDE.md)
 - [docs/RESEARCH_PACK_CONTRACT.md](docs/RESEARCH_PACK_CONTRACT.md)
 - [docs/GITFLOW.md](docs/GITFLOW.md)
@@ -188,6 +190,15 @@ Research-pack pull requests are checked with:
 ```bash
 python3 scripts/validate_research_packs.py
 ```
+
+## Collaboration Default
+
+Use pull requests against `main`.
+
+Default collaboration split:
+
+- outside contributors: fork + pull request
+- trusted repeat contributors: write access is fine, but still use pull requests
 
 ---
 
