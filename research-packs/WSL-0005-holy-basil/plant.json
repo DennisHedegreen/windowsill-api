@@ -1,0 +1,47 @@
+{
+  "id": "WSL-0005",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Audit draft for existing Windowsill entry WSL-0005. Botanical identity as Ocimum tenuiflorum is plausible and retained, with Ocimum sanctum treated as a synonym/trade-source issue requiring review. Holy Basil/Tulsi is distinct from sweet basil and Thai basil; some sources also use holy basil loosely for other Ocimum species, so identity should be checked. Edibility is limited to normal culinary leaf/tea use. Temperature and timing values are modelling estimates based on general basil-growing sources plus holy-basil-specific gardening sources; expert review is still pending.",
+  "name_en": "Holy Basil",
+  "name_da": "Hellig Basilikum",
+  "name_latin": "Ocimum tenuiflorum",
+  "family": "Lamiaceae",
+  "genus": "Ocimum",
+  "species": "tenuiflorum",
+  "type": "op",
+  "min_temp": 18,
+  "max_temp": 34,
+  "optimal_temp": 28,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 8,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": 0,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "acceptable",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Warm-season basil relative that needs strong light and warmth. Windowsill fit is acceptable only with enough sun/heat; balcony and garden fit are good in frost-free warm conditions."
+  },
+  "notes": "Also known as Tulsi. Distinct from sweet basil and Thai basil. Leaves are used in normal culinary and tea contexts in some cuisines and traditions. Treat as warmth-demanding and frost-tender. This edible-plant entry does not cover supplements, extracts, essential oil, medicinal dosing or health claims.",
+  "expert_review": {
+    "status": "not_reviewed",
+    "model": "three_independent_reviewers_per_plant",
+    "reviewers_required": 3,
+    "reviews": [],
+    "agreement_summary": {
+      "botanical_name": "not_assessed",
+      "edibility": "not_assessed",
+      "container_fit": "not_assessed",
+      "climate_fit": "not_assessed",
+      "safety": "not_assessed"
+    },
+    "decision": "pending"
+  }
+}
