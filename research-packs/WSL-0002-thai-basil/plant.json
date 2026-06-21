@@ -1,0 +1,47 @@
+{
+  "id": "WSL-0002",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Audit draft for existing Windowsill entry WSL-0002. Thai Basil is treated as a culinary Ocimum basilicum type commonly labelled Ocimum basilicum var. thyrsiflora in horticultural sources. Kew POWO supports Ocimum basilicum L. at species level but does not list var. thyrsiflora among accepted infraspecifics, so the infraspecific label needs botanical review. Edibility is limited to normal culinary use of leaves and tender stems. Temperature and timing values are modelling estimates based on horticultural sources; expert review is still pending.",
+  "name_en": "Thai Basil",
+  "name_da": "Thai Basilikum",
+  "name_latin": "Ocimum basilicum var. thyrsiflora",
+  "family": "Lamiaceae",
+  "genus": "Ocimum",
+  "species": "basilicum",
+  "type": "op",
+  "min_temp": 18,
+  "max_temp": 34,
+  "optimal_temp": 27,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 7,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": 0,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Fits warm, bright containers and frost-free outdoor contexts. Windowsill fit depends on strong light and warmth; balcony and garden fit depend on temperatures staying safely above cold-damage range."
+  },
+  "notes": "Anise/licorice-like culinary basil used in Southeast Asian cooking. Use leaves and tender stems for normal culinary purposes. Treat as cold-sensitive and frost-tender; keep warm, bright and well-drained. Pinch flowers to maintain leaf production. Do not treat essential oil, medicinal dosing, extracts or supplements as covered by this edible-plant entry.",
+  "expert_review": {
+    "status": "not_reviewed",
+    "model": "three_independent_reviewers_per_plant",
+    "reviewers_required": 3,
+    "reviews": [],
+    "agreement_summary": {
+      "botanical_name": "not_assessed",
+      "edibility": "not_assessed",
+      "container_fit": "not_assessed",
+      "climate_fit": "not_assessed",
+      "safety": "not_assessed"
+    },
+    "decision": "pending"
+  }
+}
