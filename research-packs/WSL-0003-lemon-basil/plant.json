@@ -1,0 +1,47 @@
+{
+  "id": "WSL-0003",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Audit draft for existing Windowsill entry WSL-0003. The current production entry uses Ocimum × citriodorum, but multiple taxonomic/gardening references treat lemon basil as Ocimum × africanum, with Ocimum × citriodorum as a synonym or horticultural label. Botanical naming therefore needs human/expert review. Edibility is limited to normal culinary use of leaves and tender stems. Temperature, sun and timing values are modelling estimates based mostly on general basil-growing sources plus lemon-basil-specific secondary sources; expert review is still pending.",
+  "name_en": "Lemon Basil",
+  "name_da": "Citron Basilikum",
+  "name_latin": "Ocimum × africanum",
+  "family": "Lamiaceae",
+  "genus": "Ocimum",
+  "species": "africanum",
+  "type": "hybrid",
+  "min_temp": 15,
+  "max_temp": 33,
+  "optimal_temp": 26,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 7,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": 0,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Fits warm, bright containers and frost-free outdoor contexts. Windowsill fit depends on strong light, warmth and airflow. Pinch flowers early because basil leaf quality and productivity drop after flowering."
+  },
+  "notes": "Culinary basil with strong lemon/citrus aroma, commonly used in Southeast Asian and other cuisines. Use leaves and tender stems for normal culinary purposes. Treat as cold-sensitive and frost-tender; keep warm, bright and well-drained. Do not treat essential oil, medicinal dosing, extracts, supplements or seed-gel use as covered by this edible-plant entry.",
+  "expert_review": {
+    "status": "not_reviewed",
+    "model": "three_independent_reviewers_per_plant",
+    "reviewers_required": 3,
+    "reviews": [],
+    "agreement_summary": {
+      "botanical_name": "not_assessed",
+      "edibility": "not_assessed",
+      "container_fit": "not_assessed",
+      "climate_fit": "not_assessed",
+      "safety": "not_assessed"
+    },
+    "decision": "pending"
+  }
+}
