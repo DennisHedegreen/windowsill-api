@@ -1,0 +1,47 @@
+{
+  "id": "WSL-0004",
+  "contributor": "dennishedegreen",
+  "contributor_note": "Audit draft for existing Windowsill entry WSL-0004. The existing production entry uses Ocimum basilicum 'Purpurascens', but purple basil is treated here as a broad purple-leaf cultivar/type group within Ocimum basilicum rather than one verified cultivar. Kew POWO supports Ocimum basilicum L. at species level; Iowa State Extension supports purple-leaf basil cultivars such as Dark Opal, Purple Ruffles, Red Rubin, Amethyst and Aromatto for ornamental foliage and culinary use. Edibility is limited to normal culinary use of leaves and tender stems. Temperature and timing values are modelling estimates based on general basil-growing sources; expert review is still pending.",
+  "name_en": "Purple Basil",
+  "name_da": "Lilla Basilikum",
+  "name_latin": "Ocimum basilicum",
+  "family": "Lamiaceae",
+  "genus": "Ocimum",
+  "species": "basilicum",
+  "type": "op",
+  "min_temp": 15,
+  "max_temp": 33,
+  "optimal_temp": 26,
+  "sun_hours": 6,
+  "sun_direct": "full",
+  "context": [
+    "windowsill",
+    "balcony",
+    "garden"
+  ],
+  "grow_time_weeks": 7,
+  "weeks_from_transplant": 4,
+  "hardiness_temp": 0,
+  "hardiness_zone_min": 10,
+  "habit": {
+    "windowsill": "good",
+    "balcony": "good",
+    "garden": "good",
+    "note": "Fits warm, bright containers and frost-free outdoor contexts. Strong light supports colour and compact growth; weak indoor light may reduce vigour and colour quality."
+  },
+  "notes": "Purple-leaf culinary basil type, not one verified cultivar. Often best used fresh, especially in salads, garnish and flavoured vinegars, because colour and flavour can be less suitable for long cooking than green basil. Use leaves and tender stems for normal culinary purposes. Treat as cold-sensitive and frost-tender. Do not treat essential oil, medicinal dosing, extracts or supplements as covered by this edible-plant entry.",
+  "expert_review": {
+    "status": "not_reviewed",
+    "model": "three_independent_reviewers_per_plant",
+    "reviewers_required": 3,
+    "reviews": [],
+    "agreement_summary": {
+      "botanical_name": "not_assessed",
+      "edibility": "not_assessed",
+      "container_fit": "not_assessed",
+      "climate_fit": "not_assessed",
+      "safety": "not_assessed"
+    },
+    "decision": "pending"
+  }
+}
