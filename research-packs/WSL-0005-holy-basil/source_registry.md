@@ -48,13 +48,15 @@ Does not support:
 
 ### 3. Plants of the World Online — Kew Science, Ocimum tenuiflorum L.
 
-URL: https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:452874-1
+URL: https://powo.science.kew.org/taxon/453130-1
 
 Supports:
 
-- Kew-linked references identify `Ocimum tenuiflorum L.` as a recognised name for Holy Basil/Tulsi.
+- Kew accepts `Ocimum tenuiflorum L.` as the botanical name.
 - The plant is in genus `Ocimum` and family `Lamiaceae`.
-- The existing Windowsill `name_latin` is plausible at species level.
+- `Ocimum sanctum L.` is a synonym, so it should not be treated as a separate
+  species in the Windowsill data model.
+- The existing Windowsill `name_latin` is supported at species level.
 
 Does not support:
 
@@ -62,7 +64,23 @@ Does not support:
 - That all plants sold as "holy basil" are the same species.
 - Container or windowsill suitability.
 
-### 4. Wikipedia — Ocimum tenuiflorum
+### 4. Plants of the World Online — Kew Science, Ocimum sanctum L.
+
+URL: https://powo.science.kew.org/taxon/urn%3Alsid%3Aipni.org%3Anames%3A30252269-2
+
+Supports:
+
+- `Ocimum sanctum L.` is a synonym of accepted `Ocimum tenuiflorum L.`
+- Commercial or older-source use of `O. sanctum` needs name normalization, not
+  a new plant record by default.
+
+Does not support:
+
+- Exact Windowsill numeric model values.
+- That every commercial "holy basil" label has been identified correctly.
+- Container or windowsill suitability.
+
+### 5. Wikipedia — Ocimum tenuiflorum
 
 URL: https://en.wikipedia.org/wiki/Ocimum_tenuiflorum
 
@@ -80,7 +98,7 @@ Does not support:
 - Exact growing thresholds.
 - Production-grade safety review.
 
-### 5. Wikipedia — Ocimum
+### 6. Wikipedia — Ocimum
 
 URL: https://en.wikipedia.org/wiki/Ocimum
 
@@ -97,7 +115,7 @@ Does not support:
 
 ## Growing / climate sources
 
-### 6. The Spruce — How to Grow and Care for Holy Basil
+### 7. The Spruce — How to Grow and Care for Holy Basil
 
 URL: https://www.thespruce.com/holy-basil-plant-profile-5184884
 
@@ -116,7 +134,7 @@ Does not support:
 - Universal success on cool northern windowsills.
 - Exact Windowsill `grow_time_weeks` or `weeks_from_transplant`.
 
-### 7. University of Minnesota Extension — Growing basil in home gardens
+### 8. University of Minnesota Extension — Growing basil in home gardens
 
 URL: https://extension.umn.edu/vegetables/growing-basil
 
@@ -135,7 +153,7 @@ Does not support:
 - Exact Holy-Basil-specific temperature thresholds.
 - Exact Holy-Basil-specific harvest timing under Windowsill’s locked meaning.
 
-### 8. Iowa State University Extension — Growing Basil in the Home Garden
+### 9. Iowa State University Extension — Growing Basil in the Home Garden
 
 URL: https://yardandgarden.extension.iastate.edu/how-to/growing-basil-home-garden
 
@@ -153,7 +171,7 @@ Does not support:
 - Exact Windowsill `min_temp`, `max_temp`, `optimal_temp`, `grow_time_weeks` or `weeks_from_transplant`.
 - Supplement, extract or health-use safety.
 
-### 9. US Basil Consortium / Rutgers — Growing Basil in a Commercial Setting
+### 10. US Basil Consortium / Rutgers — Growing Basil in a Commercial Setting
 
 URL: https://usbasilconsortium.rutgers.edu/grower-research-resources/grower-resources/growing-basil-in-a-commercial-setting/
 
@@ -173,7 +191,7 @@ Does not support:
 
 ## Safety / scope-boundary sources
 
-### 10. Verywell Health — Holy Basil Benefits: Ayurveda Herbal Medicine
+### 11. Verywell Health — Holy Basil Benefits: Ayurveda Herbal Medicine
 
 URL: https://www.verywellhealth.com/holy-basil-4766587
 
@@ -196,7 +214,10 @@ No personal observation was provided for this WSL-0005 audit pack.
 ## Source quality notes
 
 - Strong current production grounding: existing Windowsill file.
-- Stronger botanical review is still needed because direct official source retrieval was limited in this pass.
-- Strong practical growing support: The Spruce for Holy-Basil-specific container/indoor care, plus general basil support from UMN, Iowa State and Rutgers.
+- Strong official botanical grounding: Kew POWO accepts `Ocimum tenuiflorum`
+  and treats `Ocimum sanctum` as a synonym.
+- Strong practical growing support: The Spruce for Holy-Basil-specific
+  container/indoor care, plus general basil support from UMN, Iowa State and
+  Rutgers.
 - Key weak area: exact Holy-Basil-specific temperature and harvest timing.
 - Safety boundary is important because Holy Basil is often discussed medicinally; this pack only covers normal culinary leaf/tea use.

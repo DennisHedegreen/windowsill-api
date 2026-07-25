@@ -4,14 +4,14 @@ Geo-climate edible plant growing recommendation API.
 
 Send a GPS coordinate, a growing context, and a week number — get back the best plants to grow for that exact location, based on historical climate data and astronomical sun calculations.
 
-**Live API:** https://api.windowsill.dk  
-**Documentation:** https://windowsill.dk/docs.html  
-**Plant library:** https://windowsill.dk/library.html  
+**Live API:** https://api.windowsill.dk
+**Documentation:** https://windowsill.dk/docs.html
+**Plant library:** https://windowsill.dk/library.html
 **Contribute a plant:** https://windowsill.dk/contribute.html
 **License:** [MIT](LICENSE)
 
 Repository production library state: 148 varieties.
-Merged research packs: 1 pending review.
+Merged research packs: 5 pending review.
 
 Deployment note: verify `GET /v1/status` after deployment before claiming the live API has the same plant count.
 
@@ -184,6 +184,11 @@ AI-assisted contributions are welcome if they keep sources, uncertainty and huma
 - [docs/UNCERTAINTY_NOTES.md](docs/UNCERTAINTY_NOTES.md)
 - [docs/PLANT_ENTRY_REVIEW.md](docs/PLANT_ENTRY_REVIEW.md)
 - [research-packs/_template/](research-packs/_template/)
+- [docs/WEEKLY_OPERATING_GUIDE.md](docs/WEEKLY_OPERATING_GUIDE.md)
+- [docs/PLANT_REVIEWER_AND_FLYER_PLAN.md](docs/PLANT_REVIEWER_AND_FLYER_PLAN.md)
+- [docs/PLANT_DATA_STANDARD_V1.md](docs/PLANT_DATA_STANDARD_V1.md)
+- [docs/PLANT_PREFERENCE_PROFILE_VNEXT.md](docs/PLANT_PREFERENCE_PROFILE_VNEXT.md)
+- [BACKLOG.md](BACKLOG.md)
 
 Research-pack pull requests are checked with:
 

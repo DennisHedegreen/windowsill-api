@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Windowsill Flyer v0.1</title>
+  <style>
+    :root {
+      --ink: #f7f4df;
+      --paper: #07140d;
+      --panel: #102517;
+      --line: #365f42;
+      --accent: #f1d84d;
+      --soft: #b9d3b8;
+      --muted: #86a887;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: #d9dfd3;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      display: grid;
+      gap: 24px;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .flyer-page {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 148mm;
+      height: 210mm;
+      overflow: hidden;
+      padding: 16mm;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(255,255,255,0.035) 1px, transparent 1px),
+        radial-gradient(circle at 80% 12%, rgba(241, 216, 77, 0.18), transparent 30%),
+        radial-gradient(circle at 10% 85%, rgba(76, 147, 92, 0.22), transparent 34%),
+        var(--paper);
+      background-size: 12mm 12mm, 12mm 12mm, auto, auto, auto;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.28);
+    }
+
+    .brand-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      font-size: 10pt;
+      font-weight: 800;
+    }
+
+    .mark {
+      display: inline-grid;
+      place-items: center;
+      width: 16mm;
+      height: 16mm;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--accent);
+      font-size: 8pt;
+    }
+
+    .tag {
+      color: var(--soft);
+      font-size: 8pt;
+      font-weight: 700;
+    }
+
+    .hero {
+      display: grid;
+      gap: 9mm;
+      padding: 10mm 0 8mm;
+    }
+
+    .kicker {
+      margin: 0;
+      color: var(--accent);
+      font-size: 8pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 104mm;
+      margin: 0;
+      color: var(--ink);
+      font-size: 45pt;
+      line-height: 0.95;
+      letter-spacing: 0;
+    }
+
+    .lede {
+      max-width: 105mm;
+      margin: 0;
+      color: var(--soft);
+      font-size: 15pt;
+      line-height: 1.35;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5mm;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .steps li,
+    .panel {
+      border: 1px solid rgba(93, 142, 99, 0.72);
+      background: rgba(16, 37, 23, 0.84);
+      padding: 5mm;
+    }
+
+    .steps strong {
+      display: block;
+      margin-bottom: 2mm;
+      color: var(--accent);
+      font-size: 8pt;
+      text-transform: uppercase;
+    }
+
+    .steps span {
+      display: block;
+      color: var(--ink);
+      font-size: 10.5pt;
+      line-height: 1.25;
+    }
+
+    .url-block {
+      display: grid;
+      gap: 3mm;
+      padding-top: 8mm;
+      border-top: 1px solid var(--line);
+    }
+
+    .url {
+      color: var(--ink);
+      font-size: 25pt;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .small {
+      margin: 0;
+      color: var(--muted);
+      font-size: 9.5pt;
+      line-height: 1.35;
+    }
+
+    .back-grid {
+      display: grid;
+      gap: 7mm;
+      padding: 8mm 0;
+    }
+
+    .panel h2 {
+      margin: 0 0 3mm;
+      color: var(--accent);
+      font-size: 17pt;
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .panel p {
+      margin: 0;
+      color: var(--soft);
+      font-size: 11.5pt;
+      line-height: 1.38;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 2mm;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: var(--ink);
+      font-size: 12pt;
+      font-weight: 750;
+    }
+
+    .qr-box {
+      display: grid;
+      place-items: center;
+      width: 36mm;
+      height: 36mm;
+      border: 1.5mm solid var(--ink);
+      color: var(--ink);
+      text-align: center;
+      font-size: 7pt;
+      line-height: 1.15;
+      text-transform: uppercase;
+    }
+
+    .bottom-row {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 8mm;
+    }
+
+    @media print {
+      @page {
+        size: A5 portrait;
+        margin: 0;
+      }
+
+      html,
+      body {
+        background: white;
+        padding: 0;
+      }
+
+      body {
+        display: block;
+      }
+
+      .flyer-page {
+        width: 148mm;
+        height: 210mm;
+        box-shadow: none;
+        break-after: page;
+        page-break-after: always;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="flyer-page" aria-label="Windowsill flyer front">
+    <header class="brand-row">
+      <span class="mark">WSL</span>
+      <span>Windowsill</span>
+      <span class="tag">Geo-climate plant reading</span>
+    </header>
+
+    <main class="hero">
+      <p class="kicker">Windowsill, balcony, garden</p>
+      <h1>What might grow here?</h1>
+      <p class="lede">
+        A small public tool that reads place, direction, season and growing context,
+        then suggests edible plants that might fit.
+      </p>
+      <ol class="steps">
+        <li><strong>1</strong><span>Pick a place</span></li>
+        <li><strong>2</strong><span>Choose a direction</span></li>
+        <li><strong>3</strong><span>Read the plant fit</span></li>
+      </ol>
+    </main>
+
+    <footer class="url-block">
+      <div class="url">windowsill.dk</div>
+      <p class="small">A correctable public instrument from Hedegreen Research.</p>
+    </footer>
+  </section>
+
+  <section class="flyer-page" aria-label="Windowsill flyer back">
+    <header class="brand-row">
+      <span class="mark">WSL</span>
+      <span>Windowsill</span>
+      <span class="tag">Not a gardening oracle</span>
+    </header>
+
+    <main class="back-grid">
+      <section class="panel">
+        <h2>It gives a first reading, not a guarantee.</h2>
+        <p>
+          Windowsill uses climate history, direction, season and plant-library limits.
+          It does not see your exact shade, room temperature, soil, watering, pests or local microclimate.
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>Know plants?</h2>
+        <p>
+          Help correct one plant entry. Tell us what is wrong, too optimistic,
+          too cautious or still uncertain. The goal is correction, not endorsement.
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>Build with the API.</h2>
+        <p>
+          Small non-commercial, educational, local and experimental projects can ask
+          for free API access. Rate limits protect service stability.
+        </p>
+      </section>
+    </main>
+
+    <footer class="bottom-row">
+      <ul class="contact-list">
+        <li>windowsill.dk</li>
+        <li>api@windowsill.dk</li>
+        <li>github.com/DennisHedegreen/windowsill-api</li>
+      </ul>
+      <div class="qr-box">
+        QR to<br>
+        https://<br>
+        windowsill.dk/
+      </div>
+    </footer>
+  </section>
+</body>
+</html>

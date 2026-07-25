@@ -66,6 +66,19 @@ VALID_EXPERT_DECISIONS = {
     "rejected",
 }
 
+PROFILE_STATUSES = {"draft", "source_ready", "reviewed"}
+DIRECT_SUN_PREFERENCES = {"full_sun", "part_sun", "shade", "unknown"}
+LIGHT_TOLERANCES = {"good", "conditional", "not_suitable", "unknown"}
+SUPPLEMENTAL_LIGHT_VALUES = {"may_help", "not_needed", "unknown"}
+CONTAINER_VALUES = {"yes", "conditional", "no", "unknown"}
+MOISTURE_VALUES = {"evenly_moist", "allow_partial_dry", "dry_between_waterings", "unknown"}
+TOLERANCE_VALUES = {"low", "medium", "high", "unknown"}
+ESTABLISHMENT_VALUES = {
+    "indoor_start": {"recommended", "optional", "not_recommended", "unknown"},
+    "direct_sow": {"after_frost", "season_dependent", "not_recommended", "unknown"},
+    "transplant": {"suitable", "conditional", "not_recommended", "unknown"},
+}
+
 
 def fail(errors: list[str], path: Path, message: str) -> None:
     errors.append(f"{path.relative_to(ROOT)}: {message}")
@@ -157,6 +170,76 @@ def validate_plant_json(pack: Path, errors: list[str]) -> None:
     validate_expert_review(pack, data, errors)
 
 
+def validate_vnext_profile(pack: Path, plant_data: dict, errors: list[str]) -> None:
+    path = pack / "vnext_profile.json"
+    if not path.exists():
+        return
+    try:
+        profile = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        fail(errors, path, f"invalid JSON: {exc}")
+        return
+    if not isinstance(profile, dict):
+        fail(errors, path, "root must be an object")
+        return
+    if profile.get("schema_version") != "windowsill.plant-preferences.v0":
+        fail(errors, path, "`schema_version` must be windowsill.plant-preferences.v0")
+    if profile.get("api_use") != "not_active":
+        fail(errors, path, "`api_use` must be not_active until a future API contract")
+    if profile.get("plant_id") != plant_data.get("id"):
+        fail(errors, path, "`plant_id` must match `plant.json.id`")
+    if profile.get("status") not in PROFILE_STATUSES:
+        fail(errors, path, "`status` has an invalid value")
+
+    light = profile.get("light")
+    if not isinstance(light, dict):
+        fail(errors, path, "`light` must be an object")
+    else:
+        if light.get("direct_sun_preference") not in DIRECT_SUN_PREFERENCES:
+            fail(errors, path, "`light.direct_sun_preference` has an invalid value")
+        for key in ["bright_indirect_tolerance", "low_light_tolerance"]:
+            if light.get(key) not in LIGHT_TOLERANCES:
+                fail(errors, path, f"`light.{key}` has an invalid value")
+        if light.get("supplemental_light") not in SUPPLEMENTAL_LIGHT_VALUES:
+            fail(errors, path, "`light.supplemental_light` has an invalid value")
+        hours = light.get("minimum_direct_sun_hours")
+        if hours is not None and (not isinstance(hours, (int, float)) or hours < 0 or hours > 24):
+            fail(errors, path, "`light.minimum_direct_sun_hours` must be null or 0–24")
+
+    container = profile.get("container")
+    if not isinstance(container, dict):
+        fail(errors, path, "`container` must be an object")
+    elif container.get("container_suitable") not in CONTAINER_VALUES:
+        fail(errors, path, "`container.container_suitable` has an invalid value")
+
+    water = profile.get("water")
+    if not isinstance(water, dict):
+        fail(errors, path, "`water` must be an object")
+    else:
+        if water.get("moisture_preference") not in MOISTURE_VALUES:
+            fail(errors, path, "`water.moisture_preference` has an invalid value")
+        for key in ["drought_tolerance", "waterlogging_tolerance"]:
+            if water.get(key) not in TOLERANCE_VALUES:
+                fail(errors, path, f"`water.{key}` has an invalid value")
+        if water.get("guidance_style") != "check_before_watering":
+            fail(errors, path, "`water.guidance_style` must be check_before_watering")
+
+    establishment = profile.get("establishment")
+    if not isinstance(establishment, dict):
+        fail(errors, path, "`establishment` must be an object")
+    else:
+        for key, values in ESTABLISHMENT_VALUES.items():
+            if establishment.get(key) not in values:
+                fail(errors, path, f"`establishment.{key}` has an invalid value")
+        if establishment.get("month_guidance") != "location_dependent":
+            fail(errors, path, "`establishment.month_guidance` must be location_dependent")
+
+    if not isinstance(profile.get("source_refs"), dict):
+        fail(errors, path, "`source_refs` must be an object")
+    if not isinstance(profile.get("unknowns"), list):
+        fail(errors, path, "`unknowns` must be a list")
+
+
 def validate_pack(pack: Path, errors: list[str]) -> None:
     if not pack.is_dir():
         return
@@ -168,8 +251,15 @@ def validate_pack(pack: Path, errors: list[str]) -> None:
         if not path.exists():
             fail(errors, pack, f"missing required file `{filename}`")
 
+    plant_data = None
     if (pack / "plant.json").exists():
+        try:
+            plant_data = json.loads((pack / "plant.json").read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            plant_data = None
         validate_plant_json(pack, errors)
+    if isinstance(plant_data, dict):
+        validate_vnext_profile(pack, plant_data, errors)
 
     for filename in REQUIRED_FILES:
         path = pack / filename

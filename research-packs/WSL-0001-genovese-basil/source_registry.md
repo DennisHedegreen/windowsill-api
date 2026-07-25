@@ -1,8 +1,8 @@
 # Source registry — WSL-0001 Genovese Basil
 
-Status: audit draft  
-Plant: Genovese Basil  
-Candidate ID: WSL-0001  
+Status: audit draft
+Plant: Genovese Basil
+Candidate ID: WSL-0001
 Folder: `research-packs/WSL-0001-genovese-basil/`
 
 ## Published / institutional sources

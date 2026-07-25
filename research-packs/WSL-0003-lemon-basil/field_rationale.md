@@ -22,14 +22,16 @@ Candidate value:
 Rationale:
 
 - The existing production entry uses `Ocimum × citriodorum`.
-- Lemon-basil-specific secondary sources commonly describe lemon basil as a hybrid between `Ocimum basilicum` and `Ocimum americanum`.
-- Several sources treat `Ocimum × africanum` as the accepted or preferred name and `Ocimum × citriodorum` as a synonym.
+- Kew POWO accepts `Ocimum × africanum` and gives the hybrid formula
+  `O. americanum × O. basilicum`.
+- Kew POWO treats `Ocimum × citriodorum` as a synonym of `Ocimum × africanum`.
 - The plant is kept as `type: "hybrid"`, which matches the hybrid-origin interpretation.
 
 Uncertainty:
 
-- This pack did not obtain a directly parsed Kew POWO page for `Ocimum × africanum`.
-- Lemon basil naming is messy in horticultural sources: `Ocimum × africanum`, `Ocimum × citriodorum`, `Ocimum basilicum citriodorum` and cultivar-specific lemon basils are all seen.
+- The accepted hybrid name is now source-supported, but horticultural labels
+  still vary between `Ocimum × africanum`, `Ocimum × citriodorum`,
+  `Ocimum basilicum citriodorum` and cultivar-specific lemon basils.
 - `Mrs. Burns' Lemon` basil is not the same thing as this Lemon Basil candidate and should not be silently mixed into this entry.
 - Expert review should decide whether Windowsill should store `name_latin` as `Ocimum × africanum`, keep `Ocimum × citriodorum`, or use a broader note-based label.
 

@@ -210,6 +210,39 @@ Does not support:
 - Any claim that Windowsill should recommend medicinal, extract or supplement use.
 - Lemon-Basil-specific alkenylbenzene content.
 
+## Authoritative taxonomy follow-up
+
+### 12. Plants of the World Online — Kew Science, Ocimum × africanum Lour.
+
+URL: https://powo.science.kew.org/taxon/452853-1
+
+Supports:
+
+- `Ocimum × africanum Lour.` is an accepted hybrid.
+- The hybrid formula is `O. americanum × O. basilicum`.
+- The plant belongs to `Ocimum` / Lamiaceae.
+- `Ocimum × citriodorum` is listed among its heterotypic synonyms.
+
+Does not support:
+
+- Exact Lemon Basil cultivar identity in every commercial seed line.
+- Exact Windowsill temperature, light, container or harvest model values.
+- A current production decision without the normal human review gate.
+
+### 13. Plants of the World Online — Kew Science, Ocimum × citriodorum Vis.
+
+URL: https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:452906-1
+
+Supports:
+
+- `Ocimum × citriodorum Vis.` is a synonym of `Ocimum × africanum` in Kew's
+  current taxonomy.
+
+Does not support:
+
+- That all horticultural uses of “Lemon Basil” denote one identical cultivar.
+- Exact Windowsill model values or expert-review completion.
+
 ## Personal observation
 
 No personal observation was provided for this WSL-0003 audit pack.
@@ -218,6 +251,9 @@ No personal observation was provided for this WSL-0003 audit pack.
 
 - Strong general basil-growing support: UMN Extension, Iowa State Extension, Rutgers / US Basil Consortium.
 - Strong species-level support for `Ocimum basilicum`: Kew POWO.
-- Lemon-Basil-specific naming support is weaker and partly secondary: Wikipedia pages and gardening sources disagree between `Ocimum × africanum`, `Ocimum × citriodorum`, and `Ocimum basilicum citriodorum`.
-- Main required human check: preferred botanical name and how Windowsill should store hybrid names in `name_latin` and `species`.
+- Kew POWO now provides strong accepted-name support: `Ocimum × africanum` is
+  accepted and `Ocimum × citriodorum` is a synonym. Horticultural labels still
+  vary, so commercial cultivar identity remains separate.
+- Main required human check: how Windowsill should store an accepted hybrid
+  name in `name_latin` and the legacy `species` field.
 - Safety boundary support is general basil/herb safety, not Lemon-Basil-specific.

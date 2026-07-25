@@ -1,7 +1,7 @@
 {
   "id": "WSL-0005",
   "contributor": "dennishedegreen",
-  "contributor_note": "Audit draft for existing Windowsill entry WSL-0005. Botanical identity as Ocimum tenuiflorum is plausible and retained, with Ocimum sanctum treated as a synonym/trade-source issue requiring review. Holy Basil/Tulsi is distinct from sweet basil and Thai basil; some sources also use holy basil loosely for other Ocimum species, so identity should be checked. Edibility is limited to normal culinary leaf/tea use. Temperature and timing values are modelling estimates based on general basil-growing sources plus holy-basil-specific gardening sources; expert review is still pending.",
+  "contributor_note": "Audit draft for existing Windowsill entry WSL-0005. Kew accepts Ocimum tenuiflorum and treats Ocimum sanctum as a synonym, so older or commercial names need normalization rather than a second species record. Holy Basil/Tulsi is distinct from sweet basil and Thai basil; some sources also use holy basil loosely for other Ocimum species, so commercial identity should still be checked. Edibility is limited to normal culinary leaf/tea use. Temperature and timing values are modelling estimates based on general basil-growing sources plus holy-basil-specific gardening sources; expert review is still pending.",
   "name_en": "Holy Basil",
   "name_da": "Hellig Basilikum",
   "name_latin": "Ocimum tenuiflorum",

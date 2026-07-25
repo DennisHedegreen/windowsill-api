@@ -1,0 +1,39 @@
+{
+  "schema_version": "windowsill.plant-preferences.v0",
+  "status": "draft",
+  "api_use": "not_active",
+  "plant_id": "WSL-XXXX",
+  "light": {
+    "direct_sun_preference": "unknown",
+    "minimum_direct_sun_hours": null,
+    "bright_indirect_tolerance": "unknown",
+    "low_light_tolerance": "unknown",
+    "supplemental_light": "unknown",
+    "notes": "Document plant preference only; do not calculate a location's light here."
+  },
+  "container": {
+    "container_suitable": "unknown",
+    "minimum_volume_l": null,
+    "preferred_volume_l": null,
+    "minimum_depth_cm": null,
+    "notes": "Leave exact dimensions null until a source supports them."
+  },
+  "water": {
+    "moisture_preference": "unknown",
+    "drought_tolerance": "unknown",
+    "waterlogging_tolerance": "unknown",
+    "guidance_style": "check_before_watering",
+    "notes": "Do not invent a fixed watering volume."
+  },
+  "establishment": {
+    "indoor_start": "unknown",
+    "direct_sow": "unknown",
+    "transplant": "unknown",
+    "month_guidance": "location_dependent",
+    "notes": "Use source-supported frost or season relationships, not universal months."
+  },
+  "source_refs": {},
+  "unknowns": [
+    "Add only fields that remain unknown after source review."
+  ]
+}

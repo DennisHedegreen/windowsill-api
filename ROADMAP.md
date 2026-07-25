@@ -1,6 +1,12 @@
 # Windowsill — Roadmap
 
-Updated: 2026-06-07
+Updated: 2026-07-25
+
+## Data Integrity And Operations
+
+Plant-data standardization, workpack audit coverage and review/promotion
+sequencing are tracked in [BACKLOG.md](BACKLOG.md). They are deliberately
+separate from this product-feature roadmap.
 
 ## Done
 
