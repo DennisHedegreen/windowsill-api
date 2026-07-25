@@ -4,7 +4,7 @@
 
 Lemon Basil is a normal culinary herb, but this entry has higher naming uncertainty than Genovese Basil and Thai Basil.
 
-The main issue is botanical identity: the production file uses `Ocimum × citriodorum`, while several lemon-basil-specific secondary sources use `Ocimum × africanum` and treat `Ocimum × citriodorum` as a synonym. This needs human/expert review before any production correction.
+The accepted botanical identity is now clearer: Kew POWO accepts `Ocimum × africanum` and treats the production name `Ocimum × citriodorum` as a synonym. Human review is still needed for how the current Windowsill schema stores a hybrid name and for the breadth of the public “Lemon Basil” label.
 
 ## Estimated values
 
@@ -54,8 +54,8 @@ The following values are estimates:
 ## Source disagreements
 
 - Existing Windowsill production entry uses `Ocimum × citriodorum`.
-- Lemon-basil-specific secondary sources commonly use `Ocimum × africanum`.
-- Some gardening sources use labels such as `Ocimum basilicum citriodorum`.
+- Kew POWO accepts `Ocimum × africanum` and treats `Ocimum × citriodorum` as a synonym.
+- Some gardening sources still use labels such as `Ocimum basilicum citriodorum`.
 - Some sources confuse or blur Lemon Basil with `Mrs. Burns' Lemon`, which is a different lemon-scented basil cultivar/type.
 - General basil sources support the growing model but are not Lemon-Basil-specific.
 - Harvest timing sources vary between first leaves, early pinching, maturity and repeated harvest.
@@ -64,7 +64,7 @@ The following values are estimates:
 
 - Candidate name in this pack: `Ocimum × africanum`.
 - Existing production name: `Ocimum × citriodorum`.
-- Possible interpretation: `Ocimum × citriodorum` is a synonym or horticultural/trade label.
+- Kew POWO identifies the production name as a synonym of the candidate name.
 - Expert review should decide whether Windowsill should:
   - keep `Ocimum × citriodorum`,
   - change to `Ocimum × africanum`, or

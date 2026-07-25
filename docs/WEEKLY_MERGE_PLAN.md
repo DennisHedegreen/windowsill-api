@@ -3,6 +3,11 @@
 Status: operating guide
 Updated: 2026-06-08
 
+Practical companion:
+
+- `docs/WEEKLY_OPERATING_GUIDE.md` for the weekly click-by-click rhythm
+- `docs/PLANT_REVIEWER_AND_FLYER_PLAN.md` for reviewer outreach and flyer copy
+
 Windowsill should not update public counts casually after every merge.
 
 There are two different merge types:
@@ -86,12 +91,17 @@ After promotion:
 
 ## Current state
 
-As of 2026-06-08:
+As of 2026-07-23:
 
 - Production plant count: 148
-- Merged research packs: 1
-- First merged research pack: `research-packs/WSL-0001-genovese-basil/`
-- Production promotion from that pack: not done
+- Merged research packs: 5
+- Pending review packs:
+  - `research-packs/WSL-0001-genovese-basil/`
+  - `research-packs/WSL-0002-thai-basil/`
+  - `research-packs/WSL-0003-lemon-basil/`
+  - `research-packs/WSL-0004-purple-basil/`
+  - `research-packs/WSL-0005-holy-basil/`
+- Production promotion from those packs: not done
 
 ## Default next step
 

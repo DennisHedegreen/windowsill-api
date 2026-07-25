@@ -1,7 +1,7 @@
 # Expert review — WSL-0001 Genovese Basil
 
-Status: not reviewed  
-Model: three independent reviewers per plant  
+Status: not reviewed
+Model: three independent reviewers per plant
 Decision: pending
 
 ## Review model
@@ -31,8 +31,8 @@ Therefore:
 
 ## Reviewer 1
 
-Name: not assigned  
-Date: not reviewed  
+Name: not assigned
+Date: not reviewed
 Assessment:
 
 - Botanical name: not assessed
@@ -49,8 +49,8 @@ Empty — no reviewer note provided.
 
 ## Reviewer 2
 
-Name: not assigned  
-Date: not reviewed  
+Name: not assigned
+Date: not reviewed
 Assessment:
 
 - Botanical name: not assessed
@@ -67,8 +67,8 @@ Empty — no reviewer note provided.
 
 ## Reviewer 3
 
-Name: not assigned  
-Date: not reviewed  
+Name: not assigned
+Date: not reviewed
 Assessment:
 
 - Botanical name: not assessed

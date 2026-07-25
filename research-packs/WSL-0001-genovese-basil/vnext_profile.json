@@ -1,0 +1,47 @@
+{
+  "schema_version": "windowsill.plant-preferences.v0",
+  "status": "source_ready",
+  "api_use": "not_active",
+  "plant_id": "WSL-0001",
+  "light": {
+    "direct_sun_preference": "full_sun",
+    "minimum_direct_sun_hours": 6,
+    "bright_indirect_tolerance": "conditional",
+    "low_light_tolerance": "not_suitable",
+    "supplemental_light": "may_help",
+    "notes": "Basil prefers at least six hours of direct sun or strong bright light. A sunny window can work, but weak northern winter light is not equivalent to outdoor sun."
+  },
+  "container": {
+    "container_suitable": "yes",
+    "minimum_volume_l": null,
+    "preferred_volume_l": null,
+    "minimum_depth_cm": null,
+    "notes": "Sources support container growing but this pack does not yet support a general volume or depth figure."
+  },
+  "water": {
+    "moisture_preference": "evenly_moist",
+    "drought_tolerance": "unknown",
+    "waterlogging_tolerance": "low",
+    "guidance_style": "check_before_watering",
+    "notes": "Use well-drained growing medium with moisture retention. Containers dry faster; avoid treating this as a fixed daily amount."
+  },
+  "establishment": {
+    "indoor_start": "optional",
+    "direct_sow": "after_frost",
+    "transplant": "suitable",
+    "month_guidance": "location_dependent",
+    "notes": "Outdoor sowing/planting follows frost safety; the profile intentionally does not assign universal calendar months."
+  },
+  "source_refs": {
+    "light": ["source_registry.md#2", "source_registry.md#3", "source_registry.md#5"],
+    "container": ["source_registry.md#3", "source_registry.md#4", "source_registry.md#7"],
+    "water": ["source_registry.md#3", "source_registry.md#5"],
+    "establishment": ["source_registry.md#3", "source_registry.md#4"]
+  },
+  "unknowns": [
+    "General minimum and preferred pot volume.",
+    "General minimum pot depth.",
+    "Genovese-specific drought tolerance under different container media.",
+    "A future 3D/observed-light layer; this profile makes no location calculation."
+  ]
+}

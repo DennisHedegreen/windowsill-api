@@ -1,0 +1,48 @@
+{
+  "schema_version": "windowsill.plant-preferences.v0",
+  "status": "source_ready",
+  "api_use": "not_active",
+  "plant_id": "WSL-0003",
+  "light": {
+    "direct_sun_preference": "full_sun",
+    "minimum_direct_sun_hours": 6,
+    "bright_indirect_tolerance": "conditional",
+    "low_light_tolerance": "not_suitable",
+    "supplemental_light": "may_help",
+    "notes": "Lemon basil prefers warm, bright conditions and at least six hours of direct sun. A sunny window is conditional; weak northern winter light is not equivalent to full sun."
+  },
+  "container": {
+    "container_suitable": "yes",
+    "minimum_volume_l": null,
+    "preferred_volume_l": null,
+    "minimum_depth_cm": null,
+    "notes": "Sources support container growing but this pack does not yet support a general pot-volume or depth figure."
+  },
+  "water": {
+    "moisture_preference": "evenly_moist",
+    "drought_tolerance": "unknown",
+    "waterlogging_tolerance": "low",
+    "guidance_style": "check_before_watering",
+    "notes": "Use well-drained growing medium with moisture retention. Containers dry faster; this profile does not prescribe a fixed watering amount."
+  },
+  "establishment": {
+    "indoor_start": "optional",
+    "direct_sow": "after_frost",
+    "transplant": "suitable",
+    "month_guidance": "location_dependent",
+    "notes": "Establish in warm, frost-safe conditions; universal months are intentionally not inferred."
+  },
+  "source_refs": {
+    "taxonomy": ["source_registry.md#12", "source_registry.md#13"],
+    "light": ["source_registry.md#7", "source_registry.md#9"],
+    "container": ["source_registry.md#7", "source_registry.md#8"],
+    "water": ["source_registry.md#7", "source_registry.md#9"],
+    "establishment": ["source_registry.md#7", "source_registry.md#8"]
+  },
+  "unknowns": [
+    "General minimum and preferred pot volume.",
+    "General minimum pot depth.",
+    "Lemon-Basil-specific drought tolerance across container media.",
+    "A future 3D/observed-light layer; this profile makes no location calculation."
+  ]
+}
