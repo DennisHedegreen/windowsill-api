@@ -4,6 +4,8 @@ Geo-climate edible plant growing recommendation API.
 
 Send a GPS coordinate, a growing context, and a week number — get back the best plants to grow for that exact location, based on historical climate data and astronomical sun calculations.
 
+**TID instrument:** [Windowsill](https://hedegreenresearch.com/tid/windowsill/)
+
 **Live API:** https://api.windowsill.dk
 **Documentation:** https://windowsill.dk/docs.html
 **Plant library:** https://windowsill.dk/library.html
